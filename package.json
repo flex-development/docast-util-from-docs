@@ -63,7 +63,7 @@
     "fix:dedupe": "yarn dedupe --strategy=highest",
     "fix:format": "dprint fmt",
     "fix:lint": "yarn check:lint --cache --fix",
-    "postinstall": "[ -f ./node_modules/.bin/husky ] && chmod +x .husky/* && husky install || exit 0",
+    "postinstall": "[ -f ./node_modules/.bin/husky ] && chmod +x .husky/* && husky || exit 0",
     "postpack": "toggle-scripts +postinstall",
     "postpublish": "toggle-scripts +prepack",
     "prepack": "toggle-scripts -postinstall && yarn build",

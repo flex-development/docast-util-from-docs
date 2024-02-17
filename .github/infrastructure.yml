@@ -172,7 +172,7 @@ repository:
   automated_security_fixes: true
   default_branch: main
   delete_branch_on_merge: true
-  description: unified compliant file parser for docast
+  description: docast utility for parsing docblocks
   has_issues: true
   has_projects: true
   has_wiki: false

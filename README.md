@@ -2,7 +2,7 @@
 
 [![github release](https://img.shields.io/github/v/release/flex-development/docast-util-from-docs.svg?include_prereleases&sort=semver)](https://github.com/flex-development/docast-util-from-docs/releases/latest)
 [![npm](https://img.shields.io/npm/v/@flex-development/docast-util-from-docs.svg)](https://npmjs.com/package/@flex-development/docast-util-from-docs)
-[![codecov](https://codecov.io/gh/flex-development/docast-util-from-docs/branch/main/graph/badge.svg?token=R2TPEBGWXB)](https://codecov.io/gh/flex-development/docast-util-from-docs)
+[![codecov](https://codecov.io/gh/flex-development/docast-util-from-docs/graph/badge.svg?token=um87Ekggjn)](https://codecov.io/gh/flex-development/docast-util-from-docs)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
 [![license](https://img.shields.io/github/license/flex-development/docast-util-from-docs.svg)](LICENSE.md)
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)

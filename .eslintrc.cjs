@@ -10,7 +10,15 @@
  */
 const config = {
   extends: ['./.eslintrc.base.cjs'],
-  overrides: [...require('./.eslintrc.base.cjs').overrides],
+  overrides: [
+    ...require('./.eslintrc.base.cjs').overrides,
+    {
+      files: ['__fixtures__/dbl-linear.ts'],
+      rules: {
+        '@typescript-eslint/require-await': 0
+      }
+    }
+  ],
   root: true
 }
 
