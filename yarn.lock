@@ -1424,6 +1424,8 @@ __metadata:
     "@flex-development/mlly": "npm:1.0.0-alpha.18"
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
+    "@html-eslint/eslint-plugin": "npm:0.23.1"
+    "@html-eslint/parser": "npm:0.23.0"
     "@types/chai": "npm:4.3.11"
     "@types/chai-string": "npm:1.4.5"
     "@types/eslint": "npm:8.56.2"
@@ -1449,6 +1451,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:3.6.1"
     eslint-mdx: "npm:3.1.5"
     eslint-plugin-chai-expect: "npm:3.0.0"
+    eslint-plugin-html: "npm:8.0.0"
     eslint-plugin-import: "npm:2.29.1"
     eslint-plugin-jest-formatting: "npm:3.1.0"
     eslint-plugin-jsdoc: "npm:48.1.0"
@@ -1889,6 +1892,22 @@ __metadata:
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
   checksum: 10/052dd232140fa60e81588000cbe729a40146579b361f1070bce63e2a761388a22a16d00beeffc504bd3601cb8e055c57b21a185448b3ed550cf50716f4fd442e
+  languageName: node
+  linkType: hard
+
+"@html-eslint/eslint-plugin@npm:0.23.1":
+  version: 0.23.1
+  resolution: "@html-eslint/eslint-plugin@npm:0.23.1"
+  checksum: 10/f4a0e93914021da9982286b9b17fdd8fcf749d5bbda51c4d6cf425455c4bbf3fa927c607f278c4e45c83b3ff3d7db3ca559f17fe5834ccd70463202cb9ddfec4
+  languageName: node
+  linkType: hard
+
+"@html-eslint/parser@npm:0.23.0":
+  version: 0.23.0
+  resolution: "@html-eslint/parser@npm:0.23.0"
+  dependencies:
+    es-html-parser: "npm:^0.0.9"
+  checksum: 10/063fed4d807b83e572c8e3ffca6e65fa1746d49e965e11dae083411fd5d10e57d45eeedb7d2d7bb3ae306c4d31475c24cc967a67150357a6c4239500a7b7c666
   languageName: node
   linkType: hard
 
@@ -4116,6 +4135,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom-serializer@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "dom-serializer@npm:2.0.0"
+  dependencies:
+    domelementtype: "npm:^2.3.0"
+    domhandler: "npm:^5.0.2"
+    entities: "npm:^4.2.0"
+  checksum: 10/e3bf9027a64450bca0a72297ecdc1e3abb7a2912268a9f3f5d33a2e29c1e2c3502c6e9f860fc6625940bfe0cfb57a44953262b9e94df76872fdfb8151097eeb3
+  languageName: node
+  linkType: hard
+
+"domelementtype@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "domelementtype@npm:2.3.0"
+  checksum: 10/ee837a318ff702622f383409d1f5b25dd1024b692ef64d3096ff702e26339f8e345820f29a68bcdcea8cfee3531776b3382651232fbeae95612d6f0a75efb4f6
+  languageName: node
+  linkType: hard
+
+"domhandler@npm:^5.0.2, domhandler@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "domhandler@npm:5.0.3"
+  dependencies:
+    domelementtype: "npm:^2.3.0"
+  checksum: 10/809b805a50a9c6884a29f38aec0a4e1b4537f40e1c861950ed47d10b049febe6b79ab72adaeeebb3cc8fc1cd33f34e97048a72a9265103426d93efafa78d3e96
+  languageName: node
+  linkType: hard
+
+"domutils@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "domutils@npm:3.1.0"
+  dependencies:
+    dom-serializer: "npm:^2.0.0"
+    domelementtype: "npm:^2.3.0"
+    domhandler: "npm:^5.0.3"
+  checksum: 10/9a169a6e57ac4c738269a73ab4caf785114ed70e46254139c1bbc8144ac3102aacb28a6149508395ae34aa5d6a40081f4fa5313855dc8319c6d8359866b6dfea
+  languageName: node
+  linkType: hard
+
 "dot-prop@npm:^5.1.0":
   version: 5.3.0
   resolution: "dot-prop@npm:5.3.0"
@@ -4250,6 +4307,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"entities@npm:^4.2.0, entities@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "entities@npm:4.5.0"
+  checksum: 10/ede2a35c9bce1aeccd055a1b445d41c75a14a2bb1cd22e242f20cf04d236cdcd7f9c859eb83f76885327bfae0c25bf03303665ee1ce3d47c5927b98b0e3e3d48
+  languageName: node
+  linkType: hard
+
 "entities@npm:~3.0.1":
   version: 3.0.1
   resolution: "entities@npm:3.0.1"
@@ -4365,6 +4429,13 @@ __metadata:
     unbox-primitive: "npm:^1.0.2"
     which-typed-array: "npm:^1.1.13"
   checksum: 10/e1ea9738ece15f810733b7bd71d825b555e01bb8c860272560d7d901467a9db1265214d6cf44f3beeb5d73ae421a609b9ad93a39aa47bbcd8cde510d5e0aa875
+  languageName: node
+  linkType: hard
+
+"es-html-parser@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "es-html-parser@npm:0.0.9"
+  checksum: 10/b22a2a74debb3c64041fd47a449dee09f1b4ea92f122d6098ffd98d2024c120bf3b72ccb6372b8a07038ff0c7b5af7e98293b15ae75adcf3c320d96b0c8a1e40
   languageName: node
   linkType: hard
 
@@ -4758,6 +4829,15 @@ __metadata:
   peerDependencies:
     eslint: ">=4.19.1"
   checksum: 10/9814e6305183edfdff7d99cbc0f95f0aed1446045cbd1d4f28e7be0903d0013880f0aaf04486a27de96bfb2f5a746bea97cbb238f9b0035cb378d48d179a0a1b
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-html@npm:8.0.0":
+  version: 8.0.0
+  resolution: "eslint-plugin-html@npm:8.0.0"
+  dependencies:
+    htmlparser2: "npm:^9.1.0"
+  checksum: 10/2c613ebb6506fcb42ad4f057223696c2e73cc737501794d7550f82de75e719b0d577b3daae092947cccd3dcfb0c74d0a8d22abd760b579a4e832f37f732c1c58
   languageName: node
   linkType: hard
 
@@ -5819,6 +5899,18 @@ __metadata:
   version: 2.0.2
   resolution: "html-escaper@npm:2.0.2"
   checksum: 10/034d74029dcca544a34fb6135e98d427acd73019796ffc17383eaa3ec2fe1c0471dcbbc8f8ed39e46e86d43ccd753a160631615e4048285e313569609b66d5b7
+  languageName: node
+  linkType: hard
+
+"htmlparser2@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "htmlparser2@npm:9.1.0"
+  dependencies:
+    domelementtype: "npm:^2.3.0"
+    domhandler: "npm:^5.0.3"
+    domutils: "npm:^3.1.0"
+    entities: "npm:^4.5.0"
+  checksum: 10/6352fa2a5495781fa9a02c9049908334cd068ff36d753870d30cd13b841e99c19646717567a2f9e9c44075bbe43d364e102f9d013a731ce962226d63746b794f
   languageName: node
   linkType: hard
 

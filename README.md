@@ -69,6 +69,14 @@ In Deno with [`esm.sh`][esmsh]:
 import { fromDocs } from 'https://esm.sh/@flex-development/docast-util-from-docs'
 ```
 
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import { fromDocs } from 'https://esm.sh/@flex-development/docast-util-from-docs'
+</script>
+```
+
 ## Use
 
 Say we have the following TypeScript file `fibonacci-sequence.ts`:
