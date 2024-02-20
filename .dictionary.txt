@@ -3,6 +3,7 @@ cefc
 codecov
 commitlintrc
 dedupe
+deno
 dessant
 docast
 dohm

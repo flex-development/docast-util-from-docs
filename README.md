@@ -49,23 +49,25 @@ If you want to handle syntax trees manually, use this. For an easier time proces
 
 This package is [ESM only][esm].
 
+In Node.js (version 18+) with [yarn][yarn]:
+
 ```sh
 yarn add @flex-development/docast-util-from-docs
 yarn add -D @flex-development/docast @types/mdast @types/unist micromark-util-types
 ```
 
-From Git:
-
-```sh
-yarn add @flex-development/docast-util-from-docs@flex-development/docast-util-from-docs
-```
-
 <blockquote>
   <small>
     See <a href='https://yarnpkg.com/protocol/git'>Git - Protocols | Yarn</a>
-    &nbsp;for details on requesting a specific branch, commit, or tag.
+    &nbsp;for details regarding installing from Git.
   </small>
 </blockquote>
+
+In Deno with [`esm.sh`][esmsh]:
+
+```ts
+import { fromDocs } from 'https://esm.sh/@flex-development/docast-util-from-docs'
+```
 
 ## Use
 
@@ -380,6 +382,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [docast]: https://github.com/flex-development/docast
 [docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[esmsh]: https://esm.sh/
 [mdast-code]: https://github.com/syntax-tree/mdast#code
 [mdast-util-extension]: https://github.com/syntax-tree/mdast-util-from-markdown#extension
 [mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
@@ -388,3 +391,4 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [typescript]: https://www.typescriptlang.org
 [unified]: https://github.com/unifiedjs/unified
 [vfile]: https://github.com/vfile/vfile#api
+[yarn]: https://yarnpkg.com
