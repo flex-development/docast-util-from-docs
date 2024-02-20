@@ -30,10 +30,15 @@ This package is a utility that takes [docblock][docblock] input and turns it int
 
 This utility turns docblocks into tokens, and then turns those tokens into nodes. Markdown in docblocks is turned into
 tokens using [micromark][micromark], and turned into nodes using [mdast-util-from-markdown][mdast-util-from-markdown].
+This package is also the backbone of [`docast-parse`][docast-parse], a [**unified**][unified] compliant file parser that
+focuses on making it easier to transform docblocks by abstracting these internals away.
 
 ## When should I use this?
 
-**TODO**: when should i use this?
+**TODO**: ecosystem
+
+If you want to handle syntax trees manually, use this. For an easier time processing docblocks, use
+[`docast-parse`][docast-parse] instead.
 
 ## Install
 
@@ -317,9 +322,11 @@ This package is fully typed with [TypeScript][typescript].
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
+[docast-parse]: https://github.com/flex-development/docast-parse
 [docast]: https://github.com/flex-development/docast
 [docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 [mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
 [micromark]: https://github.com/micromark/micromark
 [typescript]: https://www.typescriptlang.org
+[unified]: https://github.com/unifiedjs/unified
