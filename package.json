@@ -154,7 +154,7 @@
     "to-vfile": "8.0.0",
     "trash-cli": "5.0.0",
     "ts-dedent": "2.2.0",
-    "typescript": "5.4.0-beta",
+    "typescript": "5.4.0-dev.20240219",
     "unist-util-inspect": "8.0.0",
     "vfile": "6.0.1",
     "vite": "5.1.3",
