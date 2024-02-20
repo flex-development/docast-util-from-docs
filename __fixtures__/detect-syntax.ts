@@ -19,7 +19,11 @@ import { hasCJSSyntax, hasESMSyntax } from '@flex-development/mlly'
  *  console.debug(detectSyntax('export default {}'))
  *
  * @param {string} code - Code to evaluate
- * @return {{ cjs: boolean; esm: boolean; mixed: boolean }} Detection result
+ * @return {{
+ *  cjs: boolean;
+ *  esm: boolean;
+ *  mixed: boolean
+ * }} Detection result
  */
 const detectSyntax = (
   code: string

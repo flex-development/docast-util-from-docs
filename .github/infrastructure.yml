@@ -75,6 +75,15 @@ labels:
   - name: scope:install
     description: package install
     color: 74cefc
+  - name: scope:markdown
+    description: markdown integration
+    color: 74cefc
+  - name: scope:mdast
+    description: mdast
+    color: 74cefc
+  - name: scope:micromark
+    description: micromark
+    color: 74cefc
   - name: scope:parser
     description: file parser
     color: 74cefc
@@ -172,7 +181,7 @@ repository:
   automated_security_fixes: true
   default_branch: main
   delete_branch_on_merge: true
-  description: docast utility for parsing docblocks
+  description: docast utility to parse docblocks
   has_issues: true
   has_projects: true
   has_wiki: false

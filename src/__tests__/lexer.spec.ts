@@ -5,6 +5,7 @@
 
 import { define } from '@flex-development/tutils'
 import { read } from 'to-vfile'
+import type * as unist from 'unist'
 import type { VFile } from 'vfile'
 import TestSubject from '../lexer'
 
@@ -45,6 +46,47 @@ describe('unit:Lexer', () => {
     })
   })
 
+  describe('#offset', () => {
+    let subject: TestSubject
+
+    beforeAll(() => {
+      subject = new TestSubject(file)
+    })
+
+    it('should return -1 if point.column < 1', () => {
+      expect(subject.offset({ column: 0, line: 1 })).to.equal(-1)
+    })
+
+    it('should return -1 if point.column is not found', () => {
+      expect(subject.offset({ column: 46, line: 2 })).to.equal(-1)
+    })
+
+    it('should return -1 if point.line < 1', () => {
+      expect(subject.offset({ column: 1, line: 0 })).to.equal(-1)
+    })
+
+    it('should return -1 if point.line > total number of lines', () => {
+      expect(subject.offset({ column: 1, line: 100 })).to.equal(-1)
+    })
+
+    it('should return index of character in document', () => {
+      // Arrange
+      const cases: [Omit<unist.Point, 'offset'>, number][] = [
+        [{ column: 1, line: 1 }, 0],
+        [{ column: 4, line: 5 }, 126],
+        [{ column: 1, line: 71 }, length]
+      ]
+
+      // Act + Expect
+      cases.forEach(([point, expected]) => {
+        const result = subject.offset(point)
+
+        expect(result).to.equal(expected)
+        expect(subject.point(result)).to.eql({ ...point, offset: result })
+      })
+    })
+  })
+
   describe('#point', () => {
     let subject: TestSubject
 
@@ -82,7 +124,7 @@ describe('unit:Lexer', () => {
     it('should return point if offset is in range [0,#document length]', () => {
       expect(subject.point(length)).to.eql({
         column: 1,
-        line: 64,
+        line: 71,
         offset: length
       })
     })

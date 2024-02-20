@@ -1,5 +1,6 @@
 attw
 cefc
+codecov
 commitlintrc
 dedupe
 dessant
@@ -14,6 +15,7 @@ iife
 jchen
 jsdoc
 kaisugi
+lcov
 lintstagedrc
 mdast
 mkbuild

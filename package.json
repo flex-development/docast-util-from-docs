@@ -1,6 +1,6 @@
 {
   "name": "@flex-development/docast-util-from-docs",
-  "description": "docast utility for parsing docblocks",
+  "description": "docast utility to parse docblocks",
   "version": "1.0.0-alpha.1",
   "keywords": [
     "comment",
@@ -140,6 +140,8 @@
     "is-ci": "3.0.1",
     "jsonc-eslint-parser": "2.4.0",
     "lint-staged": "15.2.2",
+    "mdast-util-directive": "3.0.0",
+    "micromark-extension-directive": "3.0.0",
     "micromark-util-types": "2.0.0",
     "node-notifier": "10.0.1",
     "prettier": "3.2.5",

@@ -3,8 +3,6 @@
  * @module docast-util-from-docs/lexer
  */
 
-import { TokenKind } from '#src/enums'
-import type { Token } from '#src/interfaces'
 import type { Point } from '@flex-development/docast'
 import {
   at,
@@ -17,7 +15,10 @@ import {
   type Optional
 } from '@flex-development/tutils'
 import { ok } from 'devlop'
+import type * as unist from 'unist'
 import type { VFile } from 'vfile'
+import { TokenKind } from './enums'
+import type { Token } from './interfaces'
 
 /**
  * Document tokenizer.
@@ -156,6 +157,58 @@ class Lexer {
     token.end = this.point()
 
     return token
+  }
+
+  /**
+   * Get an offset for `point`.
+   *
+   * @see {@linkcode unist.Point}
+   *
+   * @public
+   *
+   * @param {unist.Point?} [point=this.point()] - Place in source document
+   * @return {number} Character offset or `-1` if `point` is invalid
+   */
+  public offset(point: unist.Point = this.point()): number {
+    /**
+     * Offset found?
+     *
+     * @var {boolean} found
+     */
+    let found: boolean = false
+
+    /**
+     * Current offset.
+     *
+     * @var {number} offset
+     */
+    let offset: number = -1
+
+    // get offset
+    if (
+      point.column &&
+      point.line &&
+      point.line <= this.indices.length &&
+      isNumber(at(this.indices, point.line - 1))
+    ) {
+      for (let line = 0; line < point.line; line++) {
+        for (let j = 0; j < at(this.indices, line)!; j++) {
+          // increase current offset
+          offset++
+
+          // stop search
+          if (point.column === j + 1 && point.line === line + 1) {
+            found = true
+            break
+          }
+        }
+      }
+
+      // reset offset if not found
+      if (!found) offset = -1
+    }
+
+    return offset
   }
 
   /**

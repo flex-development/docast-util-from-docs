@@ -9,7 +9,14 @@
  *
  *  1. The number `u(0) = 1` is the first one in `u`
  *  2. For each `x` in `u`, `y = 2x + 1` and `z = 3x + 1` must be in `u` too
+ *      - some
+ *      - additional
+ *      - info
  *  3. There are no other numbers in `u`
+ *      - some
+ *      - more
+ *      - additional
+ *      - info
  *
  * Given an index, `n`, the function returns the element at `u(n)`.
  *

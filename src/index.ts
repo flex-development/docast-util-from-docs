@@ -3,4 +3,5 @@
  * @module docast-util-from-docs
  */
 
-export {}
+export type { Options } from './interfaces'
+export { default as fromDocs } from './util'

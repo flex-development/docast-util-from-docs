@@ -1,0 +1,691 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`integration:fromDocs > non-empty document > document sample 0 1`] = `
+root[2]
+├─0 comment[2] (1:1-4:4, 0-83)
+│   │ code: null
+│   ├─0 blockTag<file>[1] (2:4-2:38, 7-41)
+│   │   │ tag: "@file"
+│   │   └─0 text "Fixtures - validateURLString" (2:10-2:38, 13-41)
+│   └─1 blockTag<module>[1] (3:4-3:38, 45-79)
+│       │ tag: "@module"
+│       └─0 text "fixtures/validateURLString" (3:12-3:38, 53-79)
+└─1 comment[7] (10:1-25:4, 250-800)
+    │ code: null
+    ├─0 description[7] (11:4-15:65, 257-461)
+    │   ├─0 paragraph[5] (11:4-11:68, 257-321)
+    │   │   ├─0 text "Checks if " (11:4-11:14, 257-267)
+    │   │   ├─1 inlineCode "value" (11:14-11:21, 267-274)
+    │   │   ├─2 text " is an instance of " (11:21-11:40, 274-293)
+    │   │   ├─3 inlineTag<linkcode> "URL" (11:40-11:55, 293-308)
+    │   │   │     tag: "@linkcode"
+    │   │   └─4 text " or a string." (11:55-11:68, 308-321)
+    │   ├─1 break (11:68-12:1, 321-322)
+    │   ├─2 break (12:3-13:1, 324-325)
+    │   │     data: {"blank":true}
+    │   ├─3 paragraph[5] (13:4-13:69, 328-393)
+    │   │   ├─0 text "Throws " (13:4-13:11, 328-335)
+    │   │   ├─1 linkReference[1] (13:11-13:38, 335-362)
+    │   │   │   │ label: "1"
+    │   │   │   │ identifier: "1"
+    │   │   │   │ referenceType: "full"
+    │   │   │   └─0 inlineCode "ERR_INVALID_ARG_TYPE" (13:12-13:34, 336-358)
+    │   │   ├─2 text " if " (13:38-13:42, 362-366)
+    │   │   ├─3 inlineCode "value" (13:42-13:49, 366-373)
+    │   │   └─4 text " is of neither type." (13:49-13:69, 373-393)
+    │   ├─4 break (13:69-14:1, 393-394)
+    │   ├─5 break (14:3-15:1, 396-397)
+    │   │     data: {"blank":true}
+    │   └─6 definition (15:4-15:65, 400-461)
+    │         identifier: "1"
+    │         label: "1"
+    │         title: null
+    │         url: "https://nodejs.org/api/errors.html#err_invalid_arg_value"
+    ├─1 blockTag<see>[1] (17:4-17:41, 468-505)
+    │   │ tag: "@see"
+    │   └─0 inlineTag<linkcode> "ERR_INVALID_ARG_TYPE" (17:9-17:41, 473-505)
+    │         tag: "@linkcode"
+    ├─2 blockTag<internal>[0] (19:4-19:13, 512-521)
+    │     tag: "@internal"
+    ├─3 blockTag<param>[2] (21:4-21:51, 528-575)
+    │   │ tag: "@param"
+    │   ├─0 typeExpression "unknown" (21:11-21:20, 535-544)
+    │   └─1 text "value - Value supplied by user" (21:21-21:51, 545-575)
+    ├─4 blockTag<param>[2] (22:4-22:63, 579-638)
+    │   │ tag: "@param"
+    │   ├─0 typeExpression "string" (22:11-22:19, 586-594)
+    │   └─1 text "name - Name of invalid argument or property" (22:20-22:63, 595-638)
+    ├─5 blockTag<return>[7] (23:4-23:81, 642-719)
+    │   │ tag: "@return"
+    │   ├─0 typeExpression "value is URL | string" (23:12-23:35, 650-673)
+    │   ├─1 inlineCode "true" (23:36-23:42, 674-680)
+    │   ├─2 text " if " (23:42-23:46, 680-684)
+    │   ├─3 inlineCode "value" (23:46-23:53, 684-691)
+    │   ├─4 text " is " (23:53-23:57, 691-695)
+    │   ├─5 inlineCode "URL" (23:57-23:62, 695-700)
+    │   └─6 text " instance or string" (23:62-23:81, 700-719)
+    └─6 blockTag<throws>[6] (24:4-24:77, 723-796)
+        │ tag: "@throws"
+        ├─0 typeExpression "NodeError<TypeError>" (24:12-24:34, 731-753)
+        ├─1 text "If " (24:35-24:38, 754-757)
+        ├─2 inlineCode "value" (24:38-24:45, 757-764)
+        ├─3 text " is not " (24:45-24:53, 764-772)
+        ├─4 inlineCode "URL" (24:53-24:58, 772-777)
+        └─5 text " instance or string" (24:58-24:77, 777-796)
+`;
+
+exports[`integration:fromDocs > non-empty document > document sample 1 1`] = `
+root[4]
+├─0 comment[2] (1:1-4:4, 0-73)
+│   │ code: null
+│   ├─0 blockTag<file>[1] (2:4-2:33, 7-36)
+│   │   │ tag: "@file"
+│   │   └─0 text "Fixtures - detectSyntax" (2:10-2:33, 13-36)
+│   └─1 blockTag<module>[1] (3:4-3:33, 40-69)
+│       │ tag: "@module"
+│       └─0 text "fixtures/detectSyntax" (3:12-3:33, 48-69)
+├─1 comment[6] (8:1-27:4, 144-603)
+│   │ code: null
+│   ├─0 description[4] (9:4-11:32, 151-263)
+│   │   ├─0 paragraph[3] (9:4-9:81, 151-228)
+│   │   │   ├─0 text "Detects if " (9:4-9:15, 151-162)
+│   │   │   ├─1 inlineCode "code" (9:15-9:21, 162-168)
+│   │   │   └─2 text " contains CommonJS syntax, ESM syntax, or a mixture of both." (9:21-9:81, 168-228)
+│   │   ├─1 break (9:81-10:1, 228-229)
+│   │   ├─2 break (10:3-11:1, 231-232)
+│   │   │     data: {"blank":true}
+│   │   └─3 paragraph[1] (11:4-11:32, 235-263)
+│   │       └─0 text "Ignores matches in comments." (11:4-11:32, 235-263)
+│   ├─1 blockTag<see>[1] (13:4-13:33, 270-299)
+│   │   │ tag: "@see"
+│   │   └─0 inlineTag<linkcode> "hasCJSSyntax" (13:9-13:33, 275-299)
+│   │         tag: "@linkcode"
+│   ├─2 blockTag<see>[1] (14:4-14:33, 303-332)
+│   │   │ tag: "@see"
+│   │   └─0 inlineTag<linkcode> "hasESMSyntax" (14:9-14:33, 308-332)
+│   │         tag: "@linkcode"
+│   ├─3 blockTag<example>[1] (16:4-19:53, 339-461)
+│   │   │ tag: "@example"
+│   │   └─0 code "import { detectSyntax } from '@flex-development/mlly'\\n\\nconsole.debug(detectSyntax('export default {}'))" (17:5-19:53, 352-461)
+│   │         lang: null
+│   │         meta: null
+│   ├─4 blockTag<param>[2] (21:4-21:43, 468-507)
+│   │   │ tag: "@param"
+│   │   ├─0 typeExpression "string" (21:11-21:19, 475-483)
+│   │   └─1 text "code - Code to evaluate" (21:20-21:43, 484-507)
+│   └─5 blockTag<return>[2] (22:4-26:23, 511-599)
+│       │ tag: "@return"
+│       ├─0 typeExpression "{\\ncjs: boolean;\\nesm: boolean;\\nmixed: boolean\\n}" (22:12-26:6, 519-582)
+│       └─1 text "Detection result" (26:7-26:23, 583-599)
+├─2 comment[2] (31:3-35:6, 699-767)
+│   │ code: null
+│   ├─0 description[1] (32:6-32:28, 708-730)
+│   │   └─0 paragraph[1] (32:6-32:28, 708-730)
+│   │       └─0 text "CommonJS syntax check." (32:6-32:28, 708-730)
+│   └─1 blockTag<const>[2] (34:6-34:26, 741-761)
+│       │ tag: "@const"
+│       ├─0 typeExpression "boolean" (34:13-34:22, 748-757)
+│       └─1 text "cjs" (34:23-34:26, 758-761)
+└─3 comment[2] (38:3-42:6, 813-876)
+    │ code: null
+    ├─0 description[1] (39:6-39:23, 822-839)
+    │   └─0 paragraph[1] (39:6-39:23, 822-839)
+    │       └─0 text "ESM syntax check." (39:6-39:23, 822-839)
+    └─1 blockTag<const>[2] (41:6-41:26, 850-870)
+        │ tag: "@const"
+        ├─0 typeExpression "boolean" (41:13-41:22, 857-866)
+        └─1 text "esm" (41:23-41:26, 867-870)
+`;
+
+exports[`integration:fromDocs > non-empty document > document sample 2 1`] = `
+root[2]
+├─0 comment[2] (1:1-4:4, 0-87)
+│   │ code: null
+│   ├─0 blockTag<file>[1] (2:4-2:40, 7-43)
+│   │   │ tag: "@file"
+│   │   └─0 text "Fixtures - toRelativeSpecifier" (2:10-2:40, 13-43)
+│   └─1 blockTag<module>[1] (3:4-3:40, 47-83)
+│       │ tag: "@module"
+│       └─0 text "fixtures/toRelativeSpecifier" (3:12-3:40, 55-83)
+└─1 comment[7] (12:1-28:4, 340-923)
+    │ code: null
+    ├─0 description[4] (13:4-18:7, 347-521)
+    │   ├─0 paragraph[3] (13:4-13:51, 347-394)
+    │   │   ├─0 text "Converts " (13:4-13:13, 347-356)
+    │   │   ├─1 inlineCode "specifier" (13:13-13:24, 356-367)
+    │   │   └─2 text " into a relative specifier." (13:24-13:51, 367-394)
+    │   ├─1 break (13:51-14:1, 394-395)
+    │   ├─2 break (14:3-15:1, 397-398)
+    │   │     data: {"blank":true}
+    │   └─3 containerDirective<info>[1] (15:4-18:7, 401-521)
+    │       │ attributes: {}
+    │       └─0 paragraph[3] (16:4-17:30, 412-514)
+    │           ├─0 text "The relative specifier will only include a file extension if " (16:4-16:65, 412-473)
+    │           ├─1 inlineCode "specifier" (16:65-16:76, 473-484)
+    │           └─2 text " includes a file extension." (16:76-17:30, 484-514)
+    ├─1 blockTag<see>[1] (20:4-20:24, 528-548)
+    │   │ tag: "@see"
+    │   └─0 inlineTag<linkcode> "URL" (20:9-20:24, 533-548)
+    │         tag: "@linkcode"
+    ├─2 blockTag<see>[1] (21:4-21:52, 552-600)
+    │   │ tag: "@see"
+    │   └─0 text "https://nodejs.org/api/esm.html#terminology" (21:9-21:52, 557-600)
+    ├─3 blockTag<param>[2] (23:4-23:65, 607-668)
+    │   │ tag: "@param"
+    │   ├─0 typeExpression "URL | string" (23:11-23:25, 614-628)
+    │   └─1 text "specifier - Module specifier to convert" (23:26-23:65, 629-668)
+    ├─4 blockTag<param>[2] (24:4-24:76, 672-744)
+    │   │ tag: "@param"
+    │   ├─0 typeExpression "URL | string" (24:11-24:25, 679-693)
+    │   └─1 text "parent - Parent module URL or path to resolve from" (24:26-24:76, 694-744)
+    ├─5 blockTag<return>[3] (25:4-25:54, 748-798)
+    │   │ tag: "@return"
+    │   ├─0 typeExpression "string" (25:12-25:20, 756-764)
+    │   ├─1 inlineCode "specifier" (25:21-25:32, 765-776)
+    │   └─2 text " as relative specifier" (25:32-25:54, 776-798)
+    └─6 blockTag<throws>[7] (26:4-27:44, 802-919)
+        │ tag: "@throws"
+        ├─0 typeExpression "NodeError<TypeError>" (26:12-26:34, 810-832)
+        ├─1 text "If either " (26:35-26:45, 833-843)
+        ├─2 inlineCode "specifier" (26:45-26:56, 843-854)
+        ├─3 text " or " (26:56-26:60, 854-858)
+        ├─4 inlineCode "parent" (26:60-26:68, 858-866)
+        ├─5 text " is not a string or an instance of " (26:68-27:29, 866-904)
+        └─6 inlineTag<linkcode> "URL" (27:29-27:44, 904-919)
+              tag: "@linkcode"
+`;
+
+exports[`integration:fromDocs > non-empty document > document sample 3 1`] = `
+root[7]
+├─0 comment[3] (1:1-5:4, 0-126)
+│   │ code: null
+│   ├─0 blockTag<file>[1] (2:4-2:30, 7-33)
+│   │   │ tag: "@file"
+│   │   └─0 text "Fixtures - dblLinear" (2:10-2:30, 13-33)
+│   ├─1 blockTag<module>[1] (3:4-3:30, 37-63)
+│   │   │ tag: "@module"
+│   │   └─0 text "fixtures/dblLinear" (3:12-3:30, 45-63)
+│   └─2 blockTag<see>[1] (4:4-4:59, 67-122)
+│       │ tag: "@see"
+│       └─0 text "https://codewars.com/kata/5672682212c8ecf83e000050" (4:9-4:59, 72-122)
+├─1 comment[8] (7:1-36:4, 128-844)
+│   │ code: null
+│   ├─0 description[7] (8:4-21:68, 135-553)
+│   │   ├─0 paragraph[5] (8:4-8:60, 135-191)
+│   │   │   ├─0 text "Consider a sequence " (8:4-8:24, 135-155)
+│   │   │   ├─1 inlineCode "u" (8:24-8:27, 155-158)
+│   │   │   ├─2 text " where " (8:27-8:34, 158-165)
+│   │   │   ├─3 inlineCode "u" (8:34-8:37, 165-168)
+│   │   │   └─4 text " is defined as follows:" (8:37-8:60, 168-191)
+│   │   ├─1 break (8:60-9:1, 191-192)
+│   │   ├─2 break (9:3-10:1, 194-195)
+│   │   │     data: {"blank":true}
+│   │   ├─3 list[3] (10:5-19:15, 199-482)
+│   │   │   │ ordered: true
+│   │   │   │ start: 1
+│   │   │   │ spread: false
+│   │   │   ├─0 listItem[4] (10:5-10:53, 199-247)
+│   │   │   │   │ spread: false
+│   │   │   │   │ checked: null
+│   │   │   │   ├─0 text "The number " (10:8-10:19, 202-213)
+│   │   │   │   ├─1 inlineCode "u(0) = 1" (10:19-10:29, 213-223)
+│   │   │   │   ├─2 text " is the first one in " (10:29-10:50, 223-244)
+│   │   │   │   └─3 inlineCode "u" (10:50-10:53, 244-247)
+│   │   │   ├─1 listItem[12] (11:5-14:15, 252-375)
+│   │   │   │   │ spread: false
+│   │   │   │   │ checked: null
+│   │   │   │   ├─0  text "For each " (11:8-11:17, 255-264)
+│   │   │   │   ├─1  inlineCode "x" (11:17-11:20, 264-267)
+│   │   │   │   ├─2  text " in " (11:20-11:24, 267-271)
+│   │   │   │   ├─3  inlineCode "u" (11:24-11:27, 271-274)
+│   │   │   │   ├─4  text ", " (11:27-11:29, 274-276)
+│   │   │   │   ├─5  inlineCode "y = 2x + 1" (11:29-11:41, 276-288)
+│   │   │   │   ├─6  text " and " (11:41-11:46, 288-293)
+│   │   │   │   ├─7  inlineCode "z = 3x + 1" (11:46-11:58, 293-305)
+│   │   │   │   ├─8  text " must be in " (11:58-11:70, 305-317)
+│   │   │   │   ├─9  inlineCode "u" (11:70-11:73, 317-320)
+│   │   │   │   ├─10 text " too" (11:73-11:77, 320-324)
+│   │   │   │   └─11 list[3] (12:9-14:15, 333-375)
+│   │   │   │        │ ordered: false
+│   │   │   │        │ start: null
+│   │   │   │        │ spread: false
+│   │   │   │        ├─0 listItem[1] (12:9-12:15, 333-339)
+│   │   │   │        │   │ spread: false
+│   │   │   │        │   │ checked: null
+│   │   │   │        │   └─0 text "some" (12:11-12:15, 335-339)
+│   │   │   │        ├─1 listItem[1] (13:9-13:21, 348-360)
+│   │   │   │        │   │ spread: false
+│   │   │   │        │   │ checked: null
+│   │   │   │        │   └─0 text "additional" (13:11-13:21, 350-360)
+│   │   │   │        └─2 listItem[1] (14:9-14:15, 369-375)
+│   │   │   │            │ spread: false
+│   │   │   │            │ checked: null
+│   │   │   │            └─0 text "info" (14:11-14:15, 371-375)
+│   │   │   └─2 listItem[3] (15:5-19:15, 380-482)
+│   │   │       │ spread: false
+│   │   │       │ checked: null
+│   │   │       ├─0 text "There are no other numbers in " (15:8-15:38, 383-413)
+│   │   │       ├─1 inlineCode "u" (15:38-15:41, 413-416)
+│   │   │       └─2 list[4] (16:9-19:15, 425-482)
+│   │   │           │ ordered: false
+│   │   │           │ start: null
+│   │   │           │ spread: false
+│   │   │           ├─0 listItem[1] (16:9-16:15, 425-431)
+│   │   │           │   │ spread: false
+│   │   │           │   │ checked: null
+│   │   │           │   └─0 text "some" (16:11-16:15, 427-431)
+│   │   │           ├─1 listItem[1] (17:9-17:15, 440-446)
+│   │   │           │   │ spread: false
+│   │   │           │   │ checked: null
+│   │   │           │   └─0 text "more" (17:11-17:15, 442-446)
+│   │   │           ├─2 listItem[1] (18:9-18:21, 455-467)
+│   │   │           │   │ spread: false
+│   │   │           │   │ checked: null
+│   │   │           │   └─0 text "additional" (18:11-18:21, 457-467)
+│   │   │           └─3 listItem[1] (19:9-19:15, 476-482)
+│   │   │               │ spread: false
+│   │   │               │ checked: null
+│   │   │               └─0 text "info" (19:11-19:15, 478-482)
+│   │   ├─4 break (19:15-20:1, 482-483)
+│   │   ├─5 break (20:3-21:1, 485-486)
+│   │   │     data: {"blank":true}
+│   │   └─6 paragraph[5] (21:4-21:68, 489-553)
+│   │       ├─0 text "Given an index, " (21:4-21:20, 489-505)
+│   │       ├─1 inlineCode "n" (21:20-21:23, 505-508)
+│   │       ├─2 text ", the function returns the element at " (21:23-21:61, 508-546)
+│   │       ├─3 inlineCode "u(n)" (21:61-21:67, 546-552)
+│   │       └─4 text "." (21:67-21:68, 552-553)
+│   ├─1 blockTag<async>[0] (23:4-23:10, 560-566)
+│   │     tag: "@async"
+│   ├─2 blockTag<example>[1] (25:4-26:28, 573-609)
+│   │   │ tag: "@example"
+│   │   └─0 code "await dblLinear(0) // 1" (26:5-26:28, 586-609)
+│   │         lang: null
+│   │         meta: null
+│   ├─3 blockTag<example>[1] (27:4-28:30, 613-651)
+│   │   │ tag: "@example"
+│   │   └─0 code "await dblLinear(10) // 22" (28:5-28:30, 626-651)
+│   │         lang: null
+│   │         meta: null
+│   ├─4 blockTag<example>[1] (29:4-30:32, 655-695)
+│   │   │ tag: "@example"
+│   │   └─0 code "await dblLinear(100) // 447" (30:5-30:32, 668-695)
+│   │         lang: null
+│   │         meta: null
+│   ├─5 blockTag<example>[1] (31:4-32:36, 699-743)
+│   │   │ tag: "@example"
+│   │   └─0 code "await dblLinear(7687) // 111718" (32:5-32:36, 712-743)
+│   │         lang: null
+│   │         meta: null
+│   ├─6 blockTag<param>[2] (34:4-34:47, 750-793)
+│   │   │ tag: "@param"
+│   │   ├─0 typeExpression "number" (34:11-34:19, 757-765)
+│   │   └─1 text "n - Index of element to get" (34:20-34:47, 766-793)
+│   └─7 blockTag<return>[3] (35:4-35:47, 797-840)
+│       │ tag: "@return"
+│       ├─0 typeExpression "Promise<number>" (35:12-35:29, 805-822)
+│       ├─1 text "Element at " (35:30-35:41, 823-834)
+│       └─2 inlineCode "u(n)" (35:41-35:47, 834-840)
+├─2 comment[1] (38:3-38:40, 902-939)
+│   │ code: null
+│   └─0 blockTag<const>[2] (38:7-38:37, 906-936)
+│       │ tag: "@const"
+│       ├─0 typeExpression "number[]" (38:14-38:24, 913-923)
+│       └─1 text "u - Sequence" (38:25-38:37, 924-936)
+├─3 comment[1] (41:3-41:75, 969-1041)
+│   │ code: null
+│   └─0 blockTag<var>[4] (41:7-41:72, 973-1038)
+│       │ tag: "@var"
+│       ├─0 typeExpression "number" (41:12-41:20, 978-986)
+│       ├─1 text "j - Index of x in " (41:21-41:39, 987-1005)
+│       ├─2 inlineTag<linkcode> "u" (41:39-41:52, 1005-1018)
+│       │     tag: "@linkcode"
+│       └─3 text " used to calculate y" (41:52-41:72, 1018-1038)
+├─4 comment[1] (44:3-44:75, 1065-1137)
+│   │ code: null
+│   └─0 blockTag<var>[4] (44:7-44:72, 1069-1134)
+│       │ tag: "@var"
+│       ├─0 typeExpression "number" (44:12-44:20, 1074-1082)
+│       ├─1 text "k - Index of x in " (44:21-44:39, 1083-1101)
+│       ├─2 inlineTag<linkcode> "u" (44:39-44:52, 1101-1114)
+│       │     tag: "@linkcode"
+│       └─3 text " used to calculate z" (44:52-44:72, 1114-1134)
+├─5 comment[1] (51:5-51:35, 1253-1283)
+│   │ code: null
+│   └─0 blockTag<const>[3] (51:9-51:32, 1257-1280)
+│       │ tag: "@const"
+│       ├─0 typeExpression "number" (51:16-51:24, 1264-1272)
+│       ├─1 text "y - " (51:25-51:29, 1273-1277)
+│       └─2 inlineCode "y" (51:29-51:32, 1277-1280)
+└─6 comment[1] (54:5-54:35, 1325-1355)
+    │ code: null
+    └─0 blockTag<const>[3] (54:9-54:32, 1329-1352)
+        │ tag: "@const"
+        ├─0 typeExpression "number" (54:16-54:24, 1336-1344)
+        ├─1 text "z - " (54:25-54:29, 1345-1349)
+        └─2 inlineCode "z" (54:29-54:32, 1349-1352)
+`;
+
+exports[`integration:fromDocs > non-empty document > document sample 4 1`] = `
+root[14]
+├─0  comment[2] (1:1-4:4, 0-61)
+│    │ code: null
+│    ├─0 blockTag<file>[1] (2:4-2:27, 7-30)
+│    │   │ tag: "@file"
+│    │   └─0 text "Fixtures - Reader" (2:10-2:27, 13-30)
+│    └─1 blockTag<module>[1] (3:4-3:27, 34-57)
+│        │ tag: "@module"
+│        └─0 text "fixtures/Reader" (3:12-3:27, 42-57)
+├─1  comment[2] (12:1-16:4, 304-351)
+│    │ code: null
+│    ├─0 description[1] (13:4-13:27, 311-334)
+│    │   └─0 paragraph[1] (13:4-13:27, 311-334)
+│    │       └─0 text "Source document reader." (13:4-13:27, 311-334)
+│    └─1 blockTag<class>[0] (15:4-15:10, 341-347)
+│          tag: "@class"
+├─2  comment[5] (18:3-25:6, 369-479)
+│    │ code: null
+│    ├─0 description[1] (19:6-19:22, 378-394)
+│    │   └─0 paragraph[1] (19:6-19:22, 378-394)
+│    │       └─0 text "Source document." (19:6-19:22, 378-394)
+│    ├─1 blockTag<public>[0] (21:6-21:13, 405-412)
+│    │     tag: "@public"
+│    ├─2 blockTag<readonly>[0] (22:6-22:15, 418-427)
+│    │     tag: "@readonly"
+│    ├─3 blockTag<instance>[0] (23:6-23:15, 433-442)
+│    │     tag: "@instance"
+│    └─4 blockTag<member>[2] (24:6-24:31, 448-473)
+│        │ tag: "@member"
+│        ├─0 typeExpression "string" (24:14-24:22, 456-464)
+│        └─1 text "document" (24:23-24:31, 465-473)
+├─3  comment[5] (28:3-36:6, 518-726)
+│    │ code: null
+│    ├─0 description[1] (29:6-30:36, 527-637)
+│    │   └─0 paragraph[3] (29:6-30:36, 527-637)
+│    │       ├─0 text "List, where each index is a line number (" (29:6-29:47, 527-568)
+│    │       ├─1 inlineCode "0" (29:47-29:50, 568-571)
+│    │       └─2 text "-based), and each value is the number of columns in the line." (29:50-30:36, 571-637)
+│    ├─1 blockTag<protected>[0] (32:6-32:16, 648-658)
+│    │     tag: "@protected"
+│    ├─2 blockTag<readonly>[0] (33:6-33:15, 664-673)
+│    │     tag: "@readonly"
+│    ├─3 blockTag<instance>[0] (34:6-34:15, 679-688)
+│    │     tag: "@instance"
+│    └─4 blockTag<member>[2] (35:6-35:32, 694-720)
+│        │ tag: "@member"
+│        ├─0 typeExpression "number[]" (35:14-35:24, 702-712)
+│        └─1 text "indices" (35:25-35:32, 713-720)
+├─4  comment[4] (39:3-45:6, 769-892)
+│    │ code: null
+│    ├─0 description[1] (40:6-40:47, 778-819)
+│    │   └─0 paragraph[3] (40:6-40:47, 778-819)
+│    │       ├─0 text "Current position in " (40:6-40:26, 778-798)
+│    │       ├─1 inlineTag<linkcode> "document" (40:26-40:46, 798-818)
+│    │       │     tag: "@linkcode"
+│    │       └─2 text "." (40:46-40:47, 818-819)
+│    ├─1 blockTag<protected>[0] (42:6-42:16, 830-840)
+│    │     tag: "@protected"
+│    ├─2 blockTag<instance>[0] (43:6-43:15, 846-855)
+│    │     tag: "@instance"
+│    └─3 blockTag<member>[2] (44:6-44:31, 861-886)
+│        │ tag: "@member"
+│        ├─0 typeExpression "number" (44:14-44:22, 869-877)
+│        └─1 text "position" (44:23-44:31, 878-886)
+├─5  comment[3] (48:3-54:6, 925-1076)
+│    │ code: null
+│    ├─0 description[1] (49:6-49:42, 934-970)
+│    │   └─0 paragraph[1] (49:6-49:42, 934-970)
+│    │       └─0 text "Create a new source document reader." (49:6-49:42, 934-970)
+│    ├─1 blockTag<see>[1] (51:6-51:28, 981-1003)
+│    │   │ tag: "@see"
+│    │   └─0 inlineTag<linkcode> "VFile" (51:11-51:28, 986-1003)
+│    │         tag: "@linkcode"
+│    └─2 blockTag<param>[2] (53:6-53:62, 1014-1070)
+│        │ tag: "@param"
+│        ├─0 typeExpression "VFile | string" (53:13-53:29, 1021-1037)
+│        └─1 text "source - Source document or file" (53:30-53:62, 1038-1070)
+├─6  comment[5] (61:3-75:6, 1266-1522)
+│    │ code: null
+│    ├─0 description[1] (62:6-62:56, 1275-1325)
+│    │   └─0 paragraph[1] (62:6-62:56, 1275-1325)
+│    │       └─0 text "Check if the reader is at the end of the document." (62:6-62:56, 1275-1325)
+│    ├─1 blockTag<example>[1] (64:6-69:10, 1336-1426)
+│    │   │ tag: "@example"
+│    │   └─0 code "while (!reader.eof) {\\n  // do something\\n}" (65:7-69:10, 1351-1426)
+│    │         lang: "ts"
+│    │         meta: null
+│    ├─2 blockTag<public>[0] (71:6-71:13, 1437-1444)
+│    │     tag: "@public"
+│    ├─3 blockTag<instance>[0] (72:6-72:15, 1450-1459)
+│    │     tag: "@instance"
+│    └─4 blockTag<return>[3] (74:6-74:52, 1470-1516)
+│        │ tag: "@return"
+│        ├─0 typeExpression "boolean" (74:14-74:23, 1478-1487)
+│        ├─1 inlineCode "true" (74:24-74:30, 1488-1494)
+│        └─2 text " if at end of document" (74:30-74:52, 1494-1516)
+├─7  comment[4] (80:3-87:6, 1606-1751)
+│    │ code: null
+│    ├─0 description[1] (81:6-81:47, 1615-1656)
+│    │   └─0 paragraph[1] (81:6-81:47, 1615-1656)
+│    │       └─0 text "Get the current position in the document." (81:6-81:47, 1615-1656)
+│    ├─1 blockTag<public>[0] (83:6-83:13, 1667-1674)
+│    │     tag: "@public"
+│    ├─2 blockTag<instance>[0] (84:6-84:15, 1680-1689)
+│    │     tag: "@instance"
+│    └─3 blockTag<return>[2] (86:6-86:51, 1700-1745)
+│        │ tag: "@return"
+│        ├─0 typeExpression "number" (86:14-86:22, 1708-1716)
+│        └─1 text "Current position in document" (86:23-86:51, 1717-1745)
+├─8  comment[6] (92:3-104:6, 1815-2222)
+│    │ code: null
+│    ├─0 description[1] (93:6-94:75, 1824-1972)
+│    │   └─0 paragraph[5] (93:6-94:75, 1824-1972)
+│    │       ├─0 text "Get the next " (93:6-93:19, 1824-1837)
+│    │       ├─1 inlineCode "k" (93:19-93:22, 1837-1840)
+│    │       ├─2 text "-th character code from the document without changing the position of the reader, with " (93:22-94:35, 1840-1932)
+│    │       ├─3 inlineCode "null" (94:35-94:41, 1932-1938)
+│    │       └─4 text " denoting the end of the document." (94:41-94:75, 1938-1972)
+│    ├─1 blockTag<see>[1] (96:6-96:27, 1983-2004)
+│    │   │ tag: "@see"
+│    │   └─0 inlineTag<linkcode> "Code" (96:11-96:27, 1988-2004)
+│    │         tag: "@linkcode"
+│    ├─2 blockTag<public>[0] (98:6-98:13, 2015-2022)
+│    │     tag: "@public"
+│    ├─3 blockTag<instance>[0] (99:6-99:15, 2028-2037)
+│    │     tag: "@instance"
+│    ├─4 blockTag<param>[4] (101:6-102:43, 2048-2164)
+│    │   │ tag: "@param"
+│    │   ├─0 typeExpression "number" (101:13-101:21, 2055-2063)
+│    │   ├─1 text "[k=1] - Difference between index of next " (101:22-101:63, 2064-2105)
+│    │   ├─2 inlineCode "k" (101:63-101:66, 2105-2108)
+│    │   └─3 text "-th character code and current position in document" (101:66-102:43, 2108-2164)
+│    └─5 blockTag<return>[3] (103:6-103:52, 2170-2216)
+│        │ tag: "@return"
+│        ├─0 typeExpression "Code" (103:14-103:20, 2178-2184)
+│        ├─1 text "Peeked character code or " (103:21-103:46, 2185-2210)
+│        └─2 inlineCode "null" (103:46-103:52, 2210-2216)
+├─9  comment[7] (110:3-138:6, 2388-3460)
+│    │ code: null
+│    ├─0 description[12] (111:6-128:42, 2397-3216)
+│    │   ├─0  paragraph[5] (111:6-111:53, 2397-2444)
+│    │   │    ├─0 text "Get a " (111:6-111:12, 2397-2403)
+│    │   │    ├─1 linkReference[1] (111:12-111:24, 2403-2415)
+│    │   │    │   │ label: "1"
+│    │   │    │   │ identifier: "1"
+│    │   │    │   │ referenceType: "full"
+│    │   │    │   └─0 emphasis[1] (111:13-111:20, 2404-2411)
+│    │   │    │       └─0 text "point" (111:14-111:19, 2405-2410)
+│    │   │    ├─2 text " in the document by " (111:24-111:44, 2415-2435)
+│    │   │    ├─3 inlineCode "offset" (111:44-111:52, 2435-2443)
+│    │   │    └─4 text "." (111:52-111:53, 2443-2444)
+│    │   ├─1  break (111:53-112:1, 2444-2445)
+│    │   ├─2  break (112:5-113:1, 2449-2450)
+│    │   │      data: {"blank":true}
+│    │   ├─3  paragraph[13] (113:6-114:76, 2455-2606)
+│    │   │    ├─0  text "The given " (113:6-113:16, 2455-2465)
+│    │   │    ├─1  inlineCode "offset" (113:16-113:24, 2465-2473)
+│    │   │    ├─2  text " must be an integer in the range " (113:24-113:57, 2473-2506)
+│    │   │    ├─3  inlineCode "[0, document.length]" (113:57-113:79, 2506-2528)
+│    │   │    ├─4  text "." (113:79-113:80, 2528-2529)
+│    │   │    ├─5  break (113:80-113:81, 2529-2530)
+│    │   │    │      data: {"hard":true}
+│    │   │    ├─6  text "If invalid, " (114:6-114:18, 2536-2548)
+│    │   │    ├─7  inlineCode "point.column" (114:18-114:32, 2548-2562)
+│    │   │    ├─8  text " and " (114:32-114:37, 2562-2567)
+│    │   │    ├─9  inlineCode "point.line" (114:37-114:49, 2567-2579)
+│    │   │    ├─10 text " will have a value of " (114:49-114:71, 2579-2601)
+│    │   │    ├─11 inlineCode "-1" (114:71-114:75, 2601-2605)
+│    │   │    └─12 text "." (114:75-114:76, 2605-2606)
+│    │   ├─4  break (114:76-115:1, 2606-2607)
+│    │   ├─5  break (115:5-116:1, 2611-2612)
+│    │   │      data: {"blank":true}
+│    │   ├─6  blockquote[7] (116:6-124:35, 2617-3064)
+│    │   │    ├─0 paragraph[4] (116:8-116:63, 2619-2674)
+│    │   │    │   ├─0 strong[1] (116:8-116:17, 2619-2628)
+│    │   │    │   │   └─0 text "Point" (116:10-116:15, 2621-2626)
+│    │   │    │   ├─1 text " represents one place in a source " (116:17-116:51, 2628-2662)
+│    │   │    │   ├─2 linkReference[1] (116:51-116:62, 2662-2673)
+│    │   │    │   │   │ label: "2"
+│    │   │    │   │   │ identifier: "2"
+│    │   │    │   │   │ referenceType: "full"
+│    │   │    │   │   └─0 emphasis[1] (116:52-116:58, 2663-2669)
+│    │   │    │   │       └─0 text "file" (116:53-116:57, 2664-2668)
+│    │   │    │   └─3 text "." (116:62-116:63, 2673-2674)
+│    │   │    ├─1 break (116:63-117:1, 2674-2675)
+│    │   │    ├─2 break (117:7-118:1, 2681-2682)
+│    │   │    │     data: {"blank":true}
+│    │   │    ├─3 paragraph[13] (118:8-121:35, 2689-2945)
+│    │   │    │   ├─0  text "The " (118:8-118:12, 2689-2693)
+│    │   │    │   ├─1  inlineCode "line" (118:12-118:18, 2693-2699)
+│    │   │    │   ├─2  text " field (" (118:18-118:26, 2699-2707)
+│    │   │    │   ├─3  inlineCode "1" (118:26-118:29, 2707-2710)
+│    │   │    │   ├─4  text "-indexed integer) represents a line in a source file. The " (118:29-119:18, 2710-2775)
+│    │   │    │   ├─5  inlineCode "column" (119:18-119:26, 2775-2783)
+│    │   │    │   ├─6  text " field (" (119:26-119:34, 2783-2791)
+│    │   │    │   ├─7  inlineCode "1" (119:34-119:37, 2791-2794)
+│    │   │    │   ├─8  text "-indexed integer) represents a column in a source file. The " (119:37-120:25, 2794-2861)
+│    │   │    │   ├─9  inlineCode "offset" (120:25-120:33, 2861-2869)
+│    │   │    │   ├─10 text " field (" (120:33-120:41, 2869-2877)
+│    │   │    │   ├─11 inlineCode "0" (120:41-120:44, 2877-2880)
+│    │   │    │   └─12 text "-indexed integer) represents a character in a source file." (120:44-121:35, 2880-2945)
+│    │   │    ├─4 break (121:35-122:1, 2945-2946)
+│    │   │    ├─5 break (122:7-123:1, 2952-2953)
+│    │   │    │     data: {"blank":true}
+│    │   │    └─6 paragraph[3] (123:8-124:35, 2960-3064)
+│    │   │        ├─0 text "The term character means a (UTF-16) code unit which is defined in the " (123:8-124:1, 2960-3030)
+│    │   │        ├─1 linkReference[1] (124:8-124:20, 3037-3049)
+│    │   │        │   │ label: "3"
+│    │   │        │   │ identifier: "3"
+│    │   │        │   │ referenceType: "full"
+│    │   │        │   └─0 text "Web IDL" (124:9-124:16, 3038-3045)
+│    │   │        └─2 text " specification." (124:20-124:35, 3049-3064)
+│    │   ├─7  break (124:35-125:1, 3064-3065)
+│    │   ├─8  break (125:5-126:1, 3069-3070)
+│    │   │      data: {"blank":true}
+│    │   ├─9  definition (126:6-126:53, 3075-3122)
+│    │   │      identifier: "1"
+│    │   │      label: "1"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#point"
+│    │   ├─10 definition (127:6-127:52, 3128-3174)
+│    │   │      identifier: "2"
+│    │   │      label: "2"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#file"
+│    │   └─11 definition (128:6-128:42, 3180-3216)
+│    │          identifier: "3"
+│    │          label: "3"
+│    │          title: null
+│    │          url: "https://webidl.spec.whatwg.org/"
+│    ├─1 blockTag<see>[1] (130:6-130:28, 3227-3249)
+│    │   │ tag: "@see"
+│    │   └─0 inlineTag<linkcode> "Point" (130:11-130:28, 3232-3249)
+│    │         tag: "@linkcode"
+│    ├─2 blockTag<see>[1] (131:6-131:53, 3255-3302)
+│    │   │ tag: "@see"
+│    │   └─0 text "https://github.com/syntax-tree/unist#point" (131:11-131:53, 3260-3302)
+│    ├─3 blockTag<public>[0] (133:6-133:13, 3313-3320)
+│    │     tag: "@public"
+│    ├─4 blockTag<instance>[0] (134:6-134:15, 3326-3335)
+│    │     tag: "@instance"
+│    ├─5 blockTag<param>[2] (136:6-136:75, 3346-3415)
+│    │   │ tag: "@param"
+│    │   ├─0 typeExpression "number?" (136:13-136:22, 3353-3362)
+│    │   └─1 text "[offset=this.index] - Index of character in document" (136:23-136:75, 3363-3415)
+│    └─6 blockTag<return>[2] (137:6-137:39, 3421-3454)
+│        │ tag: "@return"
+│        ├─0 typeExpression "Point" (137:14-137:21, 3429-3436)
+│        └─1 text "Point in document" (137:22-137:39, 3437-3454)
+├─10 comment[2] (140:5-144:8, 3518-3608)
+│    │ code: null
+│    ├─0 description[1] (141:8-141:45, 3529-3566)
+│    │   └─0 paragraph[3] (141:8-141:45, 3529-3566)
+│    │       ├─0 text "Current offset (" (141:8-141:24, 3529-3545)
+│    │       ├─1 inlineCode "0" (141:24-141:27, 3545-3548)
+│    │       └─2 text "-indexed integer)." (141:27-141:45, 3548-3566)
+│    └─1 blockTag<var>[2] (143:8-143:27, 3581-3600)
+│        │ tag: "@var"
+│        ├─0 typeExpression "number" (143:13-143:21, 3586-3594)
+│        └─1 text "index" (143:22-143:27, 3595-3600)
+├─11 comment[2] (147:5-151:8, 3640-3727)
+│    │ code: null
+│    ├─0 description[1] (148:8-148:43, 3651-3686)
+│    │   └─0 paragraph[3] (148:8-148:43, 3651-3686)
+│    │       ├─0 text "Current line (" (148:8-148:22, 3651-3665)
+│    │       ├─1 inlineCode "1" (148:22-148:25, 3665-3668)
+│    │       └─2 text "-indexed integer)." (148:25-148:43, 3668-3686)
+│    └─1 blockTag<var>[2] (150:8-150:26, 3701-3719)
+│        │ tag: "@var"
+│        ├─0 typeExpression "number" (150:13-150:21, 3706-3714)
+│        └─1 text "line" (150:22-150:26, 3715-3719)
+├─12 comment[2] (154:5-158:8, 3759-3858)
+│    │ code: null
+│    ├─0 description[1] (155:8-155:53, 3770-3815)
+│    │   └─0 paragraph[3] (155:8-155:53, 3770-3815)
+│    │       ├─0 text "Current " (155:8-155:16, 3770-3778)
+│    │       ├─1 inlineTag<linkcode> "Point" (155:16-155:33, 3778-3795)
+│    │       │     tag: "@linkcode"
+│    │       └─2 text " in source document." (155:33-155:53, 3795-3815)
+│    └─1 blockTag<const>[2] (157:8-157:28, 3830-3850)
+│        │ tag: "@const"
+│        ├─0 typeExpression "Point" (157:15-157:22, 3837-3844)
+│        └─1 text "point" (157:23-157:28, 3845-3850)
+└─13 comment[6] (177:3-191:6, 4310-4756)
+     │ code: null
+     ├─0 description[4] (178:6-181:78, 4319-4506)
+     │   ├─0 paragraph[5] (178:6-179:30, 4319-4423)
+     │   │   ├─0 text "Get the next " (178:6-178:19, 4319-4332)
+     │   │   ├─1 inlineCode "k" (178:19-178:22, 4332-4335)
+     │   │   ├─2 text "-th character code from the document, with " (178:22-178:65, 4335-4378)
+     │   │   ├─3 inlineCode "null" (178:65-178:71, 4378-4384)
+     │   │   └─4 text " denoting the end of the document." (178:71-179:30, 4384-4423)
+     │   ├─1 break (179:30-180:1, 4423-4424)
+     │   ├─2 break (180:5-181:1, 4428-4429)
+     │   │     data: {"blank":true}
+     │   └─3 paragraph[3] (181:6-181:78, 4434-4506)
+     │       ├─0 text "Unlike " (181:6-181:13, 4434-4441)
+     │       ├─1 inlineTag<linkcode> "peek" (181:13-181:29, 4441-4457)
+     │       │     tag: "@linkcode"
+     │       └─2 text ", this method changes the position of the reader." (181:29-181:78, 4457-4506)
+     ├─1 blockTag<see>[1] (183:6-183:27, 4517-4538)
+     │   │ tag: "@see"
+     │   └─0 inlineTag<linkcode> "Code" (183:11-183:27, 4522-4538)
+     │         tag: "@linkcode"
+     ├─2 blockTag<public>[0] (185:6-185:13, 4549-4556)
+     │     tag: "@public"
+     ├─3 blockTag<instance>[0] (186:6-186:15, 4562-4571)
+     │     tag: "@instance"
+     ├─4 blockTag<param>[4] (188:6-189:43, 4582-4698)
+     │   │ tag: "@param"
+     │   ├─0 typeExpression "number" (188:13-188:21, 4589-4597)
+     │   ├─1 text "[k=1] - Difference between index of next " (188:22-188:63, 4598-4639)
+     │   ├─2 inlineCode "k" (188:63-188:66, 4639-4642)
+     │   └─3 text "-th character code and current position in document" (188:66-189:43, 4642-4698)
+     └─5 blockTag<return>[5] (190:6-190:52, 4704-4750)
+         │ tag: "@return"
+         ├─0 typeExpression "Code" (190:14-190:20, 4712-4718)
+         ├─1 text "Next " (190:21-190:26, 4719-4724)
+         ├─2 inlineCode "k" (190:26-190:29, 4724-4727)
+         ├─3 text "-th character or " (190:29-190:46, 4727-4744)
+         └─4 inlineCode "null" (190:46-190:52, 4744-4750)
+`;
