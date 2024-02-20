@@ -3,8 +3,8 @@
  * @module docast-util-from-docs/interfaces/tests/unit-d/Options
  */
 
-import type { Root } from '@flex-development/docast'
-import type { Fn, Nilable, OneOrMany } from '@flex-development/tutils'
+import type { Transform } from '#src/types'
+import type { Nilable, OneOrMany } from '@flex-development/tutils'
 import type * as mdast from 'mdast-util-from-markdown'
 import type * as micromark from 'micromark-util-types'
 import type TestSubject from '../options'
@@ -28,9 +28,9 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<micromark.Extension[]>>()
   })
 
-  it('should match [transforms?: Nilable<Fn<[Root], void>[]>]', () => {
+  it('should match [transforms?: Nilable<Transform[]>]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('transforms')
-      .toEqualTypeOf<Nilable<Fn<[Root], void>[]>>()
+      .toEqualTypeOf<Nilable<Transform[]>>()
   })
 })

@@ -31,7 +31,6 @@ import {
   template,
   trim,
   type Assign,
-  type Fn,
   type Nilable,
   type Optional
 } from '@flex-development/tutils'
@@ -64,7 +63,7 @@ import type { VFile } from 'vfile'
 import { TokenKind } from './enums'
 import type { Options, Token } from './interfaces'
 import Lexer from './lexer'
-import type { UncommentReplacer } from './types'
+import type { Transform, UncommentReplacer } from './types'
 
 declare module 'mdast' {
   interface BreakData {
@@ -1019,13 +1018,9 @@ class Parser {
     /**
      * Tree transforms.
      *
-     * @const {Fn<[Root], void>[]} transforms
+     * @const {Transform[]} transforms
      */
-    const transforms: Fn<[tree: Root], void>[] = fallback(
-      this.options.transforms,
-      [],
-      isNIL
-    )
+    const transforms: Transform[] = fallback(this.options.transforms, [], isNIL)
 
     /**
      * Dump paragraphs.

@@ -3,8 +3,8 @@
  * @module docast-util-from-docs/interfaces/Options
  */
 
-import type { Root } from '@flex-development/docast'
-import type { Fn, Nilable, OneOrMany } from '@flex-development/tutils'
+import type { Transform } from '#src/types'
+import type { Nilable, OneOrMany } from '@flex-development/tutils'
 import type { Code } from 'mdast'
 import type * as mdast from 'mdast-util-from-markdown'
 import type * as micromark from 'micromark-util-types'
@@ -41,9 +41,9 @@ interface Options {
   /**
    * Tree transforms.
    *
-   * @see {@linkcode Root}
+   * @see {@linkcode Transform}
    */
-  transforms?: Nilable<Fn<[tree: Root], void>[]>
+  transforms?: Nilable<Transform[]>
 }
 
 export type { Options as default }
