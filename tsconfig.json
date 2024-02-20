@@ -31,7 +31,8 @@
     "paths": {
       "#src": ["src/index"],
       "#src/*": ["src/*"],
-      "#tests/*": ["__tests__/*"]
+      "#tests/*": ["__tests__/*"],
+      "@flex-development/docast-util-from-docs": ["src/index"]
     },
     "preserveConstEnums": true,
     "preserveSymlinks": false,
