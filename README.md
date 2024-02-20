@@ -10,7 +10,7 @@
 [![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)](https://vitest.dev/)
 [![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat&logo=yarn&logoColor=ffffff)](https://yarnpkg.com/)
 
-[**docast**][docast] utility that turns docblock comments into a syntax tree.
+[**docast**][docast] utility that turns docblocks into a syntax tree.
 
 ## Contents
 
@@ -26,8 +26,10 @@
 
 ## What is this?
 
-This package is a utility that takes source documents and files containing [docblock comments][docblock-comments] and
-turns them into abstract syntax trees.
+This package is a utility that takes [docblock][docblock] input and turns it into a [docast][docast] syntax tree.
+
+This utility turns docblocks into tokens, and then turns those tokens into nodes. Markdown in docblocks is turned into
+tokens using [micromark][micromark], and turned into nodes using [mdast-util-from-markdown][mdast-util-from-markdown].
 
 ## When should I use this?
 
@@ -79,6 +81,8 @@ This package is fully typed with [TypeScript][typescript].
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 [docast]: https://github.com/flex-development/docast
-[docblock-comments]: https://github.com/flex-development/docast#docblock-comment
+[docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
+[micromark]: https://github.com/micromark/micromark
 [typescript]: https://www.typescriptlang.org
