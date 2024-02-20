@@ -20,6 +20,8 @@
 - [Use](#use)
 - [API](#api)
 - [Syntax](#syntax)
+  - [Docblock](#docblock)
+  - [Markdown](#markdown)
 - [Syntax tree](#syntax-tree)
 - [Types](#types)
 - [Contribute](#contribute)
@@ -308,7 +310,15 @@ root[9]
 
 ## Syntax
 
-**TODO**: syntax
+### Docblock
+
+**TODO**: docblock syntax
+
+### Markdown
+
+Markdown is parsed according to CommonMark. Extensions can add support for other syntax and nodes. If you’re interested
+in extending markdown, more information is available in the [`mdast-util-from-markdown`][mdast-util-from-markdown] and
+[`micromark`][micromark] readmes.
 
 ## Syntax tree
 
