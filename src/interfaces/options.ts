@@ -6,11 +6,11 @@
 import type { Transform } from '#src/types'
 import type { Nilable, OneOrMany } from '@flex-development/tutils'
 import type { Code } from 'mdast'
-import type * as mdast from 'mdast-util-from-markdown'
-import type * as micromark from 'micromark-util-types'
+import type { Extension as MdastExtension } from 'mdast-util-from-markdown'
+import type { Extension as MicromarkExtension } from 'micromark-util-types'
 
 /**
- * Parser options.
+ * Configuration options.
  */
 interface Options {
   /**
@@ -23,20 +23,20 @@ interface Options {
   codeblocks?: Nilable<OneOrMany<RegExp | string>>
 
   /**
-   * Extensions to change how mdast tokens are converted to syntax tree nodes.
+   * Markdown extensions to change how micromark tokens are converted to nodes.
    *
-   * @see {@linkcode mdast.Extension}
-   * @see https://github.com/syntax-tree/mdast-util-from-markdown
+   * @see {@linkcode MdastExtension}
+   * @see https://github.com/syntax-tree/mdast-util-from-markdown#list-of-extensions
    */
-  mdastExtensions?: Nilable<mdast.Extension[]>
+  mdastExtensions?: Nilable<MdastExtension[]>
 
   /**
-   * Markdown syntax extensions.
+   * Micromark extensions to change how markdown is parsed.
    *
-   * @see {@linkcode micromark.Extension}
+   * @see {@linkcode MicromarkExtension}
    * @see https://github.com/micromark/micromark#extensions
    */
-  micromarkExtensions?: Nilable<micromark.Extension[]>
+  micromarkExtensions?: Nilable<MicromarkExtension[]>
 
   /**
    * Tree transforms.

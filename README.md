@@ -19,6 +19,9 @@
 - [Install](#install)
 - [Use](#use)
 - [API](#api)
+  - [`fromDocs(value[, options])`](#fromdocsvalue-options)
+  - [`Options`](#options)
+  - [`Transform`](#transform)
 - [Syntax](#syntax)
   - [Docblock](#docblock)
   - [Markdown](#markdown)
@@ -306,7 +309,47 @@ root[9]
 
 ## API
 
-**TODO**: api
+This package exports the identifier [`fromDocs`](#fromdocsvalue-options). There is no default export.
+
+### `fromDocs(value[, options])`
+
+Turn docblocks into a syntax tree.
+
+#### Parameters
+
+- `value` ([`VFile`][vfile] | `string`) &mdash; source document or file containing docblocks to parse
+- `options` ([`Options`](#options), optional) &mdash; configuration options
+
+#### Returns
+
+docast tree ([`Root`][docast-tree])
+
+### `Options`
+
+Configuration options (TypeScript type).
+
+#### Properties
+
+- `codeblocks` (`OneOrMany<RegExp | string>`, optional) &mdash; block tag node names and tags, or regular
+  expressions, matching block tags that should have their text converted to [`Code`][mdast-code] when parsed as markdown
+  - **default**: `'example'`
+- `mdastExtensions` ([`MdastExtension[]`][mdast-util-extension], optional) &mdash; markdown extensions to change how
+  micromark tokens are converted to nodes
+- `micromarkExtensions` ([`MicromarkExtension[]`][micromark-extension], optional) &mdash; micromark extensions to change
+  how markdown is parsed
+- `transforms` ([`Transform[]`](#transform), optional) &mdash; tree transforms
+
+### `Transform`
+
+Change the AST after parsing is complete (TypeScript type).
+
+#### Parameters
+
+- `tree` ([`Root`][docast-tree]) &mdash; tree to transform
+
+#### Returns
+
+Nothing
 
 ## Syntax
 
@@ -333,10 +376,15 @@ This package is fully typed with [TypeScript][typescript].
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 [docast-parse]: https://github.com/flex-development/docast-parse
+[docast-tree]: https://github.com/flex-development/docast#root
 [docast]: https://github.com/flex-development/docast
 [docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[mdast-code]: https://github.com/syntax-tree/mdast#code
+[mdast-util-extension]: https://github.com/syntax-tree/mdast-util-from-markdown#extension
 [mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
+[micromark-extension]: https://github.com/micromark/micromark#extensions
 [micromark]: https://github.com/micromark/micromark
 [typescript]: https://www.typescriptlang.org
 [unified]: https://github.com/unifiedjs/unified
+[vfile]: https://github.com/vfile/vfile#api

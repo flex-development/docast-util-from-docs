@@ -5,8 +5,8 @@
 
 import type { Transform } from '#src/types'
 import type { Nilable, OneOrMany } from '@flex-development/tutils'
-import type * as mdast from 'mdast-util-from-markdown'
-import type * as micromark from 'micromark-util-types'
+import type { Extension as MdastExtension } from 'mdast-util-from-markdown'
+import type { Extension as MicromarkExtension } from 'micromark-util-types'
 import type TestSubject from '../options'
 
 describe('unit-d:interfaces/Options', () => {
@@ -16,16 +16,16 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<OneOrMany<RegExp | string>>>()
   })
 
-  it('should match [mdastExtensions?: Nilable<mdast.Extension[]>]', () => {
+  it('should match [mdastExtensions?: Nilable<MdastExtension[]>]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('mdastExtensions')
-      .toEqualTypeOf<Nilable<mdast.Extension[]>>()
+      .toEqualTypeOf<Nilable<MdastExtension[]>>()
   })
 
-  it('should match [micromarkExtensions?: Nilable<micromark.Extension[]>]', () => {
+  it('should match [micromarkExtensions?: Nilable<MicromarkExtension[]>]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('micromarkExtensions')
-      .toEqualTypeOf<Nilable<micromark.Extension[]>>()
+      .toEqualTypeOf<Nilable<MicromarkExtension[]>>()
   })
 
   it('should match [transforms?: Nilable<Transform[]>]', () => {
