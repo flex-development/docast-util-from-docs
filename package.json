@@ -119,7 +119,7 @@
     "chai-quantifiers": "1.0.17",
     "chai-string": "1.5.0",
     "cross-env": "7.0.3",
-    "cspell": "8.4.0",
+    "cspell": "8.4.1",
     "dprint": "0.45.0",
     "editorconfig": "2.0.0",
     "esbuild": "0.20.1",
