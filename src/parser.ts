@@ -34,6 +34,7 @@ import {
   type Nilable,
   type Optional
 } from '@flex-development/tutils'
+import { CONTINUE, EXIT, visit } from '@flex-development/unist-util-visit'
 import { ok } from 'devlop'
 import type {
   Break,
@@ -58,7 +59,6 @@ import type {
 import type { AssertionError } from 'node:assert'
 import { u } from 'unist-builder'
 import { source } from 'unist-util-source'
-import { CONTINUE, EXIT, visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
 import { TokenKind } from './enums'
 import type { Options, Token } from './interfaces'

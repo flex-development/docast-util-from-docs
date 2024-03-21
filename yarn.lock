@@ -1261,6 +1261,7 @@ __metadata:
     "@flex-development/mlly": "npm:1.0.0-alpha.18"
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
+    "@flex-development/unist-util-visit": "npm:1.0.0"
     "@html-eslint/eslint-plugin": "npm:0.24.0"
     "@html-eslint/parser": "npm:0.24.0"
     "@types/chai": "npm:4.3.14"
@@ -1324,7 +1325,6 @@ __metadata:
     unist-builder: "npm:4.0.0"
     unist-util-inspect: "npm:8.0.0"
     unist-util-source: "npm:5.0.0"
-    unist-util-visit: "npm:5.0.0"
     vfile: "npm:6.0.1"
     vite: "npm:5.2.2"
     vite-tsconfig-paths: "npm:4.3.2"
@@ -1722,6 +1722,28 @@ __metadata:
   peerDependencies:
     typescript: ">=4.7"
   checksum: 10/161901c611f0049464cc53e128b8285f12a9dc6ef551a8c8a4bd47d9e2d73afcc53c25fbcd18189dcda28a460ea64e8801398159b6daaaff63d0552d140f1f02
+  languageName: node
+  linkType: hard
+
+"@flex-development/unist-util-types@npm:1.2.0":
+  version: 1.2.0
+  resolution: "@flex-development/unist-util-types@npm:1.2.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.2.0%2Fe73575356fb70910ec1467d05a02825d69997f22"
+  peerDependencies:
+    "@types/unist": ">=3.0.2"
+  checksum: 10/01f73462d6bbdb16a67aca5c77e2421fb260acc671d01628d3d1aa0debf044e226d468c033601c3bfb5cff6c47f030690d87e4e84c55ff1dcad513a4419cde0c
+  languageName: node
+  linkType: hard
+
+"@flex-development/unist-util-visit@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@flex-development/unist-util-visit@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-visit%2F1.0.0%2F80616055072ebb771682ec055244857a9789d677"
+  dependencies:
+    "@flex-development/tutils": "npm:6.0.0-alpha.25"
+    "@flex-development/unist-util-types": "npm:1.2.0"
+    unist-util-is: "npm:6.0.0"
+  peerDependencies:
+    "@types/unist": ">=3.0.2"
+  checksum: 10/c2fb4e2d26dc770b77298b412c22e5aeb6f673b7ec7c1093dd1994f4134c8fb0d04e57116b12a23b2758dafa890cb1efe3394870c0376fd9561e6da13ab090ba
   languageName: node
   linkType: hard
 
@@ -10046,7 +10068,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-is@npm:^6.0.0":
+"unist-util-is@npm:6.0.0, unist-util-is@npm:^6.0.0":
   version: 6.0.0
   resolution: "unist-util-is@npm:6.0.0"
   dependencies:
@@ -10113,7 +10135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit@npm:5.0.0, unist-util-visit@npm:^5.0.0":
+"unist-util-visit@npm:^5.0.0":
   version: 5.0.0
   resolution: "unist-util-visit@npm:5.0.0"
   dependencies:
