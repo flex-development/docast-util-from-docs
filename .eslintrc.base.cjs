@@ -34,7 +34,7 @@ const config = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         extraFileExtensions: [],
-        project: ['**/tsconfig.json'],
+        project: ['**/tsconfig.json', '**/tsconfig.*.json'],
         tsconfigRootDir: process.cwd(),
         warnOnUnsupportedTypeScriptVersion: true
       },
@@ -495,9 +495,16 @@ const config = {
             checkConstructors: true,
             checkGetters: true,
             checkSetters: true,
+            contexts: [
+              'TSDeclareFunction:not(TSDeclareFunction + TSDeclareFunction)',
+              'FunctionDeclaration:not(TSDeclareFunction + FunctionDeclaration)'
+            ],
             enableFixer: true,
             exemptEmptyConstructors: true,
-            exemptEmptyFunctions: false
+            exemptEmptyFunctions: false,
+            require: {
+              FunctionDeclaration: false
+            }
           }
         ],
         'jsdoc/require-param': [
@@ -1057,6 +1064,7 @@ const config = {
         '@typescript-eslint/no-floating-promises': 0,
         '@typescript-eslint/no-for-in-array': 0,
         '@typescript-eslint/no-implied-eval': 0,
+        '@typescript-eslint/no-invalid-void-type': 0,
         '@typescript-eslint/no-meaningless-void-operator': 0,
         '@typescript-eslint/no-misused-promises': 0,
         '@typescript-eslint/no-mixed-enums': 0,

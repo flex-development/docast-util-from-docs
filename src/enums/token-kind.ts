@@ -3,12 +3,10 @@
  * @module docast-util-from-docs/enums/TokenKind
  */
 
-import type { DocastNode } from '@flex-development/docast'
-
 /**
  * Lexer token types.
  *
- * @enum {DocastNode['type']}
+ * @enum {string}
  */
 enum TokenKind {
   BLOCK_TAG = 'blockTag',

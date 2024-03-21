@@ -32,9 +32,16 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
    */
   const LINT_STAGED: boolean = !!Number.parseInt(process.env.LINT_STAGED ?? '0')
 
+  /**
+   * Relative path to tsconfig file.
+   *
+   * @const {string} tsconfig
+   */
+  const tsconfig: string = 'tsconfig.typecheck.json'
+
   return {
     define: {},
-    plugins: [tsconfigPaths({ projects: [pathe.resolve('tsconfig.json')] })],
+    plugins: [tsconfigPaths({ projects: [tsconfig] })],
     test: {
       allowOnly: !ci,
       benchmark: {
@@ -54,9 +61,9 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
         exclude: [
           '**/__mocks__/**',
           '**/__tests__/**',
-          '**/index.ts',
-          'src/interfaces/',
-          'src/types/'
+          '**/interfaces/',
+          '**/types/',
+          '**/index.ts'
         ],
         extension: ['.ts'],
         include: ['src'],
@@ -141,7 +148,7 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
         ignoreSourceErrors: false,
         include: ['**/__tests__/*.spec-d.ts'],
         only: true,
-        tsconfig: pathe.resolve('tsconfig.typecheck.json')
+        tsconfig
       },
       unstubEnvs: true,
       unstubGlobals: true

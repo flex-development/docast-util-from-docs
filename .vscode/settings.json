@@ -268,11 +268,6 @@
   ],
   "vsicons.associations.files": [
     {
-      "extensions": [".commitlintrc.cts"],
-      "format": "svg",
-      "icon": "commitlint"
-    },
-    {
       "extensions": [".eslintrc.base.cjs"],
       "format": "svg",
       "icon": "eslint"

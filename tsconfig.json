@@ -32,7 +32,7 @@
       "#src": ["src/index"],
       "#src/*": ["src/*"],
       "#tests/*": ["__tests__/*"],
-      "@flex-development/docast-util-from-docs": ["src/index"]
+      "@flex-development/docast-util-from-docs": ["dist/index", "src/index"]
     },
     "preserveConstEnums": true,
     "preserveSymlinks": false,
@@ -54,10 +54,10 @@
   },
   "exclude": ["**/coverage", "**/dist", "**/node_modules"],
   "include": [
-    "**/**.json",
-    "**/**.mjs",
-    "**/**.mts",
-    "**/**.ts",
+    "**/**/*.json",
+    "**/**/*.mjs",
+    "**/**/*.mts",
+    "**/**/*.ts",
     "**/.*.json",
     "**/.*.mjs",
     "**/.*.mts",

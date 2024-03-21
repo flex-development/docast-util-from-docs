@@ -3,6 +3,9 @@
     "customConditions": ["import", "node"],
     "declaration": true,
     "noEmitOnError": true,
+    "paths": {
+      "#src/*": ["src/*"]
+    },
     "skipLibCheck": false,
     "target": "es2022"
   },
