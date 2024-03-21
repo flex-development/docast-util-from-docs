@@ -41,7 +41,7 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
 
   return {
     define: {},
-    plugins: [tsconfigPaths({ projects: [tsconfig] })],
+    plugins: [tsconfigPaths({ parseNative: true, projects: [tsconfig] })],
     test: {
       allowOnly: !ci,
       benchmark: {
@@ -68,7 +68,7 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
         extension: ['.ts'],
         include: ['src'],
         provider: 'v8',
-        reporter: sift([ifelse(ci, null, 'html'), 'lcovonly', 'text']),
+        reporter: [ci ? 'lcovonly' : 'html', 'text'],
         reportsDirectory: './coverage',
         skipFull: false
       },
@@ -110,7 +110,6 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
         )
       },
       restoreMocks: true,
-      root: process.cwd(),
       sequence: {
         sequencer: class Sequencer extends BaseSequencer {
           /**
@@ -133,15 +132,12 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
         }
       },
       setupFiles: ['./__tests__/setup/index.ts'],
-      silent: false,
-      slowTestThreshold: 3000,
       snapshotFormat: {
         callToJSON: true,
         min: false,
         printBasicPrototype: false,
         printFunctionName: true
       },
-      testTimeout: 10 * 1000,
       typecheck: {
         allowJs: false,
         checker: 'tsc',

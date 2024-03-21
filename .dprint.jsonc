@@ -92,7 +92,7 @@
     "binaryExpression.operatorPosition": "sameLine",
     "binaryExpression.spaceSurroundingBitwiseAndArithmeticOperator": true,
     "bracePosition": "sameLine",
-    "commentLine.forceSpaceAfterSlashes": true,
+    "commentLine.forceSpaceAfterSlashes": false,
     "constructSignature.spaceAfterNewKeyword": true,
     "constructor.spaceBeforeParentheses": false,
     "constructorType.spaceAfterNewKeyword": true,

@@ -626,13 +626,7 @@ const config = {
         'node/no-unpublished-require': 0,
         'node/no-unsupported-features/es-builtins': 2,
         'node/no-unsupported-features/es-syntax': 0,
-        'node/no-unsupported-features/node-builtins': [
-          2,
-          {
-            version: require('./package.json').engines.node ||
-              '>=' + fs.readFileSync('.nvmrc', 'utf8')
-          }
-        ],
+        'node/no-unsupported-features/node-builtins': 2,
         'node/prefer-global/buffer': 2,
         'node/prefer-global/console': 2,
         'node/prefer-global/process': 2,
@@ -753,7 +747,7 @@ const config = {
         'unicorn/prefer-export-from': [2, { ignoreUsedVariables: true }],
         'unicorn/prefer-includes': 2,
         'unicorn/prefer-json-parse-buffer': 0,
-        'unicorn/prefer-math-trunc': 2,
+        'unicorn/prefer-math-trunc': 0,
         'unicorn/prefer-module': 2,
         'unicorn/prefer-negative-index': 2,
         'unicorn/prefer-node-protocol': 2,
