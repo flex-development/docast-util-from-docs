@@ -6,57 +6,45 @@
 import type TestSubject from '../token-kind'
 
 describe('unit-d:enums/TokenKind', () => {
-  it('should match [BLOCK_TAG: "blockTag"]', () => {
+  it('should match [closer: "closer"]', () => {
     expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('BLOCK_TAG')
-      .toMatchTypeOf<'blockTag'>()
+      .toHaveProperty('closer')
+      .toMatchTypeOf<'closer'>()
   })
 
-  it('should match [BLOCK_TAG_ID: "blockTagId"]', () => {
+  it('should match [delimiter: "delimiter"]', () => {
     expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('BLOCK_TAG_ID')
-      .toMatchTypeOf<'blockTagId'>()
+      .toHaveProperty('delimiter')
+      .toMatchTypeOf<'delimiter'>()
   })
 
-  it('should match [BLOCK_TAG_TEXT: "blockTagText"]', () => {
+  it('should match [markdown: "markdown"]', () => {
     expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('BLOCK_TAG_TEXT')
-      .toMatchTypeOf<'blockTagText'>()
+      .toHaveProperty('markdown')
+      .toMatchTypeOf<'markdown'>()
   })
 
-  it('should match [COMMENT: "comment"]', () => {
+  it('should match [opener: "opener"]', () => {
     expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('COMMENT')
-      .toMatchTypeOf<'comment'>()
+      .toHaveProperty('opener')
+      .toMatchTypeOf<'opener'>()
   })
 
-  it('should match [DESCRIPTION: "description"]', () => {
+  it('should match [tag: "tag"]', () => {
     expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('DESCRIPTION')
-      .toMatchTypeOf<'description'>()
+      .toHaveProperty('tag')
+      .toMatchTypeOf<'tag'>()
   })
 
-  it('should match [INLINE_TAG: "inlineTag"]', () => {
+  it('should match [typeExpression: "typeExpression"]', () => {
     expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('INLINE_TAG')
-      .toMatchTypeOf<'inlineTag'>()
-  })
-
-  it('should match [INLINE_TAG_ID: "inlineTagId"]', () => {
-    expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('INLINE_TAG_ID')
-      .toMatchTypeOf<'inlineTagId'>()
-  })
-
-  it('should match [INLINE_TAG_VALUE: "inlineTagValue"]', () => {
-    expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('INLINE_TAG_VALUE')
-      .toMatchTypeOf<'inlineTagValue'>()
-  })
-
-  it('should match [TYPE_EXPRESSION: "typeExpression"]', () => {
-    expectTypeOf<typeof TestSubject>()
-      .toHaveProperty('TYPE_EXPRESSION')
+      .toHaveProperty('typeExpression')
       .toMatchTypeOf<'typeExpression'>()
+  })
+
+  it('should match [whitespace: "whitespace"]', () => {
+    expectTypeOf<typeof TestSubject>()
+      .toHaveProperty('whitespace')
+      .toMatchTypeOf<'whitespace'>()
   })
 })

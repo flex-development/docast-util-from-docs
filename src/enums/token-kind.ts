@@ -9,15 +9,13 @@
  * @enum {string}
  */
 enum TokenKind {
-  BLOCK_TAG = 'blockTag',
-  BLOCK_TAG_ID = 'blockTagId',
-  BLOCK_TAG_TEXT = 'blockTagText',
-  COMMENT = 'comment',
-  DESCRIPTION = 'description',
-  INLINE_TAG = 'inlineTag',
-  INLINE_TAG_ID = 'inlineTagId',
-  INLINE_TAG_VALUE = 'inlineTagValue',
-  TYPE_EXPRESSION = 'typeExpression'
+  closer = 'closer',
+  delimiter = 'delimiter',
+  markdown = 'markdown',
+  opener = 'opener',
+  tag = 'tag',
+  typeExpression = 'typeExpression',
+  whitespace = 'whitespace'
 }
 
 export default TokenKind

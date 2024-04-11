@@ -1,5 +1,5 @@
 /**
- * @file Type Definitions - Transform
+ * @file Type Aliases - Transform
  * @module docast-util-from-docs/types/Transform
  */
 
