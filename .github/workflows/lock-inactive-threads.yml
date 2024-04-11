@@ -10,9 +10,6 @@ name: lock-inactive-threads
 on:
   schedule:
     - cron: 0 0 * * *
-permissions:
-  issues: write
-  pull-requests: write
 jobs:
   lock-inactive-threads:
     runs-on: ubuntu-latest
@@ -21,6 +18,7 @@ jobs:
         name: Lock inactive issues and pull requests
         uses: dessant/lock-threads@v5.0.1
         with:
+          github-token: ${{ steps.bot-token.outputs.token }}
           issue-comment: |
             This issue has been automatically locked since there has not been any recent activity
             after it was closed. Please open a new issue for related bugs or features. Be sure to
