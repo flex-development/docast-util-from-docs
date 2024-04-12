@@ -4,3 +4,4 @@
  */
 
 export { default as TokenKind } from './token-kind'
+export { default as types } from './types'

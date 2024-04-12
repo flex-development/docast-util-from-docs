@@ -1254,18 +1254,20 @@ __metadata:
     "@faker-js/faker": "npm:8.4.1"
     "@flex-development/commitlint-config": "npm:1.0.1"
     "@flex-development/decorator-regex": "npm:2.0.0"
-    "@flex-development/docast": "npm:1.0.0-alpha.14"
+    "@flex-development/docast": "npm:1.0.0-alpha.15"
     "@flex-development/esm-types": "npm:2.0.0"
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/mkbuild": "npm:1.0.0-alpha.23"
     "@flex-development/mlly": "npm:1.0.0-alpha.18"
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
+    "@flex-development/unist-util-types": "npm:1.2.0"
     "@flex-development/unist-util-visit": "npm:1.0.0"
     "@html-eslint/eslint-plugin": "npm:0.24.0"
     "@html-eslint/parser": "npm:0.24.0"
     "@types/chai": "npm:4.3.14"
     "@types/chai-string": "npm:1.4.5"
+    "@types/debug": "npm:4.1.12"
     "@types/eslint": "npm:8.56.2"
     "@types/is-ci": "npm:3.0.4"
     "@types/mdast": "npm:4.0.3"
@@ -1281,6 +1283,7 @@ __metadata:
     chai-string: "npm:1.5.0"
     cross-env: "npm:7.0.3"
     cspell: "npm:8.6.0"
+    debug: "npm:4.3.4"
     devlop: "npm:1.1.0"
     dprint: "npm:0.45.0"
     editorconfig: "npm:2.0.0"
@@ -1322,16 +1325,16 @@ __metadata:
     trash-cli: "npm:5.0.0"
     ts-dedent: "npm:2.2.0"
     typescript: "npm:5.4.3"
+    typescript-parsec: "npm:0.3.4"
     unist-builder: "npm:4.0.0"
     unist-util-inspect: "npm:8.0.0"
-    unist-util-source: "npm:5.0.0"
     vfile: "npm:6.0.1"
     vite: "npm:5.2.2"
     vite-tsconfig-paths: "npm:4.3.2"
     vitest: "npm:1.4.0"
     yaml-eslint-parser: "npm:1.2.2"
   peerDependencies:
-    "@flex-development/docast": ">=1.0.0-alpha.14"
+    "@flex-development/docast": ">=1.0.0-alpha.15"
     "@types/mdast": ">=4.0.3"
     "@types/unist": ">=3.0.2"
     micromark-util-types: ">=2.0.0"
@@ -1347,15 +1350,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flex-development/docast@npm:1.0.0-alpha.14":
-  version: 1.0.0-alpha.14
-  resolution: "@flex-development/docast@npm:1.0.0-alpha.14::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.14%2F3c67a24fc29455b681ef09f9541250c5b2cdff84"
+"@flex-development/docast@npm:1.0.0-alpha.15":
+  version: 1.0.0-alpha.15
+  resolution: "@flex-development/docast@npm:1.0.0-alpha.15::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.15%2F3ff37aaf84622217290226de8b267d52584c2ac8"
   dependencies:
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
   peerDependencies:
+    "@flex-development/unist-util-types": ">=1.1.0"
     "@types/mdast": ">=4.0.3"
     "@types/unist": ">=3.0.2"
-  checksum: 10/4ed9a791cb4e6a5a456ec6d287b77d4def25db6e0060d4d22a9ea2e53b88864a5244778de53f671c80130032f26896ef0ab63f7cf6924e110a251db2c2508a23
+  checksum: 10/f4b68ffdc4c9667a57ba95467f9315c1c3949a3e91af37999b7eb544db4977587d12794550cdd9123bc80635c0364dfc94af1b74154fd9208812856ff1bd9ba5
   languageName: node
   linkType: hard
 
@@ -2213,7 +2217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/debug@npm:^4.0.0":
+"@types/debug@npm:4.1.12, @types/debug@npm:^4.0.0":
   version: 4.1.12
   resolution: "@types/debug@npm:4.1.12"
   dependencies:
@@ -9876,6 +9880,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript-parsec@npm:0.3.4":
+  version: 0.3.4
+  resolution: "typescript-parsec@npm:0.3.4"
+  checksum: 10/057693e41043dd879898bb3eee76035c9ca1f1a17aedbfab9c687edfb32397592f6243c29be796eca33b73d586f9c184316890b26809421200adb1e8dd0846d8
+  languageName: node
+  linkType: hard
+
 "typescript@npm:5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
@@ -10096,17 +10107,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-source@npm:5.0.0":
-  version: 5.0.0
-  resolution: "unist-util-source@npm:5.0.0"
-  dependencies:
-    "@types/unist": "npm:^3.0.0"
-    vfile: "npm:^6.0.0"
-    vfile-location: "npm:^5.0.0"
-  checksum: 10/8adcf6c58e4b892149a4443450601748f0630eaa3f48084f235c412f95cd1140f9f1e922ccdcd0362a0b168e2b61f4a248fe729193f15b4a62113315c7c88ef1
-  languageName: node
-  linkType: hard
-
 "unist-util-stringify-position@npm:^2.0.0":
   version: 2.0.3
   resolution: "unist-util-stringify-position@npm:2.0.3"
@@ -10251,16 +10251,6 @@ __metadata:
   version: 13.11.0
   resolution: "validator@npm:13.11.0"
   checksum: 10/4bf094641eb71729c06a42d669840e7189597ba655a8264adabac9bf03f95cd6fde5fbc894b0a13ee861bd4a852f56d2afdc9391aeaeb3fc0f9633a974140e12
-  languageName: node
-  linkType: hard
-
-"vfile-location@npm:^5.0.0":
-  version: 5.0.2
-  resolution: "vfile-location@npm:5.0.2"
-  dependencies:
-    "@types/unist": "npm:^3.0.0"
-    vfile: "npm:^6.0.0"
-  checksum: 10/b61c048cedad3555b4f007f390412c6503f58a6a130b58badf4ee340c87e0d7421e9c86bbc1494c57dedfccadb60f5176cc60ba3098209d99fb3a3d8804e4c38
   languageName: node
   linkType: hard
 

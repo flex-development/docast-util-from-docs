@@ -6,42 +6,44 @@
 import type {
   BlockTag,
   Comment,
-  Content,
   Description,
-  DocastNode,
-  FlowContent,
-  InlineTag,
   Position,
   Root,
+  TagName,
   TypeExpression
 } from '@flex-development/docast'
 import {
   at,
-  constant,
   defaults,
-  equal,
   fallback,
   flat,
-  includes,
   isNIL,
-  isNumber,
   isString,
   noop,
   sift,
   template,
-  trim,
-  type Assign,
   type Nilable,
+  type Nullable,
   type Optional
 } from '@flex-development/tutils'
-import { CONTINUE, EXIT, visit } from '@flex-development/unist-util-visit'
+import type {
+  Children,
+  InclusiveDescendant
+} from '@flex-development/unist-util-types'
+import {
+  CONTINUE,
+  visit,
+  type VisitedParent
+} from '@flex-development/unist-util-visit'
 import { ok } from 'devlop'
 import type {
   Break,
   Code,
   Parents as MdastParent,
   Root as MdastRoot,
+  Nodes,
   Paragraph,
+  RootContent,
   Text
 } from 'mdast'
 import {
@@ -49,21 +51,31 @@ import {
   type CompileContext,
   type Token as MToken
 } from 'mdast-util-from-markdown'
-import { codes, types } from 'micromark-util-symbol'
+import { codes, types as mt } from 'micromark-util-symbol'
 import type {
   Code as CharacterCode,
   Effects,
   State,
   TokenizeContext
 } from 'micromark-util-types'
-import type { AssertionError } from 'node:assert'
+import {
+  apply,
+  expectEOF as eof,
+  opt,
+  rep,
+  expectSingleResult as result,
+  seq,
+  tok,
+  type Parser as P
+} from 'typescript-parsec'
+import type { Node, Parent } from 'unist'
 import { u } from 'unist-builder'
-import { source } from 'unist-util-source'
 import type { VFile } from 'vfile'
-import { TokenKind } from './enums'
-import type { Options, Token } from './interfaces'
+import { TokenKind as kinds, types } from './enums'
+import type { Options } from './interfaces'
 import Lexer from './lexer'
-import type { Transform, UncommentReplacer } from './types'
+import Location from './location'
+import type Token from './token'
 
 declare module 'mdast' {
   interface BreakData {
@@ -82,20 +94,11 @@ declare module 'micromark-util-types' {
  * Docblock parser.
  *
  * @class
+ * @extends {Location}
  */
-class Parser {
+class Parser extends Location {
   /**
-   * Document being parsed.
-   *
-   * @protected
-   * @readonly
-   * @instance
-   * @member {string} document
-   */
-  protected readonly document: string
-
-  /**
-   * Document tokenizer.
+   * Source document tokenizer.
    *
    * @see {@linkcode Lexer}
    *
@@ -119,18 +122,6 @@ class Parser {
   protected readonly options: Readonly<Options>
 
   /**
-   * Syntax tree representing source file.
-   *
-   * @see {@linkcode Root}
-   *
-   * @protected
-   * @readonly
-   * @instance
-   * @member {Root} tree
-   */
-  protected readonly tree: Root
-
-  /**
    * Create a new docblock parser.
    *
    * @see {@linkcode Options}
@@ -140,478 +131,195 @@ class Parser {
    * @param {Nilable<Options>?} [options] - Parser options
    */
   constructor(source: VFile | string, options?: Nilable<Options>) {
+    super(source)
+
     options = fallback(options, {}, isNIL)
+    options.transforms = fallback(options.transforms, [], isNIL)
 
     this.lexer = new Lexer(source)
     this.options = Object.freeze(defaults(options, { codeblocks: 'example' }))
-    this.tree = u('root', { children: [] })
-
-    this.document = this.lexer.document
-    this.lexer.tokenize()
   }
 
   /**
-   * Get the last block tag node in the syntax tree.
+   * Get the block tag parser.
    *
    * @see {@linkcode BlockTag}
    *
    * @protected
+   * @instance
    *
-   * @return {BlockTag} Last block tag node in tree
-   * @throws {AssertionError} If last block tag node does not exist or is
-   * invalid and `development` condition is used when importing parser module
+   * @return {P<kinds, BlockTag>} Block tag parser
    */
-  protected get lastBlockTag(): BlockTag {
-    /**
-     * Last block tag node.
-     *
-     * @var {Optional<BlockTag>} blockTag
-     */
-    let blockTag: Optional<BlockTag>
+  protected get blockTag(): P<kinds, BlockTag> {
+    return apply(seq(
+      tok(kinds.tag),
+      opt(this.typeExpression),
+      opt(tok(kinds.markdown))
+    ), ([tag, typeExpression, markdown]) => {
+      /**
+       * Block tag names, or regular expressions, matching block tags that
+       * should have their text converted to {@linkcode Code} before being
+       * parsed as markdown.
+       *
+       * @const {(RegExp | string)[]} codeblocks
+       */
+      const codeblocks: (RegExp | string)[] = flat(sift([
+        this.options.codeblocks
+      ]))
 
-    // get last block tag node
-    visit(this.lastComment, 'blockTag', node => {
-      blockTag = node
-      return EXIT
-    }, true)
-
-    ok(blockTag, 'expected last block tag node')
-    return blockTag
+      return u(types.blockTag, {
+        children: this.children<BlockTag>([
+          ...sift([typeExpression]),
+          ...this.applyMarkdown(markdown, markdown && codeblocks.some(check => {
+            return isString(check)
+              ? tag.text === check
+              : check.test(tag.text)
+          }) && !markdown.text.startsWith('`'.repeat(3)))
+        ]),
+        name: <TagName>tag.text,
+        position: {
+          end: markdown?.end ?? typeExpression?.position!.end ?? tag.end,
+          start: tag.start
+        }
+      })
+    })
   }
 
   /**
-   * Get the last comment node in the syntax tree.
+   * Get the comment parser.
    *
    * @see {@linkcode Comment}
    *
    * @protected
+   * @instance
    *
-   * @return {Comment} Last comment node in tree
-   * @throws {AssertionError} If last comment node does not exist or is invalid
-   * and `development` condition is used when importing parser module
+   * @return {P<kinds, Comment>} Comment parser
    */
-  protected get lastComment(): Comment {
-    /**
-     * Last comment node.
-     *
-     * @var {Optional<Comment>} comment
-     */
-    let comment: Optional<Comment>
-
-    // get last comment node
-    visit(this.tree, 'comment', node => {
-      comment = node
-      return EXIT
-    }, true)
-
-    ok(comment, 'expected last comment node')
-    return comment
-  }
-
-  /**
-   * Get the last inline tag node in the syntax tree.
-   *
-   * @see {@linkcode InlineTag}
-   *
-   * @protected
-   *
-   * @return {InlineTag} Last inline tag node in tree
-   * @throws {AssertionError} If last inline tag node or parent does not exist
-   * and `development` condition is used when importing parser module
-   */
-  protected get lastInlineTag(): InlineTag {
-    /**
-     * Last inline tag node.
-     *
-     * @var {Optional<InlineTag>} inlineTag
-     */
-    let inlineTag: Optional<InlineTag>
-
-    // get last inline tag node
-    visit(this.lastInlineTagParent, 'inlineTag', node => {
-      inlineTag = node
-      return EXIT
-    }, true)
-
-    // assert docast inline tag node
-    ok(inlineTag, 'expected last inline tag node')
-    ok('name' in inlineTag, 'expected inline tag node')
-    ok('tag' in inlineTag, 'expected inline tag node')
-    ok('value' in inlineTag, 'expected inline tag node')
-
-    return inlineTag
-  }
-
-  /**
-   * Get the last inline tag parent node in the syntax tree.
-   *
-   * @see {@linkcode FlowContent}
-   *
-   * @protected
-   *
-   * @return {FlowContent} Last inline tag parent in tree
-   * @throws {AssertionError} If last inline tag parent does not exist and
-   * `development` condition is used when importing parser module
-   */
-  protected get lastInlineTagParent(): FlowContent {
-    /**
-     * Last inline tag parent.
-     *
-     * @var {Optional<FlowContent>} parent
-     */
-    let parent: Optional<FlowContent>
-
-    // get last inline tag parent
-    visit(this.lastComment, node => {
-      switch (node.type) {
-        case TokenKind.BLOCK_TAG:
-        case TokenKind.DESCRIPTION:
-          parent = node
-          return EXIT
-        default:
-          return CONTINUE
-      }
-    }, true)
-
-    ok(parent, 'expected last inline tag parent')
-    return parent
-  }
-
-  /**
-   * Assert `token` is of `kind`.
-   *
-   * @protected
-   *
-   * @template {TokenKind} K - Token kind
-   *
-   * @param {K} kind - Token kind
-   * @param {Token} token - Token to check
-   * @return {void} Nothing; throws if `token` is invalid and `development`
-   * condition is used when importing lexer module
-   */
-  protected assert<K extends TokenKind>(
-    kind: K,
-    token: Token
-  ): asserts token is Assign<Token, { kind: K }> {
-    ok(token, 'expected token')
-    ok(token.kind === kind, `expected ${kind} token`)
-    return void token
-  }
-
-  /**
-   * Handle a `blockTag` token.
-   *
-   * @protected
-   *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   */
-  protected blockTag(token: Token): void {
-    this.assert(TokenKind.BLOCK_TAG, token)
-
-    /**
-     * Block tag node.
-     *
-     * @const {BlockTag} node
-     */
-    const node: BlockTag = u(token.kind, {
-      children: [],
-      name: '',
-      position: { end: token.end, start: token.start },
-      tag: ''
+  protected get comment(): P<kinds, Comment> {
+    return apply(seq(
+      tok(kinds.opener),
+      opt(this.description),
+      rep(this.blockTag),
+      tok(kinds.closer)
+    ), ([opener, description, blockTags, closer]) => {
+      return u(types.comment, {
+        children: this.children<Comment>(sift([description, ...blockTags])),
+        code: null,
+        position: { end: closer.end, start: opener.start }
+      })
     })
-
-    return void this.lastComment.children.push(node)
   }
 
   /**
-   * Handle a `blockTagId` token.
+   * Get the implicit description parser.
+   *
+   * @see {@linkcode Description}
    *
    * @protected
+   * @instance
    *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   * @throws {AssertionError} If block tag id cannot be extracted from source
-   * file and `development` condition is used when importing parser module
+   * @return {P<kinds.markdown, Description>} Implicit description parser
    */
-  protected blockTagId(token: Token): void {
-    this.assert(TokenKind.BLOCK_TAG_ID, token)
-
-    /**
-     * Last block tag node.
-     *
-     * @const {BlockTag} node
-     */
-    const node: BlockTag = this.lastBlockTag
-
-    // set tag metadata
-    node.tag = source(this.document, { end: token.end, start: token.start })!
-    ok(node.tag, 'expected block tag id')
-    node.name = node.tag.slice(1)
-
-    return void token
+  protected get description(): P<kinds.markdown, Description> {
+    return apply(tok(kinds.markdown), token => {
+      return u(types.description, {
+        children: this.children<Description>(this.applyMarkdown(token)),
+        position: { end: token.end, start: token.start }
+      })
+    })
   }
 
   /**
-   * Handle a `blockTagText` token.
+   * Get the root parser.
+   *
+   * @see {@linkcode Root}
    *
    * @protected
+   * @instance
    *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   * @throws {AssertionError} If block tag text cannot be extracted from source
-   * file and `development` condition is used when importing parser module
+   * @return {P<kinds, Root>} Root parser
    */
-  protected blockTagText(token: Token): void {
-    this.assert(TokenKind.BLOCK_TAG_TEXT, token)
+  protected get root(): P<kinds, Root> {
+    return apply(rep(this.comment), children => {
+      const { transforms } = this.options
 
-    /**
-     * Last block tag node.
-     *
-     * @const {BlockTag} node
-     */
-    const node: BlockTag = this.lastBlockTag
-
-    /**
-     * Raw block tag text position.
-     *
-     * @const {Position} position
-     */
-    const position: Position = { end: token.end, start: token.start }
-
-    /**
-     * Raw block tag text.
-     *
-     * @const {Optional<string>} raw
-     */
-    const raw: Optional<string> = source(this.document, position)
-
-    // assert raw block tag text
-    ok(isString(raw), 'expected raw block tag text')
-
-    // add markdown children
-    if (trim(raw)) {
       /**
-       * Markdown children.
+       * docast.
        *
-       * @const {Exclude<Content, DocastNode>[]} children
+       * @const {Root}
        */
-      const children: Exclude<Content, DocastNode>[] = this.markdown(
-        node,
-        raw,
-        position
-      )
+      const tree: Root = u(types.root, { children })
 
-      // @ts-expect-error ts(2345) type expression are parsed before block tag
-      // text, so the corresponding child node is already positioned correctly
-      this.lastBlockTag.children.push(...children)
-    }
+      /**
+       * Dump paragraphs.
+       *
+       * @param {Root} tree - docast
+       * @return {void} Nothing
+       */
+      const paragraphs = (tree: Root): void => {
+        return void visit(tree, types.paragraph, (
+          m: Paragraph,
+          index?: number,
+          parent?: BlockTag | VisitedParent<Root, Paragraph>
+        ): number | typeof CONTINUE => {
+          ok(typeof index === 'number', 'expected indexed node')
+          ok(parent, 'expected parent')
 
-    return void token
-  }
+          switch (parent.type) {
+            case types.blockTag:
+            case types.listItem:
+              parent.children.splice(index, 1, ...m.children)
+              return index
+            default:
+              return CONTINUE
+          }
+        })
+      }
 
-  /**
-   * Handle a `comment` token.
-   *
-   * @protected
-   *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   */
-  protected comment(token: Token): void {
-    this.assert(TokenKind.COMMENT, token)
+      // apply tree transforms
+      for (const transform of [paragraphs, ...transforms!]) void transform(tree)
 
-    /**
-     * Comment node.
-     *
-     * @const {Comment} node
-     */
-    const node: Comment = u(token.kind, {
-      children: [],
-      code: null,
-      position: { end: token.end, start: token.start }
-    })
-
-    return void this.tree.children.push(node)
-  }
-
-  /**
-   * Handle a `description` token.
-   *
-   * @protected
-   *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   */
-  protected description(token: Token): void {
-    this.assert(TokenKind.DESCRIPTION, token)
-
-    /**
-     * Description node position.
-     *
-     * @const {Position} position
-     */
-    const position: Position = { end: token.end, start: token.start }
-
-    /**
-     * Raw description.
-     *
-     * @const {Optional<string>} raw
-     */
-    const raw: Optional<string> = source(this.document, position)
-
-    // assert raw description
-    ok(isString(raw), 'expected raw description')
-
-    /**
-     * Description node.
-     *
-     * @const {Description} node
-     */
-    const node: Description = u(token.kind, {
-      children: [],
-      position
-    })
-
-    // parse markdown
-    node.children = this.markdown(node, raw, position)
-
-    return void this.lastComment.children.push(node)
-  }
-
-  /**
-   * Handle an `inlineTag` token.
-   *
-   * @protected
-   *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   */
-  protected inlineTag(token: Token): void {
-    this.assert(TokenKind.INLINE_TAG, token)
-
-    /**
-     * Inline tag node position.
-     *
-     * @const {Position} position
-     */
-    const position: Position = { end: token.end, start: token.start }
-
-    return void visit(this.lastInlineTagParent, token.kind, (
-      n: InlineTag,
-      index?: number,
-      parent?: Optional<BlockTag | Description | MdastParent>
-    ): typeof CONTINUE | typeof EXIT => {
-      /* c8 ignore next */ if (!equal(n.position, position)) return CONTINUE
-      ok(isNumber(index), 'expected indexed node')
-      ok(parent, 'expected parent')
-
-      // replace mdast node with docast node
-      parent.children.splice(index, 1, u(token.kind, {
-        name: '',
-        position,
-        tag: '',
-        value: ''
-      }))
-
-      return EXIT
+      return tree
     })
   }
 
   /**
-   * Handle an `inlineTagId` token.
+   * Get the type expression parser.
+   *
+   * @see {@linkcode TypeExpression}
    *
    * @protected
+   * @instance
    *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   * @throws {AssertionError} If inline tag id cannot be extracted from source
-   * file and `development` condition is used when importing parser module
+   * @return {P<kinds, TypeExpression>} Type expression parser
    */
-  protected inlineTagId(token: Token): void {
-    this.assert(TokenKind.INLINE_TAG_ID, token)
-
-    /**
-     * Last inline tag node.
-     *
-     * @const {InlineTag} node
-     */
-    const node: InlineTag = this.lastInlineTag
-
-    // set tag metadata
-    node.tag = source(this.document, { end: token.end, start: token.start })!
-    ok(node.tag, 'expected inline tag id')
-    node.name = node.tag.slice(1)
-
-    return void token
-  }
-
-  /**
-   * Handle an `inlineTagValue` token.
-   *
-   * @protected
-   *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   * @throws {AssertionError} If inline tag value cannot be extracted from
-   * source file and `development` condition is used when importing parser
-   * module
-   */
-  protected inlineTagValue(token: Token): void {
-    this.assert(TokenKind.INLINE_TAG_VALUE, token)
-
-    /**
-     * Last inline tag node.
-     *
-     * @const {InlineTag} node
-     */
-    const node: InlineTag = this.lastInlineTag
-
-    // set inline tag value
-    node.value = source(this.document, { end: token.end, start: token.start })!
-    ok(node.value, 'expected inline tag value')
-
-    return void token
+  protected get typeExpression(): P<kinds, TypeExpression> {
+    return apply(tok(kinds.typeExpression), token => {
+      return u(types.typeExpression, {
+        position: { end: token.end, start: token.start },
+        value: token.text.slice(1, -1).replaceAll(/[\t ]*\*[\t ]{0,2}/g, '')
+      })
+    })
   }
 
   /**
    * Parse markdown.
    *
+   * @see {@linkcode RootContent}
    * @see https://github.com/syntax-tree/mdast-util-from-markdown
    *
    * @protected
+   * @instance
    *
-   * @param {BlockTag | Description} node - Parent node
-   * @param {string} value - Raw block tag text or raw description
-   * @param {Position} position - Position of `value`
-   * @return {Exclude<Content, DocastNode>[]} Markdown `node` children
+   * @param {Token<kinds.markdown>} [token] - Lexer token
+   * @param {boolean?} [codeblock] - Convert `token.text` to fenced code
+   * @return {RootContent[]} mdast child node array
    */
-  protected markdown(
-    node: BlockTag | Description,
-    value: string,
-    position: Position
-  ): Exclude<Content, DocastNode>[] {
-    /**
-     * Block tag node names and tags, or regular expressions, matching block
-     * tags that should have their text converted to {@linkcode Code} before
-     * being parsed as markdown.
-     *
-     * @const {(RegExp | string)[]} codeblocks
-     */
-    const codeblocks: (RegExp | string)[] = flat(sift([
-      this.options.codeblocks
-    ]))
-
-    /**
-     * Convert block tag text to {@linkcode Code}?
-     *
-     * @const {boolean} codeblock
-     */
-    const codeblock: boolean = 'tag' in node && codeblocks.some(check => {
-      return isString(check)
-        ? includes([node.name, node.tag], check)
-        : [node.name, node.tag].some(str => check.test(str))
-    }) && !value.startsWith('```')
+  protected applyMarkdown(
+    token?: Token<kinds.markdown>,
+    codeblock?: boolean
+  ): RootContent[] {
+    if (!token) return []
 
     /**
      * List, where each index is a line number (`0`-based), and each value is
@@ -621,14 +329,20 @@ class Parser {
      */
     const columns: number[] = []
 
-    // format value as markdown
-    value = this.uncomment(value, (match: string): string => {
-      columns.push(columns.length ? match.length : position.start.column - 1)
+    /**
+     * Text to parse as markdown.
+     *
+     * @var {string} value
+     */
+    let value: string = token.text
+
+    // format markdown text
+    value = value.replaceAll(/^(?:[\t ]*\*[\t ]{0,2})?/gm, match => {
+      columns.push(columns.length ? match.length : token.start.column - 1)
       return ''
     })
 
-    // fence block tag text to process as fenced code
-    // or mark line endings to be replaced
+    // fence value to process as fenced code
     if (codeblock) value = template('```\n{value}\n```', { value })
 
     /**
@@ -644,7 +358,7 @@ class Parser {
               /**
                * Construct name.
                */
-              name: TokenKind.INLINE_TAG,
+              name: types.inlineTag,
 
               /**
                * Guard whether `code` can come before this construct.
@@ -692,7 +406,7 @@ class Parser {
                     code === codes.rightCurlyBrace &&
                     this.previous !== codes.backslash
                   ) {
-                    effects.exit(TokenKind.INLINE_TAG)
+                    effects.exit(types.inlineTag)
                     return ok
                   }
 
@@ -721,7 +435,7 @@ class Parser {
                  * @return {State} Next state
                  */
                 function start(code: CharacterCode): State {
-                  effects.enter(TokenKind.INLINE_TAG)
+                  effects.enter(types.inlineTag)
                   effects.consume(code)
                   return begin
                 }
@@ -736,7 +450,7 @@ class Parser {
       mdastExtensions: [
         {
           enter: {
-            [types.atxHeading]: noop,
+            [mt.atxHeading]: noop,
             /**
              * Enter a hard break.
              *
@@ -745,10 +459,10 @@ class Parser {
              * @param {MToken} token - Micromark token
              * @return {void} Nothing
              */
-            [types.hardBreakEscape](this: CompileContext, token: MToken): void {
+            [mt.hardBreakEscape](this: CompileContext, token: MToken): void {
               return void this.enter({
                 data: { hard: true },
-                type: 'break'
+                type: types.break
               }, token)
             },
             /**
@@ -759,10 +473,8 @@ class Parser {
              * @param {MToken} token - Micromark token
              * @return {void} Nothing
              */
-            [TokenKind.INLINE_TAG](this: CompileContext, token: MToken): void {
-              return void this.enter(<never>{
-                type: TokenKind.INLINE_TAG
-              }, token)
+            [types.inlineTag](this: CompileContext, token: MToken): void {
+              return void this.enter(<never>{ type: types.inlineTag }, token)
             },
             /**
              * Enter a blank line.
@@ -772,18 +484,18 @@ class Parser {
              * @param {MToken} token - Micromark token
              * @return {void} Nothing
              */
-            [types.lineEndingBlank](this: CompileContext, token: MToken): void {
+            [mt.lineEndingBlank](this: CompileContext, token: MToken): void {
               return void this.enter({
                 data: { blank: true },
-                type: 'break'
+                type: types.break
               }, token)
             },
-            [types.setextHeading]: noop,
-            [types.setextHeadingLineSequence]: noop,
-            [types.setextHeadingText]: noop
+            [mt.setextHeading]: noop,
+            [mt.setextHeadingLineSequence]: noop,
+            [mt.setextHeadingText]: noop
           },
           exit: {
-            [types.atxHeading]: noop,
+            [mt.atxHeading]: noop,
             /**
              * Exit a hard break.
              *
@@ -792,7 +504,7 @@ class Parser {
              * @param {MToken} token - Micromark token
              * @return {void} Nothing
              */
-            [types.hardBreakEscape](this: CompileContext, token: MToken): void {
+            [mt.hardBreakEscape](this: CompileContext, token: MToken): void {
               return void this.exit(token)
             },
             /**
@@ -803,7 +515,47 @@ class Parser {
              * @param {MToken} token - Micromark token
              * @return {void} Nothing
              */
-            [TokenKind.INLINE_TAG](this: CompileContext, token: MToken): void {
+            [types.inlineTag](this: CompileContext, token: MToken): void {
+              /**
+               * Last node on stack.
+               *
+               * @var {Optional<Nodes | { type: 'fragment' }>} node
+               */
+              let node: Optional<Nodes | { type: 'fragment' }> = undefined
+
+              node = this.stack.at(-1)
+              ok(node, 'expected `node`')
+              ok(node.type === types.inlineTag, 'expected `inlineTag` node')
+
+              /**
+               * Token text.
+               *
+               * @const {string} slice
+               */
+              const slice: string = this.sliceSerialize(token)
+
+              /**
+               * Regular expression used to parse {@linkcode slice}.
+               *
+               * @const {RegExp} re
+               */
+              const re: RegExp = /(?<tag>@(?<name>\b\S+))\s+(?<value>\S+(?=}))/
+
+              /**
+               * Token text match.
+               *
+               * @const {Nullable<RegExpExecArray>} match
+               */
+              const match: Nullable<RegExpExecArray> = re.exec(slice)
+
+              ok(match, 'expected `match`')
+              ok(match.groups, 'expected `match.groups`')
+              ok(match.groups.tag, 'expected `match.groups.tag`')
+              ok(match.groups.value, 'expected `match.groups.value`')
+
+              node.name = <TagName>match.groups.tag
+              node.value = match.groups.value
+
               return void this.exit(token)
             },
             /**
@@ -814,12 +566,12 @@ class Parser {
              * @param {MToken} token - Micromark token
              * @return {void} Nothing
              */
-            [types.lineEndingBlank](this: CompileContext, token: MToken): void {
+            [mt.lineEndingBlank](this: CompileContext, token: MToken): void {
               return void this.exit(token)
             },
-            [types.setextHeading]: noop,
-            [types.setextHeadingLineSequence]: noop,
-            [types.setextHeadingText]: noop
+            [mt.setextHeading]: noop,
+            [mt.setextHeadingLineSequence]: noop,
+            [mt.setextHeadingText]: noop
           },
           transforms: [
             /**
@@ -832,7 +584,7 @@ class Parser {
              */
             (tree: MdastRoot): void => {
               return void visit(tree, (
-                m: MdastParent | MdastParent['children'][number]
+                m: InclusiveDescendant<MdastRoot>
               ): typeof CONTINUE => {
                 ok(m.position, 'expected non-generated node')
 
@@ -858,22 +610,22 @@ class Parser {
                   }
 
                   // make end column relative to source file
-                  if (m.position.end.line === line && m.type !== 'break') {
+                  if (m.position.end.line === line && m.type !== types.break) {
                     m.position.end.column += removed
                   }
                 }
 
                 // make node start relative to source file
-                m.position.start.line += position.start.line - 1
-                m.position.start.offset = this.lexer.offset(m.position.start)
+                m.position.start.line += token.start.line - 1
+                m.position.start.offset = this.offset(m.position.start)
 
                 // make node end relative to source file
-                if (codeblock && m.type === 'code') {
-                  m.position.end.column = position.end.column
-                  m.position.end.line = position.end.line
-                  m.position.end.offset = position.end.offset
+                if (codeblock && m.type === types.code) {
+                  m.position.end.column = token.end.column
+                  m.position.end.line = token.end.line
+                  m.position.end.offset = token.end.offset
                 } else {
-                  if (m.type === 'break') {
+                  if (m.type === types.break) {
                     m.position.end.column = 1
 
                     if (m.data?.hard) {
@@ -882,12 +634,13 @@ class Parser {
                   }
 
                   m.position.end.line = m.position.start.line + span
-                  m.position.end.offset = this.lexer.offset(m.position.end)
+                  m.position.end.offset = this.offset(m.position.end)
                 }
 
                 return CONTINUE
               })
             },
+
             /**
              * Insert new `break` nodes before `break` nodes that mark the end
              * of an empty line.
@@ -901,28 +654,36 @@ class Parser {
               return void visit(tree, 'break', (
                 m: Break,
                 index?: number,
-                parent?: Optional<MdastParent>
+                parent?: VisitedParent<MdastRoot, Break>
               ): number | typeof CONTINUE => {
                 if (m.data?.blank) {
                   ok(m.position, 'expected non-generated node')
-                  ok(isNumber(m.position.start.offset), 'expected start offset')
-                  ok(isNumber(index), 'expected indexed node')
+                  ok(typeof index === 'number', 'expected indexed node')
                   ok(parent, 'expected parent')
+
                   const { start } = m.position
+                  ok(typeof start.offset === 'number', 'expected start offset')
 
                   /**
                    * Start index of raw blank line.
                    *
                    * @const {number} offset
                    */
-                  const offset: number = start.offset! - start.column
+                  const offset: number = start.offset - start.column
+
+                  /**
+                   * Break node position.
+                   *
+                   * @const {Position} position
+                   */
+                  const position: Position = {
+                    end: this.point(offset + 1),
+                    start: this.point(offset)
+                  }
 
                   // insert break node to complete blank line
                   parent.children.splice(index, 1, {
-                    position: {
-                      end: this.lexer.point(offset + 1),
-                      start: this.lexer.point(offset)
-                    },
+                    position,
                     type: m.type
                   }, m)
 
@@ -932,6 +693,7 @@ class Parser {
                 return CONTINUE
               })
             },
+
             /**
              * Replace or remove newline characters in `text` nodes.
              *
@@ -951,7 +713,7 @@ class Parser {
                 index?: number,
                 parent?: Optional<MdastParent>
               ): typeof CONTINUE => {
-                ok(isString(m.value), 'expected string value')
+                ok(typeof m.value === 'string', 'expected string value')
 
                 /**
                  * Regular expression used to search for newline characters.
@@ -963,32 +725,34 @@ class Parser {
                 // replace or remove newline characters
                 if (search.test(m.value)) {
                   ok(m.position, 'expected non-generated node')
-                  ok(isNumber(m.position.start.offset), 'expected start offset')
-                  ok(isNumber(index), 'expected indexed node')
+                  ok(typeof index === 'number', 'expected indexed node')
                   ok(parent, 'expected parent')
+
+                  const { end, start } = m.position
+                  ok(typeof start.offset === 'number', 'expected start offset')
 
                   /**
                    * Previous sibling.
                    *
-                   * @const {Optional<MdastParent['children'][number]>} prev
+                   * @const {Optional<Children<MdastParent>[number]>} prev
                    */
-                  const prev: Optional<MdastParent['children'][number]> = at(
+                  const prev: Optional<Children<MdastParent>[number]> = at(
                     parent.children,
                     index - 1
                   )
 
                   // remove newline character if previous sibling is hard break,
                   // or replace newline characters with spaces
-                  if (prev?.type === 'break' && prev.data?.hard) {
+                  if (prev?.type === types.break && prev.data?.hard) {
                     ok(/^[\n\r]/.test(m.value), 'expected newline start')
-                    let { offset } = m.position.start
+                    let { offset } = start
                     m.value = m.value.slice(1)
                     offset = this.document.indexOf(m.value, offset)
-                    m.position.start = this.lexer.point(offset)
+                    m.position.start = this.point(offset)
                   } else {
                     if (/[\n\r]$/.test(m.value)) {
-                      m.position.end.column = 1
-                      m.position.end.offset = this.lexer.offset(m.position.end)
+                      end.column = 1
+                      end.offset = this.offset(end)
                     }
 
                     m.value = m.value.replaceAll(search, ' ')
@@ -1004,133 +768,39 @@ class Parser {
       ]
     })
 
-    return <Exclude<Content, DocastNode>[]>tree.children
+    return tree.children
+  }
+
+  /**
+   * Create a child node array.
+   *
+   * @see {@linkcode Children}
+   * @see {@linkcode Parent}
+   *
+   * @protected
+   * @instance
+   *
+   * @template {Parent} T - Parent node
+   *
+   * @param {Node[]} init - Array initializer
+   * @return {Children<T>} New child node array
+   */
+  protected children<T extends Parent>(init: Node[]): Children<T> {
+    return <Children<T>>init
   }
 
   /**
    * Parse the source document to an abstract syntax tree.
    *
-   * @public
+   * @see {@linkcode Root}
    *
-   * @return {Root} Docblock AST
+   * @public
+   * @instance
+   *
+   * @return {Root} docast
    */
   public parse(): Root {
-    /**
-     * Tree transforms.
-     *
-     * @const {Transform[]} transforms
-     */
-    const transforms: Transform[] = fallback(this.options.transforms, [], isNIL)
-
-    /**
-     * Dump paragraphs.
-     *
-     * @see {@linkcode Root}
-     *
-     * @param {Root} tree - Docblock syntax tree
-     * @return {void} Nothing
-     */
-    const paragraphs = (tree: Root): void => {
-      return void visit(tree, 'paragraph', (
-        m: Paragraph,
-        index?: number,
-        parent?: Optional<BlockTag | Description | MdastParent>
-      ): number | typeof CONTINUE => {
-        ok(isNumber(index), 'expected indexed node')
-        ok(parent, 'expected parent')
-
-        switch (parent.type) {
-          case 'blockTag':
-          case 'listItem':
-            parent.children.splice(index, 1, ...m.children)
-            return index
-          default:
-            return CONTINUE
-        }
-      })
-    }
-
-    // convert tokens to docast nodes
-    for (const token of this.lexer.tokens) void this[token.kind](token)
-
-    // apply tree transforms
-    transforms.unshift(paragraphs)
-    for (const transform of transforms) void transform(this.tree)
-
-    return this.tree
-  }
-
-  /**
-   * Handle a `typeExpression` token.
-   *
-   * @protected
-   *
-   * @param {Token} token - Token to handle
-   * @return {void} Nothing
-   * @throws {AssertionError} If type expression cannot be added to parent or
-   * raw type expression cannot be extracted from source file and `development`
-   * condition is used when importing parser module
-   */
-  protected typeExpression(token: Token): void {
-    this.assert(TokenKind.TYPE_EXPRESSION, token)
-
-    // assert parent children
-    ok(
-      this.lastBlockTag.children.every(child => child.type !== token.kind),
-      'blockTag may only contain one typeExpression node'
-    )
-
-    /**
-     * Type expression node position.
-     *
-     * @const {Position} position
-     */
-    const position: Position = { end: token.end, start: token.start }
-
-    /**
-     * Raw type expression.
-     *
-     * @const {Optional<string>} raw
-     */
-    const raw: Optional<string> = source(this.document, position)
-
-    // assert raw type expression
-    ok(raw, 'expected raw type expression')
-
-    /**
-     * Type expression node.
-     *
-     * @const {TypeExpression} node
-     */
-    const node: TypeExpression = u(token.kind, {
-      position,
-      value: this.uncomment(raw.slice(1, -1))
-    })
-
-    return void this.lastBlockTag.children.unshift(<never>node)
-  }
-
-  /**
-   * Replace comment delimiter sequences in `value`.
-   *
-   * @see {@linkcode UncommentReplacer}
-   *
-   * @protected
-   *
-   * @param {string} value - Value to normalize
-   * @param {(UncommentReplacer | string)?} [replacer=''] - A string containing
-   * the text to replace for every successful match in `value`, or a function
-   * that returns the replacement text
-   * @return {string} `value` with comment delimiter matches replaced
-   */
-  protected uncomment(
-    value: string,
-    replacer: UncommentReplacer | string = ''
-  ): string {
-    return value.replaceAll(
-      /^(?:[\t ]*\*[\t ]{0,2})?/gm,
-      isString(replacer) ? constant(replacer) : replacer
-    )
+    return result(eof(this.root.parse(this.lexer.head)))
   }
 }
 

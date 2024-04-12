@@ -91,4 +91,6 @@ ignore:
 profiling:
   critical_files_paths:
     - src/lexer.ts
+    - src/location.ts
     - src/parser.ts
+    - src/reader.ts

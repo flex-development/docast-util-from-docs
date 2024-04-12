@@ -14,9 +14,8 @@ import type { Extension as MicromarkExtension } from 'micromark-util-types'
  */
 interface Options {
   /**
-   * Block tag node names and tags, or regular expressions, matching block tags
-   * that should have their text converted to {@linkcode Code} when parsed as
-   * markdown.
+   * Block tag names, or regular expressions, matching block tags that should
+   * have their text converted to {@linkcode Code} when parsed as markdown.
    *
    * @default 'example'
    */

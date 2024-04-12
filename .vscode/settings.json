@@ -310,6 +310,11 @@
       "icon": "private"
     },
     {
+      "extensions": ["namespaces"],
+      "format": "svg",
+      "icon": "module"
+    },
+    {
       "extensions": ["patches"],
       "format": "svg",
       "icon": "include"
