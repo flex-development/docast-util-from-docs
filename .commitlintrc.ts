@@ -21,8 +21,10 @@ const config: UserConfig = {
     'scope-enum': [Severity.Error, 'always', scopes([
       'chore',
       'lexer',
+      'location',
       'markdown',
       'parser',
+      'reader',
       'util'
     ])]
   }
