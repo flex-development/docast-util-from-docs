@@ -4,6 +4,7 @@
  */
 
 import type { Transform } from '#src/types'
+import type { Point } from '@flex-development/docast'
 import type { Nilable, OneOrMany } from '@flex-development/tutils'
 import type { Code } from 'mdast'
 import type { Extension as MdastExtension } from 'mdast-util-from-markdown'
@@ -20,6 +21,15 @@ interface Options {
    * @default 'example'
    */
   codeblocks?: Nilable<OneOrMany<RegExp | string>>
+
+  /**
+   * Parser start point.
+   *
+   * Node positions will be relative to this point.
+   *
+   * @see {@linkcode Point}
+   */
+  from?: Nilable<Point>
 
   /**
    * Markdown extensions to change how micromark tokens are converted to nodes.

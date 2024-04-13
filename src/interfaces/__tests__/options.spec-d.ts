@@ -4,6 +4,7 @@
  */
 
 import type { Transform } from '#src/types'
+import type { Point } from '@flex-development/docast'
 import type { Nilable, OneOrMany } from '@flex-development/tutils'
 import type { Extension as MdastExtension } from 'mdast-util-from-markdown'
 import type { Extension as MicromarkExtension } from 'micromark-util-types'
@@ -14,6 +15,12 @@ describe('unit-d:interfaces/Options', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('codeblocks')
       .toEqualTypeOf<Nilable<OneOrMany<RegExp | string>>>()
+  })
+
+  it('should match [from?: Nilable<Point>]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('from')
+      .toEqualTypeOf<Nilable<Point>>()
   })
 
   it('should match [mdastExtensions?: Nilable<MdastExtension[]>]', () => {

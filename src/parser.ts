@@ -94,9 +94,8 @@ declare module 'micromark-util-types' {
  * Docblock parser.
  *
  * @class
- * @extends {Location}
  */
-class Parser extends Location {
+class Parser {
   /**
    * Source document tokenizer.
    *
@@ -131,12 +130,10 @@ class Parser extends Location {
    * @param {Nilable<Options>?} [options] - Parser options
    */
   constructor(source: VFile | string, options?: Nilable<Options>) {
-    super(source)
-
     options = fallback(options, {}, isNIL)
     options.transforms = fallback(options.transforms, [], isNIL)
 
-    this.lexer = new Lexer(source)
+    this.lexer = new Lexer(source, options.from)
     this.options = Object.freeze(defaults(options, { codeblocks: 'example' }))
   }
 
@@ -322,12 +319,23 @@ class Parser extends Location {
     if (!token) return []
 
     /**
+     * Location utility.
+     *
+     * Facilitates conversions between positional (line and column-based) and
+     * offset (range-based) locations.
+     *
+     * @const {Location} location
+     */
+    const location: Location = new Location(token.text, token.start)
+
+    /**
      * List, where each index is a line number (`0`-based), and each value is
+     * a tuple containing a line number relative to {@linkcode token.start} and
      * the number of columns to shift a `mdast` node.
      *
-     * @const {number[]} columns
+     * @const {[number, number][]} map
      */
-    const columns: number[] = []
+    const map: [line: number, columns: number][] = []
 
     /**
      * Text to parse as markdown.
@@ -338,7 +346,11 @@ class Parser extends Location {
 
     // format markdown text
     value = value.replaceAll(/^(?:[\t ]*\*[\t ]{0,2})?/gm, match => {
-      columns.push(columns.length ? match.length : token.start.column - 1)
+      map.push([
+        token.start.line + map.length,
+        map.length ? match.length : token.start.column - 1
+      ])
+
       return ''
     })
 
@@ -596,7 +608,7 @@ class Parser extends Location {
                 const span: number = m.position.end.line - m.position.start.line
 
                 // shift columns
-                for (const [i, removed] of columns.entries()) {
+                for (const [i, [, removed]] of map.entries()) {
                   /**
                    * Node start line.
                    *
@@ -604,12 +616,12 @@ class Parser extends Location {
                    */
                   const line: number = i + 1
 
-                  // make start column relative to source file
+                  // shift start column
                   if (m.position.start.line === line) {
                     m.position.start.column += removed
                   }
 
-                  // make end column relative to source file
+                  // shift end column of non-break nodes
                   if (m.position.end.line === line && m.type !== types.break) {
                     m.position.end.column += removed
                   }
@@ -617,7 +629,7 @@ class Parser extends Location {
 
                 // make node start relative to source file
                 m.position.start.line += token.start.line - 1
-                m.position.start.offset = this.offset(m.position.start)
+                m.position.start.offset = location.offset(m.position.start)
 
                 // make node end relative to source file
                 if (codeblock && m.type === types.code) {
@@ -634,7 +646,7 @@ class Parser extends Location {
                   }
 
                   m.position.end.line = m.position.start.line + span
-                  m.position.end.offset = this.offset(m.position.end)
+                  m.position.end.offset = location.offset(m.position.end)
                 }
 
                 return CONTINUE
@@ -677,8 +689,8 @@ class Parser extends Location {
                    * @const {Position} position
                    */
                   const position: Position = {
-                    end: this.point(offset + 1),
-                    start: this.point(offset)
+                    end: location.point(offset + 1),
+                    start: location.point(offset)
                   }
 
                   // insert break node to complete blank line
@@ -745,14 +757,20 @@ class Parser extends Location {
                   // or replace newline characters with spaces
                   if (prev?.type === types.break && prev.data?.hard) {
                     ok(/^[\n\r]/.test(m.value), 'expected newline start')
-                    let { offset } = start
+
+                    for (const [, [line, removed]] of map.entries()) {
+                      if (start.line === line) {
+                        start.offset += removed
+                        break
+                      }
+                    }
+
                     m.value = m.value.slice(1)
-                    offset = this.document.indexOf(m.value, offset)
-                    m.position.start = this.point(offset)
+                    m.position.start = location.point(start.offset + 1)
                   } else {
                     if (/[\n\r]$/.test(m.value)) {
                       end.column = 1
-                      end.offset = this.offset(end)
+                      end.offset = location.offset(end)
                     }
 
                     m.value = m.value.replaceAll(search, ' ')

@@ -4,7 +4,7 @@
  */
 
 import type { Point } from '@flex-development/docast'
-import type { Optional } from '@flex-development/tutils'
+import type { Nilable, Optional } from '@flex-development/tutils'
 import debug from 'debug'
 import { ok } from 'devlop'
 import type { VFile } from 'vfile'
@@ -94,11 +94,12 @@ class Lexer {
    * @see {@linkcode VFile}
    *
    * @param {VFile | string} source - Source document or file
+   * @param {Nilable<Point>?} [from] - Point before first character in `source`
    */
-  constructor(source: VFile | string) {
+  constructor(source: VFile | string, from?: Nilable<Point>) {
     this.comment = false
     this.debug = debug('docast-util-from-docs:lexer')
-    this.reader = new Reader(source)
+    this.reader = new Reader(source, from)
     this.tokens = []
 
     this.head = this.tokenize()
@@ -305,7 +306,7 @@ class Lexer {
    * @return {Point} Current point in document
    */
   protected now(): Point {
-    return this.reader.point(this.reader.index)
+    return this.reader.point(this.reader.from.offset + this.reader.index)
   }
 
   /**

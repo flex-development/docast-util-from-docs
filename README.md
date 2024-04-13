@@ -340,13 +340,16 @@ Configuration options (TypeScript type).
 
 #### Properties
 
-- `codeblocks` (`OneOrMany<RegExp | string>`, optional) &mdash; block tag node names and tags, or regular
-  expressions, matching block tags that should have their text converted to [`Code`][mdast-code] when parsed as markdown
+- `codeblocks` (`OneOrMany<RegExp | string>`, optional) &mdash; block tag names, or regular expressions, matching block
+  tags that should have their text converted to [`Code`][mdast-code] when parsed as markdown
   - **default**: `'example'`
-- `mdastExtensions` ([`MdastExtension[]`][mdast-util-extension], optional) &mdash; markdown extensions to change how
+- `from` ([`docast.Point`][docast-point], optional) &mdash; parser start point. node positions will be relative to this
+  point
+  - **default**: `{ column: 1, line: 1, offset: 0 }`
+- `mdastExtensions` ([`mdast.Extension[]`][mdast-extension], optional) &mdash; markdown extensions to change how
   micromark tokens are converted to nodes
-- `micromarkExtensions` ([`MicromarkExtension[]`][micromark-extension], optional) &mdash; micromark extensions to change
-  how markdown is parsed
+- `micromarkExtensions` ([`micromark.Extension[]`][micromark-extension], optional) &mdash; micromark extensions to
+  change how markdown is parsed
 - `transforms` ([`Transform[]`](#transform), optional) &mdash; tree transforms
 
 ### `Transform`
@@ -386,13 +389,14 @@ This package is fully typed with [TypeScript][typescript].
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 [docast-parse]: https://github.com/flex-development/docast-parse
+[docast-point]: https://github.com/flex-development/docast#point
 [docast-tree]: https://github.com/flex-development/docast#root
 [docast]: https://github.com/flex-development/docast
 [docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 [esmsh]: https://esm.sh/
 [mdast-code]: https://github.com/syntax-tree/mdast#code
-[mdast-util-extension]: https://github.com/syntax-tree/mdast-util-from-markdown#extension
+[mdast-extension]: https://github.com/syntax-tree/mdast-util-from-markdown#extension
 [mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
 [micromark-extension]: https://github.com/micromark/micromark#extensions
 [micromark]: https://github.com/micromark/micromark

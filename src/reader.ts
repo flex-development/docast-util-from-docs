@@ -3,6 +3,8 @@
  * @module docast-util-from-docs/Reader
  */
 
+import type { Point } from '@flex-development/docast'
+import type { Nilable } from '@flex-development/tutils'
 import { ok } from 'devlop'
 import type { VFile } from 'vfile'
 import Location from './location'
@@ -29,12 +31,14 @@ class Reader extends Location {
   /**
    * Create a new character reader.
    *
+   * @see {@linkcode Point}
    * @see {@linkcode VFile}
    *
    * @param {VFile | string} source - Source document or file
+   * @param {Nilable<Point>?} [from] - Start point
    */
-  constructor(source: VFile | string) {
-    super(source = String(source))
+  constructor(source: VFile | string, from?: Nilable<Point>) {
+    super(String(source), from)
     this.position = 0
   }
 

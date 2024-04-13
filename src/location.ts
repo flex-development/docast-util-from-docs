@@ -4,6 +4,7 @@
  */
 
 import type { Point } from '@flex-development/docast'
+import type { Nilable } from '@flex-development/tutils'
 import type * as unist from 'unist'
 import type { VFile } from 'vfile'
 import type { Offset } from './types'
@@ -28,26 +29,30 @@ class Location {
   protected readonly document: string
 
   /**
-   * List, where each index is a line number (`0`-based), and each value is the
-   * number of columns in the line.
+   * Point before first character in {@linkcode document}.
    *
-   * @protected
+   * @see {@linkcode Point}
+   *
+   * @public
    * @readonly
    * @instance
-   * @member {number[]} indices
+   * @member {Readonly<Point>} from
    */
-  protected readonly indices: number[]
+  public readonly from: Readonly<Point>
 
   /**
    * Create a new location utility.
    *
+   * @see {@linkcode Point}
    * @see {@linkcode VFile}
    *
    * @param {VFile | string} source - Source document or file to index
+   * @param {Nilable<Point>?} [from] - Point before first character in `source`
    */
-  constructor(source: VFile | string) {
-    this.document = source = String(source)
-    this.indices = [...source.matchAll(/^.*/gm)].map(([m]) => m.length + 1)
+  constructor(source: VFile | string, from?: Nilable<Point>) {
+    this.document = String(source)
+    this.from = Object.assign({}, from ?? { column: 1, line: 1, offset: 0 })
+    this.from = Object.freeze(this.from)
   }
 
   /**
@@ -63,45 +68,11 @@ class Location {
    * @return {Offset} Character index or `-1` if `point` is invalid
    */
   public offset(point: unist.Point): Offset {
-    /**
-     * Offset found?
-     *
-     * @var {boolean} found
-     */
-    let found: boolean = false
-
-    /**
-     * Current offset.
-     *
-     * @var {Offset} offset
-     */
-    let offset: Offset = -1
-
-    // get offset
-    if (
-      point.column &&
-      point.line &&
-      point.line <= this.indices.length &&
-      typeof this.indices[point.line - 1] === 'number'
-    ) {
-      for (let line = 0; line < point.line; line++) {
-        for (let j = 0; j < this.indices[line]!; j++) {
-          // increase current offset
-          offset++
-
-          // stop search
-          if (point.column === j + 1 && point.line === line + 1) {
-            found = true
-            break
-          }
-        }
-      }
-
-      // reset offset if not found
-      if (!found) offset = -1
-    }
-
-    return offset
+    return this.#pt(
+      pt => pt.line === point.line && pt.column === point.column,
+      pt => pt.offset,
+      -1
+    )
   }
 
   /**
@@ -122,41 +93,55 @@ class Location {
    * @return {Point} Point in document
    */
   public point(offset: Offset): Point {
-    /**
-     * Current offset.
-     *
-     * @var {Offset} index
-     */
-    let index: Offset = 0
+    return this.#pt(
+      pt => pt.offset === offset,
+      pt => pt,
+      { column: -1, line: -1, offset }
+    )
+  }
 
+  /**
+   * Iterate over characters in {@linkcode document} by point.
+   *
+   * @private
+   * @instance
+   *
+   * @template {Offset | Point} T - Return type when `check` succeeds
+   * @template {Offset | Point} T - Return type when `check` fails
+   *
+   * @param {(pt: Point) => boolean} check - Point test
+   * @param {(pt: Point) => T} success - Function that returns a point or offset
+   * on successful `check`
+   * @param {T} failure - Point or offset on failed `check`
+   * @return {T} Iterator result
+   */
+  #pt<T extends Offset | Point>(
+    check: (pt: Point) => boolean,
+    success: (pt: Point) => T,
+    failure: T
+  ): T {
     /**
-     * Current line in a source file (1-indexed integer).
+     * Current point.
      *
-     * @var {number} line
+     * @const {Point} pt
      */
-    let line: number = -1
+    const pt: Point = { ...this.from }
 
-    /**
-     * Current point in document.
-     *
-     * @const {Point} point
-     */
-    const point: Point = { column: -1, line, offset }
-
-    // convert offset to point
-    if (offset > -1 && offset <= this.document.length) {
-      while (++line < this.indices.length) {
-        for (let j = 0; j < this.indices[line]!; j++) {
-          if (index++ === offset) {
-            point.column = j + 1
-            point.line = line + 1
-            break
-          }
-        }
+    // advance point
+    for (const char of this.document + '\n') {
+      if (check(pt)) {
+        return success(pt)
+      } else if (/[\n\r]/.test(char)) {
+        pt.column = 1
+        pt.line++
+        pt.offset++
+      } else {
+        pt.column++
+        pt.offset++
       }
     }
 
-    return point
+    return failure
   }
 }
 
