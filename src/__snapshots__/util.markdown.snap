@@ -1,0 +1,95 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:parseMarkdown > should return mdast child node array 1`] = `
+root[12] (111:6-128:42, 2397-3216)
+├─0  paragraph[5] (111:6-111:53, 2397-2444)
+│    ├─0 text "Get a " (111:6-111:12, 2397-2403)
+│    ├─1 linkReference[1] (111:12-111:24, 2403-2415)
+│    │   │ label: "1"
+│    │   │ identifier: "1"
+│    │   │ referenceType: "full"
+│    │   └─0 emphasis[1] (111:13-111:20, 2404-2411)
+│    │       └─0 text "point" (111:14-111:19, 2405-2410)
+│    ├─2 text " in the document by " (111:24-111:44, 2415-2435)
+│    ├─3 inlineCode "offset" (111:44-111:52, 2435-2443)
+│    └─4 text "." (111:52-111:53, 2443-2444)
+├─1  break (111:53-112:1, 2444-2445)
+├─2  break (112:5-113:1, 2449-2450)
+│      data: {"blank":true}
+├─3  paragraph[13] (113:6-114:76, 2455-2606)
+│    ├─0  text "The given " (113:6-113:16, 2455-2465)
+│    ├─1  inlineCode "offset" (113:16-113:24, 2465-2473)
+│    ├─2  text " must be an integer in the range " (113:24-113:57, 2473-2506)
+│    ├─3  inlineCode "[0, document.length]" (113:57-113:79, 2506-2528)
+│    ├─4  text "." (113:79-113:80, 2528-2529)
+│    ├─5  break (113:80-113:81, 2529-2530)
+│    │      data: {"hard":true}
+│    ├─6  text "If invalid, " (114:6-114:18, 2536-2548)
+│    ├─7  inlineCode "point.column" (114:18-114:32, 2548-2562)
+│    ├─8  text " and " (114:32-114:37, 2562-2567)
+│    ├─9  inlineCode "point.line" (114:37-114:49, 2567-2579)
+│    ├─10 text " will have a value of " (114:49-114:71, 2579-2601)
+│    ├─11 inlineCode "-1" (114:71-114:75, 2601-2605)
+│    └─12 text "." (114:75-114:76, 2605-2606)
+├─4  break (114:76-115:1, 2606-2607)
+├─5  break (115:5-116:1, 2611-2612)
+│      data: {"blank":true}
+├─6  blockquote[7] (116:6-124:35, 2617-3064)
+│    ├─0 paragraph[4] (116:8-116:63, 2619-2674)
+│    │   ├─0 strong[1] (116:8-116:17, 2619-2628)
+│    │   │   └─0 text "Point" (116:10-116:15, 2621-2626)
+│    │   ├─1 text " represents one place in a source " (116:17-116:51, 2628-2662)
+│    │   ├─2 linkReference[1] (116:51-116:62, 2662-2673)
+│    │   │   │ label: "2"
+│    │   │   │ identifier: "2"
+│    │   │   │ referenceType: "full"
+│    │   │   └─0 emphasis[1] (116:52-116:58, 2663-2669)
+│    │   │       └─0 text "file" (116:53-116:57, 2664-2668)
+│    │   └─3 text "." (116:62-116:63, 2673-2674)
+│    ├─1 break (116:63-117:1, 2674-2675)
+│    ├─2 break (117:7-118:1, 2681-2682)
+│    │     data: {"blank":true}
+│    ├─3 paragraph[13] (118:8-121:35, 2689-2945)
+│    │   ├─0  text "The " (118:8-118:12, 2689-2693)
+│    │   ├─1  inlineCode "line" (118:12-118:18, 2693-2699)
+│    │   ├─2  text " field (" (118:18-118:26, 2699-2707)
+│    │   ├─3  inlineCode "1" (118:26-118:29, 2707-2710)
+│    │   ├─4  text "-indexed integer) represents a line in a source file. The " (118:29-119:18, 2710-2775)
+│    │   ├─5  inlineCode "column" (119:18-119:26, 2775-2783)
+│    │   ├─6  text " field (" (119:26-119:34, 2783-2791)
+│    │   ├─7  inlineCode "1" (119:34-119:37, 2791-2794)
+│    │   ├─8  text "-indexed integer) represents a column in a source file. The " (119:37-120:25, 2794-2861)
+│    │   ├─9  inlineCode "offset" (120:25-120:33, 2861-2869)
+│    │   ├─10 text " field (" (120:33-120:41, 2869-2877)
+│    │   ├─11 inlineCode "0" (120:41-120:44, 2877-2880)
+│    │   └─12 text "-indexed integer) represents a character in a source file." (120:44-121:35, 2880-2945)
+│    ├─4 break (121:35-122:1, 2945-2946)
+│    ├─5 break (122:7-123:1, 2952-2953)
+│    │     data: {"blank":true}
+│    └─6 paragraph[3] (123:8-124:35, 2960-3064)
+│        ├─0 text "The term character means a (UTF-16) code unit which is defined in the " (123:8-124:1, 2960-3030)
+│        ├─1 linkReference[1] (124:8-124:20, 3037-3049)
+│        │   │ label: "3"
+│        │   │ identifier: "3"
+│        │   │ referenceType: "full"
+│        │   └─0 text "Web IDL" (124:9-124:16, 3038-3045)
+│        └─2 text " specification." (124:20-124:35, 3049-3064)
+├─7  break (124:35-125:1, 3064-3065)
+├─8  break (125:5-126:1, 3069-3070)
+│      data: {"blank":true}
+├─9  definition (126:6-126:53, 3075-3122)
+│      identifier: "1"
+│      label: "1"
+│      title: null
+│      url: "https://github.com/syntax-tree/unist#point"
+├─10 definition (127:6-127:52, 3128-3174)
+│      identifier: "2"
+│      label: "2"
+│      title: null
+│      url: "https://github.com/syntax-tree/unist#file"
+└─11 definition (128:6-128:42, 3180-3216)
+       identifier: "3"
+       label: "3"
+       title: null
+       url: "https://webidl.spec.whatwg.org/"
+`;

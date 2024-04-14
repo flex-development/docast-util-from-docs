@@ -3,6 +3,7 @@
  * @module docast-util-from-docs/tests/util/integration
  */
 
+import type { Options } from '#src/interfaces'
 import type { Point } from '@flex-development/docast'
 import { constant, type Assign } from '@flex-development/tutils'
 import { directiveFromMarkdown } from 'mdast-util-directive'
@@ -11,7 +12,6 @@ import { read } from 'to-vfile'
 import { inspectNoColor } from 'unist-util-inspect'
 import type { VFile } from 'vfile'
 import type { TestContext } from 'vitest'
-import type { Options } from '../interfaces'
 import testSubject from '../util'
 
 describe('integration:fromDocs', () => {
@@ -36,7 +36,7 @@ describe('integration:fromDocs', () => {
         mdastExtensions: [directiveFromMarkdown()],
         micromarkExtensions: [directive()]
       }],
-      [await read('__fixtures__/dbl-linear.ts'), { codeblocks: [/example/] }],
+      [await read('__fixtures__/dbl-linear.ts'), { codeblocks: [/@example/] }],
       [await read('__fixtures__/reader.ts')]
     ])('document sample %#', (file, options) => {
       expect(testSubject(file, options)).toMatchSnapshot()

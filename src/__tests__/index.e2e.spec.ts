@@ -7,6 +7,6 @@ import * as testSubject from '../index'
 
 describe('e2e:docast-util-from-docs', () => {
   it('should expose public api', () => {
-    expect(testSubject).to.have.keys(['fromDocs'])
+    expect(testSubject).to.have.keys(['fromDocs', 'parseMarkdown'])
   })
 })

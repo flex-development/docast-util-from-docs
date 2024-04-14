@@ -75,7 +75,6 @@ import { TokenKind as kinds, types } from './enums'
 import type { Options } from './interfaces'
 import Lexer from './lexer'
 import Location from './location'
-import type Token from './token'
 
 declare module 'mdast' {
   interface BreakData {
@@ -134,7 +133,7 @@ class Parser {
     options.transforms = fallback(options.transforms, [], isNIL)
 
     this.lexer = new Lexer(source, options.from)
-    this.options = Object.freeze(defaults(options, { codeblocks: 'example' }))
+    this.options = Object.freeze(defaults(options, { codeblocks: '@example' }))
   }
 
   /**
@@ -302,20 +301,23 @@ class Parser {
   /**
    * Parse markdown.
    *
+   * @see {@linkcode Position}
    * @see {@linkcode RootContent}
    * @see https://github.com/syntax-tree/mdast-util-from-markdown
    *
-   * @protected
+   * @public
    * @instance
    *
-   * @param {Token<kinds.markdown>} [token] - Lexer token
-   * @param {boolean?} [codeblock] - Convert `token.text` to fenced code
-   * @return {RootContent[]} mdast child node array
+   * @template {RootContent} [T=RootContent] - mdast child node type
+   *
+   * @param {(Position & { text: string })?} [token] - Lexer token
+   * @param {Nilable<boolean>?} [code] - Parse `token.text` as fenced code
+   * @return {T[]} `mdast` child node array
    */
-  protected applyMarkdown(
-    token?: Token<kinds.markdown>,
-    codeblock?: boolean
-  ): RootContent[] {
+  public applyMarkdown<T extends RootContent = RootContent>(
+    token?: Position & { text: string },
+    code?: Nilable<boolean>
+  ): T[] {
     if (!token) return []
 
     /**
@@ -344,7 +346,7 @@ class Parser {
      */
     let value: string = token.text
 
-    // format markdown text
+    // format markdown value
     value = value.replaceAll(/^(?:[\t ]*\*[\t ]{0,2})?/gm, match => {
       map.push([
         token.start.line + map.length,
@@ -355,7 +357,7 @@ class Parser {
     })
 
     // fence value to process as fenced code
-    if (codeblock) value = template('```\n{value}\n```', { value })
+    if (code) value = template('```\n{value}\n```', { value })
 
     /**
      * Markdown syntax tree.
@@ -632,7 +634,7 @@ class Parser {
                 m.position.start.offset = location.offset(m.position.start)
 
                 // make node end relative to source file
-                if (codeblock && m.type === types.code) {
+                if (code && m.type === types.code) {
                   m.position.end.column = token.end.column
                   m.position.end.line = token.end.line
                   m.position.end.offset = token.end.offset
@@ -786,7 +788,7 @@ class Parser {
       ]
     })
 
-    return tree.children
+    return <T[]>tree.children
   }
 
   /**

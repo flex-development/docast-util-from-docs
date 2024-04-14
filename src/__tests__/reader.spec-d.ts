@@ -3,7 +3,7 @@
  * @module docast-util-from-docs/tests/unit-d/Reader
  */
 
-import type Location from '../location'
+import type Location from '#src/location'
 import type TestSubject from '../reader'
 
 describe('unit-d:Reader', () => {
