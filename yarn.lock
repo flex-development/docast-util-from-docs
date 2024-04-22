@@ -1254,7 +1254,7 @@ __metadata:
     "@faker-js/faker": "npm:8.4.1"
     "@flex-development/commitlint-config": "npm:1.0.1"
     "@flex-development/decorator-regex": "npm:2.0.0"
-    "@flex-development/docast": "npm:1.0.0-alpha.15"
+    "@flex-development/docast": "npm:1.0.0-alpha.16"
     "@flex-development/esm-types": "npm:2.0.0"
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/mkbuild": "npm:1.0.0-alpha.23"
@@ -1333,33 +1333,18 @@ __metadata:
     vite-tsconfig-paths: "npm:4.3.2"
     vitest: "npm:1.4.0"
     yaml-eslint-parser: "npm:1.2.2"
-  peerDependencies:
-    "@flex-development/docast": ">=1.0.0-alpha.15"
-    "@types/mdast": ">=4.0.3"
-    "@types/unist": ">=3.0.2"
-    micromark-util-types: ">=2.0.0"
-  peerDependenciesMeta:
-    "@flex-development/docast":
-      optional: true
-    "@types/mdast":
-      optional: true
-    "@types/unist":
-      optional: true
-    micromark-util-types:
-      optional: true
   languageName: unknown
   linkType: soft
 
-"@flex-development/docast@npm:1.0.0-alpha.15":
-  version: 1.0.0-alpha.15
-  resolution: "@flex-development/docast@npm:1.0.0-alpha.15::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.15%2F3ff37aaf84622217290226de8b267d52584c2ac8"
+"@flex-development/docast@npm:1.0.0-alpha.16":
+  version: 1.0.0-alpha.16
+  resolution: "@flex-development/docast@npm:1.0.0-alpha.16::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.16%2Ff15a81b5c760705fe206c6c7bd0acb7328781795"
   dependencies:
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
-  peerDependencies:
-    "@flex-development/unist-util-types": ">=1.1.0"
-    "@types/mdast": ">=4.0.3"
-    "@types/unist": ">=3.0.2"
-  checksum: 10/f4b68ffdc4c9667a57ba95467f9315c1c3949a3e91af37999b7eb544db4977587d12794550cdd9123bc80635c0364dfc94af1b74154fd9208812856ff1bd9ba5
+    "@flex-development/unist-util-types": "npm:1.2.0"
+    "@types/mdast": "npm:4.0.3"
+    "@types/unist": "npm:3.0.2"
+  checksum: 10/7df755d6820de65af9601aff2cec98fc228aa564210965e10f9a88924c967a7dd5cd8a3cf3c45eb8370bf31cc55ab7bca2ea1805fca6898cd8037ec63361324f
   languageName: node
   linkType: hard
 
@@ -2314,21 +2299,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdast@npm:4.0.3, @types/mdast@npm:^4.0.0":
+"@types/mdast@npm:4.0.3":
   version: 4.0.3
   resolution: "@types/mdast@npm:4.0.3"
   dependencies:
     "@types/unist": "npm:*"
   checksum: 10/6d2d8f00ffaff6663dd67ea9ab999a5e52066c001432a9b99947fa9e76bccba819dfca40e419588a637a70d42cd405071f5b76efd4ddeb1dc721353b7cc73623
-  languageName: node
-  linkType: hard
-
-"@types/mdast@npm:^3.0.0":
-  version: 3.0.10
-  resolution: "@types/mdast@npm:3.0.10"
-  dependencies:
-    "@types/unist": "npm:*"
-  checksum: 10/6b7f613feba54a394ca71694ed3b6719f7ce504d42454ec2d09203a9da3e7086189b4db080e0ea070bd6bae35f6f74f6596f23e21646566e3054e6539cb8a2fe
   languageName: node
   linkType: hard
 
@@ -2394,17 +2370,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:*, @types/unist@npm:3.0.2, @types/unist@npm:^3.0.0":
+"@types/unist@npm:3.0.2":
   version: 3.0.2
   resolution: "@types/unist@npm:3.0.2"
   checksum: 10/3d04d0be69316e5f14599a0d993a208606c12818cf631fd399243d1dc7a9bd8a3917d6066baa6abc290814afbd744621484756803c80cba892c39cd4b4a85616
-  languageName: node
-  linkType: hard
-
-"@types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2":
-  version: 2.0.10
-  resolution: "@types/unist@npm:2.0.10"
-  checksum: 10/e2924e18dedf45f68a5c6ccd6015cd62f1643b1b43baac1854efa21ae9e70505db94290434a23da1137d9e31eb58e54ca175982005698ac37300a1c889f6c4aa
   languageName: node
   linkType: hard
 
@@ -7566,7 +7535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark-util-types@npm:2.0.0, micromark-util-types@npm:^2.0.0":
+"micromark-util-types@npm:2.0.0":
   version: 2.0.0
   resolution: "micromark-util-types@npm:2.0.0"
   checksum: 10/b88e0eefd4b7c8d86b54dbf4ed0094ef56a3b0c7774d040bd5c8146b8e4e05b1026bbf1cd9308c8fcd05ecdc0784507680c8cee9888a4d3c550e6e574f7aef62

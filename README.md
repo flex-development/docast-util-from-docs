@@ -56,7 +56,6 @@ In Node.js (version 18+) with [yarn][yarn]:
 
 ```sh
 yarn add @flex-development/docast-util-from-docs
-yarn add -D @flex-development/docast @types/mdast @types/unist micromark-util-types
 ```
 
 <blockquote>
