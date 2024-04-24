@@ -163,7 +163,7 @@
     "ts-dedent": "2.2.0",
     "typescript": "5.4.3",
     "unist-util-inspect": "8.0.0",
-    "vite": "5.2.2",
+    "vite": "5.2.10",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.4.0",
     "yaml-eslint-parser": "1.2.2"
@@ -174,7 +174,7 @@
     "@types/unist": "3.0.2",
     "chai": "5.1.0",
     "micromark-util-types": "2.0.0",
-    "vite": "5.2.2"
+    "vite": "5.2.10"
   },
   "engines": {
     "node": ">=18.18.2"
