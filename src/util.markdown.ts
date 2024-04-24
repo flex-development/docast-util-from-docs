@@ -32,7 +32,7 @@ const parseMarkdown = <T extends RootContent = RootContent>(
   value: VFile | string,
   options: ParseMarkdownOptions
 ): T[] => {
-  const { code, position } = options
+  const { code, position, ...rest } = options
 
   /**
    * Markdown token.
@@ -44,7 +44,7 @@ const parseMarkdown = <T extends RootContent = RootContent>(
     text: String(value)
   })
 
-  return new Parser('', options).applyMarkdown(token, code)
+  return new Parser('', rest).applyMarkdown(token, code)
 }
 
 export default parseMarkdown

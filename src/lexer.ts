@@ -9,6 +9,7 @@ import debug from 'debug'
 import { ok } from 'devlop'
 import type { VFile } from 'vfile'
 import { TokenKind as kinds } from './enums'
+import type { LexerOptions } from './interfaces'
 import Reader from './reader'
 import Token from './token'
 import type { Character, CharacterMatch } from './types'
@@ -53,6 +54,18 @@ class Lexer {
   public readonly head?: Optional<Token>
 
   /**
+   * Lexer options.
+   *
+   * @see {@linkcode LexerOptions}
+   *
+   * @protected
+   * @readonly
+   * @instance
+   * @member {Readonly<LexerOptions>} options
+   */
+  protected readonly options: Readonly<LexerOptions>
+
+  /**
    * Source document reader.
    *
    * @see {@linkcode Reader}
@@ -91,15 +104,17 @@ class Lexer {
   /**
    * Create a new document tokenizer.
    *
+   * @see {@linkcode LexerOptions}
    * @see {@linkcode VFile}
    *
    * @param {VFile | string} source - Source document or file
-   * @param {Nilable<Point>?} [from] - Point before first character in `source`
+   * @param {Nilable<LexerOptions>?} [options] - Lexer options
    */
-  constructor(source: VFile | string, from?: Nilable<Point>) {
+  constructor(source: VFile | string, options?: Nilable<LexerOptions>) {
     this.comment = false
     this.debug = debug('docast-util-from-docs:lexer')
-    this.reader = new Reader(source, from)
+    this.options = Object.freeze(options ??= {})
+    this.reader = new Reader(source, this.options.from)
     this.tokens = []
 
     this.head = this.tokenize()
@@ -151,7 +166,7 @@ class Lexer {
    * @return {RegExp} Comment opener rule
    */
   protected get opener(): RegExp {
-    return /^\/\*{2}/
+    return this.options.multiline ? /^\/\*{1,2}/ : /^\/\*{2}/
   }
 
   /**

@@ -377,6 +377,7 @@ Options for parsing markdown with respect for comment delimiters (TypeScript typ
 #### Properties
 
 - `code` (`boolean`, optional) &mdash; parse markdown value as fenced code
+- `multiline` (`boolean`, optional) &mdash; parse multiline comments
 - `position` ([`Position`][docast-position]) &mdash; position of markdown value
 
 ### `Transform`

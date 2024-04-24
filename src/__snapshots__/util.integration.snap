@@ -3,13 +3,11 @@
 exports[`integration:fromDocs > non-empty document > document sample 0 1`] = `
 root[2]
 ├─0 comment[2] (1:1-4:4, 0-83)
-│   │ code: null
 │   ├─0 blockTag<@file>[1] (2:4-2:38, 7-41)
 │   │   └─0 text "Fixtures - validateURLString" (2:10-2:38, 13-41)
 │   └─1 blockTag<@module>[1] (3:4-3:38, 45-79)
 │       └─0 text "fixtures/validateURLString" (3:12-3:38, 53-79)
 └─1 comment[7] (10:1-25:4, 250-800)
-    │ code: null
     ├─0 description[7] (11:4-15:65, 257-461)
     │   ├─0 paragraph[5] (11:4-11:68, 257-321)
     │   │   ├─0 text "Checks if " (11:4-11:14, 257-267)
@@ -67,13 +65,11 @@ root[2]
 exports[`integration:fromDocs > non-empty document > document sample 1 1`] = `
 root[4]
 ├─0 comment[2] (1:1-4:4, 0-73)
-│   │ code: null
 │   ├─0 blockTag<@file>[1] (2:4-2:33, 7-36)
 │   │   └─0 text "Fixtures - detectSyntax" (2:10-2:33, 13-36)
 │   └─1 blockTag<@module>[1] (3:4-3:33, 40-69)
 │       └─0 text "fixtures/detectSyntax" (3:12-3:33, 48-69)
 ├─1 comment[6] (8:1-27:4, 144-603)
-│   │ code: null
 │   ├─0 description[4] (9:4-11:32, 151-263)
 │   │   ├─0 paragraph[3] (9:4-9:81, 151-228)
 │   │   │   ├─0 text "Detects if " (9:4-9:15, 151-162)
@@ -99,7 +95,6 @@ root[4]
 │       ├─0 typeExpression "{\\ncjs: boolean;\\nesm: boolean;\\nmixed: boolean\\n}" (22:12-26:6, 519-582)
 │       └─1 text "Detection result" (26:7-26:23, 583-599)
 ├─2 comment[2] (31:3-35:6, 699-767)
-│   │ code: null
 │   ├─0 description[1] (32:6-32:28, 708-730)
 │   │   └─0 paragraph[1] (32:6-32:28, 708-730)
 │   │       └─0 text "CommonJS syntax check." (32:6-32:28, 708-730)
@@ -107,7 +102,6 @@ root[4]
 │       ├─0 typeExpression "boolean" (34:13-34:22, 748-757)
 │       └─1 text "cjs" (34:23-34:26, 758-761)
 └─3 comment[2] (38:3-42:6, 813-876)
-    │ code: null
     ├─0 description[1] (39:6-39:23, 822-839)
     │   └─0 paragraph[1] (39:6-39:23, 822-839)
     │       └─0 text "ESM syntax check." (39:6-39:23, 822-839)
@@ -119,13 +113,11 @@ root[4]
 exports[`integration:fromDocs > non-empty document > document sample 2 1`] = `
 root[2]
 ├─0 comment[2] (1:1-4:4, 0-87)
-│   │ code: null
 │   ├─0 blockTag<@file>[1] (2:4-2:40, 7-43)
 │   │   └─0 text "Fixtures - toRelativeSpecifier" (2:10-2:40, 13-43)
 │   └─1 blockTag<@module>[1] (3:4-3:40, 47-83)
 │       └─0 text "fixtures/toRelativeSpecifier" (3:12-3:40, 55-83)
 └─1 comment[7] (12:1-28:4, 340-923)
-    │ code: null
     ├─0 description[4] (13:4-18:7, 347-521)
     │   ├─0 paragraph[3] (13:4-13:51, 347-394)
     │   │   ├─0 text "Converts " (13:4-13:13, 347-356)
@@ -165,9 +157,8 @@ root[2]
 `;
 
 exports[`integration:fromDocs > non-empty document > document sample 3 1`] = `
-root[7]
+root[9]
 ├─0 comment[3] (1:1-5:4, 0-126)
-│   │ code: null
 │   ├─0 blockTag<@file>[1] (2:4-2:30, 7-33)
 │   │   └─0 text "Fixtures - dblLinear" (2:10-2:30, 13-33)
 │   ├─1 blockTag<@module>[1] (3:4-3:30, 37-63)
@@ -175,7 +166,6 @@ root[7]
 │   └─2 blockTag<@see>[1] (4:4-4:59, 67-122)
 │       └─0 text "https://codewars.com/kata/5672682212c8ecf83e000050" (4:9-4:59, 72-122)
 ├─1 comment[8] (7:1-36:4, 128-844)
-│   │ code: null
 │   ├─0 description[7] (8:4-21:68, 135-553)
 │   │   ├─0 paragraph[5] (8:4-8:60, 135-191)
 │   │   │   ├─0 text "Consider a sequence " (8:4-8:24, 135-155)
@@ -286,54 +276,54 @@ root[7]
 │       ├─1 text "Element at " (35:30-35:41, 823-834)
 │       └─2 inlineCode "u(n)" (35:41-35:47, 834-840)
 ├─2 comment[1] (38:3-38:40, 902-939)
-│   │ code: null
 │   └─0 blockTag<@const>[2] (38:7-38:37, 906-936)
 │       ├─0 typeExpression "number[]" (38:14-38:24, 913-923)
 │       └─1 text "u - Sequence" (38:25-38:37, 924-936)
 ├─3 comment[1] (41:3-41:75, 969-1041)
-│   │ code: null
 │   └─0 blockTag<@var>[4] (41:7-41:72, 973-1038)
 │       ├─0 typeExpression "number" (41:12-41:20, 978-986)
 │       ├─1 text "j - Index of x in " (41:21-41:39, 987-1005)
 │       ├─2 inlineTag<@linkcode> "u" (41:39-41:52, 1005-1018)
 │       └─3 text " used to calculate y" (41:52-41:72, 1018-1038)
 ├─4 comment[1] (44:3-44:75, 1065-1137)
-│   │ code: null
 │   └─0 blockTag<@var>[4] (44:7-44:72, 1069-1134)
 │       ├─0 typeExpression "number" (44:12-44:20, 1074-1082)
 │       ├─1 text "k - Index of x in " (44:21-44:39, 1083-1101)
 │       ├─2 inlineTag<@linkcode> "u" (44:39-44:52, 1101-1114)
 │       └─3 text " used to calculate z" (44:52-44:72, 1114-1134)
-├─5 comment[1] (51:5-51:35, 1253-1283)
-│   │ code: null
+├─5 comment[1] (47:3-49:6, 1161-1215)
+│   └─0 description[1] (48:6-48:46, 1169-1209)
+│       └─0 paragraph[1] (48:6-48:46, 1169-1209)
+│           └─0 text "build sequence up to index n (inclusive)" (48:6-48:46, 1169-1209)
+├─6 comment[1] (51:5-51:35, 1253-1283)
 │   └─0 blockTag<@const>[3] (51:9-51:32, 1257-1280)
 │       ├─0 typeExpression "number" (51:16-51:24, 1264-1272)
 │       ├─1 text "y - " (51:25-51:29, 1273-1277)
 │       └─2 inlineCode "y" (51:29-51:32, 1277-1280)
-└─6 comment[1] (54:5-54:35, 1325-1355)
-    │ code: null
-    └─0 blockTag<@const>[3] (54:9-54:32, 1329-1352)
-        ├─0 typeExpression "number" (54:16-54:24, 1336-1344)
-        ├─1 text "z - " (54:25-54:29, 1345-1349)
-        └─2 inlineCode "z" (54:29-54:32, 1349-1352)
+├─7 comment[1] (54:5-54:35, 1325-1355)
+│   └─0 blockTag<@const>[3] (54:9-54:32, 1329-1352)
+│       ├─0 typeExpression "number" (54:16-54:24, 1336-1344)
+│       ├─1 text "z - " (54:25-54:29, 1345-1349)
+│       └─2 inlineCode "z" (54:29-54:32, 1349-1352)
+└─8 comment[1] (57:5-57:57, 1397-1449)
+    └─0 description[1] (57:8-57:54, 1400-1446)
+        └─0 paragraph[1] (57:8-57:54, 1400-1446)
+            └─0 text "set sequence value to smallest value in [y, z]" (57:8-57:54, 1400-1446)
 `;
 
 exports[`integration:fromDocs > non-empty document > document sample 4 1`] = `
 root[14]
 ├─0  comment[2] (1:1-4:4, 0-61)
-│    │ code: null
 │    ├─0 blockTag<@file>[1] (2:4-2:27, 7-30)
 │    │   └─0 text "Fixtures - Reader" (2:10-2:27, 13-30)
 │    └─1 blockTag<@module>[1] (3:4-3:27, 34-57)
 │        └─0 text "fixtures/Reader" (3:12-3:27, 42-57)
 ├─1  comment[2] (12:1-16:4, 304-351)
-│    │ code: null
 │    ├─0 description[1] (13:4-13:27, 311-334)
 │    │   └─0 paragraph[1] (13:4-13:27, 311-334)
 │    │       └─0 text "Source document reader." (13:4-13:27, 311-334)
 │    └─1 blockTag<@class>[0] (15:4-15:10, 341-347)
 ├─2  comment[5] (18:3-25:6, 369-479)
-│    │ code: null
 │    ├─0 description[1] (19:6-19:22, 378-394)
 │    │   └─0 paragraph[1] (19:6-19:22, 378-394)
 │    │       └─0 text "Source document." (19:6-19:22, 378-394)
@@ -344,7 +334,6 @@ root[14]
 │        ├─0 typeExpression "string" (24:14-24:22, 456-464)
 │        └─1 text "document" (24:23-24:31, 465-473)
 ├─3  comment[5] (28:3-36:6, 518-726)
-│    │ code: null
 │    ├─0 description[1] (29:6-30:36, 527-637)
 │    │   └─0 paragraph[3] (29:6-30:36, 527-637)
 │    │       ├─0 text "List, where each index is a line number (" (29:6-29:47, 527-568)
@@ -357,7 +346,6 @@ root[14]
 │        ├─0 typeExpression "number[]" (35:14-35:24, 702-712)
 │        └─1 text "indices" (35:25-35:32, 713-720)
 ├─4  comment[4] (39:3-45:6, 769-892)
-│    │ code: null
 │    ├─0 description[1] (40:6-40:47, 778-819)
 │    │   └─0 paragraph[3] (40:6-40:47, 778-819)
 │    │       ├─0 text "Current position in " (40:6-40:26, 778-798)
@@ -369,7 +357,6 @@ root[14]
 │        ├─0 typeExpression "number" (44:14-44:22, 869-877)
 │        └─1 text "position" (44:23-44:31, 878-886)
 ├─5  comment[3] (48:3-54:6, 925-1076)
-│    │ code: null
 │    ├─0 description[1] (49:6-49:42, 934-970)
 │    │   └─0 paragraph[1] (49:6-49:42, 934-970)
 │    │       └─0 text "Create a new source document reader." (49:6-49:42, 934-970)
@@ -379,7 +366,6 @@ root[14]
 │        ├─0 typeExpression "VFile | string" (53:13-53:29, 1021-1037)
 │        └─1 text "source - Source document or file" (53:30-53:62, 1038-1070)
 ├─6  comment[5] (61:3-75:6, 1266-1522)
-│    │ code: null
 │    ├─0 description[1] (62:6-62:56, 1275-1325)
 │    │   └─0 paragraph[1] (62:6-62:56, 1275-1325)
 │    │       └─0 text "Check if the reader is at the end of the document." (62:6-62:56, 1275-1325)
@@ -394,7 +380,6 @@ root[14]
 │        ├─1 inlineCode "true" (74:24-74:30, 1488-1494)
 │        └─2 text " if at end of document" (74:30-74:52, 1494-1516)
 ├─7  comment[4] (80:3-87:6, 1606-1751)
-│    │ code: null
 │    ├─0 description[1] (81:6-81:47, 1615-1656)
 │    │   └─0 paragraph[1] (81:6-81:47, 1615-1656)
 │    │       └─0 text "Get the current position in the document." (81:6-81:47, 1615-1656)
@@ -404,7 +389,6 @@ root[14]
 │        ├─0 typeExpression "number" (86:14-86:22, 1708-1716)
 │        └─1 text "Current position in document" (86:23-86:51, 1717-1745)
 ├─8  comment[6] (92:3-104:6, 1815-2222)
-│    │ code: null
 │    ├─0 description[1] (93:6-94:75, 1824-1972)
 │    │   └─0 paragraph[5] (93:6-94:75, 1824-1972)
 │    │       ├─0 text "Get the next " (93:6-93:19, 1824-1837)
@@ -426,7 +410,6 @@ root[14]
 │        ├─1 text "Peeked character code or " (103:21-103:46, 2185-2210)
 │        └─2 inlineCode "null" (103:46-103:52, 2210-2216)
 ├─9  comment[7] (110:3-138:6, 2388-3460)
-│    │ code: null
 │    ├─0 description[12] (111:6-128:42, 2397-3216)
 │    │   ├─0  paragraph[5] (111:6-111:53, 2397-2444)
 │    │   │    ├─0 text "Get a " (111:6-111:12, 2397-2403)
@@ -531,7 +514,6 @@ root[14]
 │        ├─0 typeExpression "Point" (137:14-137:21, 3429-3436)
 │        └─1 text "Point in document" (137:22-137:39, 3437-3454)
 ├─10 comment[2] (140:5-144:8, 3518-3608)
-│    │ code: null
 │    ├─0 description[1] (141:8-141:45, 3529-3566)
 │    │   └─0 paragraph[3] (141:8-141:45, 3529-3566)
 │    │       ├─0 text "Current offset (" (141:8-141:24, 3529-3545)
@@ -541,7 +523,6 @@ root[14]
 │        ├─0 typeExpression "number" (143:13-143:21, 3586-3594)
 │        └─1 text "index" (143:22-143:27, 3595-3600)
 ├─11 comment[2] (147:5-151:8, 3640-3727)
-│    │ code: null
 │    ├─0 description[1] (148:8-148:43, 3651-3686)
 │    │   └─0 paragraph[3] (148:8-148:43, 3651-3686)
 │    │       ├─0 text "Current line (" (148:8-148:22, 3651-3665)
@@ -551,7 +532,6 @@ root[14]
 │        ├─0 typeExpression "number" (150:13-150:21, 3706-3714)
 │        └─1 text "line" (150:22-150:26, 3715-3719)
 ├─12 comment[2] (154:5-158:8, 3759-3858)
-│    │ code: null
 │    ├─0 description[1] (155:8-155:53, 3770-3815)
 │    │   └─0 paragraph[3] (155:8-155:53, 3770-3815)
 │    │       ├─0 text "Current " (155:8-155:16, 3770-3778)
@@ -561,7 +541,6 @@ root[14]
 │        ├─0 typeExpression "Point" (157:15-157:22, 3837-3844)
 │        └─1 text "point" (157:23-157:28, 3845-3850)
 └─13 comment[6] (177:3-191:6, 4310-4756)
-     │ code: null
      ├─0 description[4] (178:6-181:78, 4319-4506)
      │   ├─0 paragraph[5] (178:6-179:30, 4319-4423)
      │   │   ├─0 text "Get the next " (178:6-178:19, 4319-4332)
@@ -596,7 +575,6 @@ root[14]
 exports[`integration:fromDocs > non-empty snippet > snippet sample 0 1`] = `
 root[1]
 └─0 comment[7] (110:3-138:6, 2388-3460)
-    │ code: null
     ├─0 description[12] (111:6-128:42, 2397-3216)
     │   ├─0  paragraph[5] (111:6-111:53, 2397-2444)
     │   │    ├─0 text "Get a " (111:6-111:12, 2397-2403)

@@ -4,12 +4,16 @@
  */
 
 import type { Transform } from '#src/types'
-import type { Point } from '@flex-development/docast'
 import type { Nilable, OneOrMany } from '@flex-development/tutils'
 import type TestSubject from '../options'
+import type LexerOptions from '../options-lexer'
 import type MarkdownOptions from '../options-markdown'
 
 describe('unit-d:interfaces/Options', () => {
+  it('should extend LexerOptions', () => {
+    expectTypeOf<TestSubject>().toMatchTypeOf<LexerOptions>()
+  })
+
   it('should extend MarkdownOptions', () => {
     expectTypeOf<TestSubject>().toMatchTypeOf<MarkdownOptions>()
   })
@@ -18,12 +22,6 @@ describe('unit-d:interfaces/Options', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('codeblocks')
       .toEqualTypeOf<Nilable<OneOrMany<RegExp | string>>>()
-  })
-
-  it('should match [from?: Nilable<Point>]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('from')
-      .toEqualTypeOf<Nilable<Point>>()
   })
 
   it('should match [transforms?: Nilable<Transform[]>]', () => {

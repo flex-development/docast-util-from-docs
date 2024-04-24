@@ -36,7 +36,10 @@ describe('integration:fromDocs', () => {
         mdastExtensions: [directiveFromMarkdown()],
         micromarkExtensions: [directive()]
       }],
-      [await read('__fixtures__/dbl-linear.ts'), { codeblocks: [/@example/] }],
+      [await read('__fixtures__/dbl-linear.ts'), {
+        codeblocks: [/@example/],
+        multiline: true
+      }],
       [await read('__fixtures__/reader.ts')]
     ])('document sample %#', (file, options) => {
       expect(testSubject(file, options)).toMatchSnapshot()

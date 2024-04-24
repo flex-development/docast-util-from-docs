@@ -24,6 +24,11 @@ interface ParseMarkdownOptions extends MarkdownOptions {
   code?: Nilable<boolean>
 
   /**
+   * Parse multiline comments.
+   */
+  multiline?: Nilable<boolean>
+
+  /**
    * Position of markdown value.
    *
    * @see {@linkcode Position}

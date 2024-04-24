@@ -1,6 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`unit:parseMarkdown > should return mdast child node array 1`] = `
+exports[`unit:parseMarkdown > sample 0 1`] = `
+root[1] (63:8-63:55, 1564-1611)
+└─0 paragraph[1] (63:8-63:55, 1564-1611)
+    └─0 text "increase of index of x used to calculate z by 1" (63:8-63:55, 1564-1611)
+`;
+
+exports[`unit:parseMarkdown > sample 1 1`] = `
 root[12] (111:6-128:42, 2397-3216)
 ├─0  paragraph[5] (111:6-111:53, 2397-2444)
 │    ├─0 text "Get a " (111:6-111:12, 2397-2403)

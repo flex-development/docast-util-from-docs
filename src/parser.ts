@@ -132,7 +132,7 @@ class Parser {
     options = fallback(options, {}, isNIL)
     options.transforms = fallback(options.transforms, [], isNIL)
 
-    this.lexer = new Lexer(source, options.from)
+    this.lexer = new Lexer(source, options)
     this.options = Object.freeze(defaults(options, { codeblocks: '@example' }))
   }
 
@@ -200,7 +200,6 @@ class Parser {
     ), ([opener, description, blockTags, closer]) => {
       return u(types.comment, {
         children: this.children<Comment>(sift([description, ...blockTags])),
-        code: null,
         position: { end: closer.end, start: opener.start }
       })
     })

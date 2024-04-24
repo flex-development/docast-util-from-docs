@@ -19,6 +19,12 @@ describe('unit-d:interfaces/ParseMarkdownOptions', () => {
       .toEqualTypeOf<Nilable<boolean>>()
   })
 
+  it('should match [multiline?: Nilable<boolean>]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('multiline')
+      .toEqualTypeOf<Nilable<boolean>>()
+  })
+
   it('should match [position: Position]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('position')
