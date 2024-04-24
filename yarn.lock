@@ -1262,7 +1262,7 @@ __metadata:
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
     "@flex-development/unist-util-types": "npm:1.3.1"
-    "@flex-development/unist-util-visit": "npm:1.0.0"
+    "@flex-development/unist-util-visit": "npm:1.1.0"
     "@html-eslint/eslint-plugin": "npm:0.24.0"
     "@html-eslint/parser": "npm:0.24.0"
     "@types/chai": "npm:4.3.14"
@@ -1723,16 +1723,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/unist-util-visit@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@flex-development/unist-util-visit@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-visit%2F1.0.0%2F80616055072ebb771682ec055244857a9789d677"
+"@flex-development/unist-util-visit@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@flex-development/unist-util-visit@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-visit%2F1.1.0%2Fb565477b68a3adb5b2ce14da1e013d30e52cfe15"
   dependencies:
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
-    "@flex-development/unist-util-types": "npm:1.2.0"
+    "@flex-development/unist-util-types": "npm:1.3.1"
     unist-util-is: "npm:6.0.0"
   peerDependencies:
     "@types/unist": ">=3.0.2"
-  checksum: 10/c2fb4e2d26dc770b77298b412c22e5aeb6f673b7ec7c1093dd1994f4134c8fb0d04e57116b12a23b2758dafa890cb1efe3394870c0376fd9561e6da13ab090ba
+  checksum: 10/faa5501fb0649043ee9dfad9874d200647973b49da1f0a76a62cd4d92ca7a7410ac0d1c078fa06a6768b9686949c32d3f86ba9d416d0a84440e13979f8e30397
   languageName: node
   linkType: hard
 
