@@ -18,6 +18,12 @@ describe('unit-d:enums/TokenKind', () => {
       .toMatchTypeOf<'delimiter'>()
   })
 
+  it('should match [eof: "eof"]', () => {
+    expectTypeOf<typeof TestSubject>()
+      .toHaveProperty('eof')
+      .toMatchTypeOf<'eof'>()
+  })
+
   it('should match [markdown: "markdown"]', () => {
     expectTypeOf<typeof TestSubject>()
       .toHaveProperty('markdown')

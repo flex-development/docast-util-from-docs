@@ -11,6 +11,7 @@
 enum TokenKind {
   closer = 'closer',
   delimiter = 'delimiter',
+  eof = 'eof',
   markdown = 'markdown',
   opener = 'opener',
   tag = 'tag',

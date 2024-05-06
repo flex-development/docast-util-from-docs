@@ -16,6 +16,7 @@ iife
 jchen
 jsdoc
 kaisugi
+kleft
 lcov
 lintstagedrc
 mdast

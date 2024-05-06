@@ -49,9 +49,9 @@ class Lexer {
    * @public
    * @readonly
    * @instance
-   * @member {Optional<Token>} head
+   * @member {Token} head
    */
-  public readonly head?: Optional<Token>
+  public readonly head: Token
 
   /**
    * Lexer options.
@@ -76,18 +76,6 @@ class Lexer {
    * @member {Reader} reader
    */
   protected readonly reader: Reader
-
-  /**
-   * Tail token.
-   *
-   * @see {@linkcode Token}
-   *
-   * @public
-   * @readonly
-   * @instance
-   * @member {Optional<Token>} tail
-   */
-  public readonly tail?: Token | undefined
 
   /**
    * Token sequence.
@@ -117,9 +105,7 @@ class Lexer {
     this.options = Object.freeze(options ??= {})
     this.reader = new Reader(value, this.options.from)
     this.tokens = []
-
     this.head = this.tokenize()
-    this.tail = this.tokens.at(-1)
   }
 
   /**
@@ -333,9 +319,9 @@ class Lexer {
    * @protected
    * @instance
    *
-   * @return {Token | undefined} Head token
+   * @return {Token} Head token
    */
-  protected tokenize(): Token | undefined {
+  protected tokenize(): Token {
     while (!this.reader.eof) {
       ok(this.reader.char, 'expected character')
 
@@ -370,7 +356,10 @@ class Lexer {
       }
     }
 
-    return this.tokens[0]
+    this.enter(kinds.eof, '')
+    this.exit(kinds.eof)
+
+    return this.tokens[0]!
   }
 
   /**

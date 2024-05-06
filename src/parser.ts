@@ -62,6 +62,7 @@ import type {
 import {
   apply,
   expectEOF as eof,
+  kleft,
   opt,
   rep,
   expectSingleResult as result,
@@ -236,7 +237,7 @@ class Parser {
    * @return {P<kinds, Root>} Root parser
    */
   protected get root(): P<kinds, Root> {
-    return apply(rep(this.comment), children => {
+    return apply(kleft(rep(this.comment), tok(kinds.eof)), children => {
       const { transforms } = this.options
 
       /**
