@@ -3,11 +3,11 @@
  * @module docast-util-from-docs/lexer
  */
 
-import type { Point } from '@flex-development/docast'
-import type { Nilable, Optional } from '@flex-development/tutils'
+import type { Optional } from '@flex-development/tutils'
+import type { Point } from '@flex-development/vfile-location'
 import debug from 'debug'
 import { ok } from 'devlop'
-import type { VFile } from 'vfile'
+import type { VFile, Value } from 'vfile'
 import { TokenKind as kinds } from './enums'
 import type { LexerOptions } from './interfaces'
 import Reader from './reader'
@@ -15,7 +15,7 @@ import Token from './token'
 import type { Character, CharacterMatch } from './types'
 
 /**
- * Source document tokenizer.
+ * Docblock tokenizer.
  *
  * @class
  */
@@ -66,7 +66,7 @@ class Lexer {
   protected readonly options: Readonly<LexerOptions>
 
   /**
-   * Source document reader.
+   * Character reader.
    *
    * @see {@linkcode Reader}
    *
@@ -102,19 +102,20 @@ class Lexer {
   protected readonly tokens: Token[]
 
   /**
-   * Create a new document tokenizer.
+   * Create a new docblock tokenizer.
    *
    * @see {@linkcode LexerOptions}
    * @see {@linkcode VFile}
+   * @see {@linkcode Value}
    *
-   * @param {VFile | string} source - Source document or file
-   * @param {Nilable<LexerOptions>?} [options] - Lexer options
+   * @param {Value | VFile} value - Source document or file
+   * @param {(LexerOptions | null)?} [options] - Lexer options
    */
-  constructor(source: VFile | string, options?: Nilable<LexerOptions>) {
+  constructor(value: Value | VFile, options?: LexerOptions | null) {
     this.comment = false
     this.debug = debug('docast-util-from-docs:lexer')
     this.options = Object.freeze(options ??= {})
-    this.reader = new Reader(source, this.options.from)
+    this.reader = new Reader(value, this.options.from)
     this.tokens = []
 
     this.head = this.tokenize()
@@ -321,7 +322,7 @@ class Lexer {
    * @return {Point} Current point in document
    */
   protected now(): Point {
-    return this.reader.point(this.reader.from.offset + this.reader.index)
+    return this.reader.point(this.reader.start.offset + this.reader.index)
   }
 
   /**

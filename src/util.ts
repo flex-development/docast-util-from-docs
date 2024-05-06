@@ -4,8 +4,7 @@
  */
 
 import type { Root } from '@flex-development/docast'
-import type { Nilable } from '@flex-development/tutils'
-import type { VFile } from 'vfile'
+import type { VFile, Value } from 'vfile'
 import type { Options } from './interfaces'
 import Parser from './parser'
 
@@ -15,14 +14,15 @@ import Parser from './parser'
  * @see {@linkcode Options}
  * @see {@linkcode Root}
  * @see {@linkcode VFile}
+ * @see {@linkcode Value}
  * @see https://github.com/flex-development/docast
  *
- * @param {VFile | string} value - Source file or document
- * @param {Nilable<Options>?} [options] - Parser options
+ * @param {Value | VFile} value - Source file or document
+ * @param {(Options | null)?} [options] - Parser options
  * @return {Root} docast tree
  */
-const fromDocs = (value: VFile | string, options?: Nilable<Options>): Root => {
-  return new Parser(String(value), options).parse()
+const fromDocs = (value: Value | VFile, options?: Options | null): Root => {
+  return new Parser(value, options).parse()
 }
 
 export default fromDocs

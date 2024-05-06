@@ -1261,8 +1261,9 @@ __metadata:
     "@flex-development/mlly": "npm:1.0.0-alpha.18"
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
-    "@flex-development/unist-util-types": "npm:1.3.1"
+    "@flex-development/unist-util-types": "npm:1.4.0"
     "@flex-development/unist-util-visit": "npm:1.1.0"
+    "@flex-development/vfile-location": "npm:1.0.0"
     "@html-eslint/eslint-plugin": "npm:0.24.0"
     "@html-eslint/parser": "npm:0.24.0"
     "@types/chai": "npm:4.3.14"
@@ -1714,12 +1715,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/unist-util-types@npm:1.3.1":
-  version: 1.3.1
-  resolution: "@flex-development/unist-util-types@npm:1.3.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.3.1%2F44deb809fdc2921405035513bd54c4605213c7bc"
+"@flex-development/unist-util-types@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@flex-development/unist-util-types@npm:1.4.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.4.0%2F7bc3e76774ee0ff16f31bf3ca7caaec923795e07"
   peerDependencies:
     "@types/unist": ">=3.0.2"
-  checksum: 10/110ec112363147784c6f4a32473a1a44a76d28b775fe3d37bbe46b09e7c9f1f67dd0c8d7b9ec5bbe5b8f4d915cbbb826e3b1efc70c0cb5ca020c34b72351c4c5
+  checksum: 10/90f20be4a9617e5483b0ab9e8837022b78c5bd6dc12b65b30c1e7a10798f45fca4367716deeb666a9ec09d9321b8d51393be7f3bf9535ec2794a22dc9c6fd4f8
   languageName: node
   linkType: hard
 
@@ -1733,6 +1734,17 @@ __metadata:
   peerDependencies:
     "@types/unist": ">=3.0.2"
   checksum: 10/faa5501fb0649043ee9dfad9874d200647973b49da1f0a76a62cd4d92ca7a7410ac0d1c078fa06a6768b9686949c32d3f86ba9d416d0a84440e13979f8e30397
+  languageName: node
+  linkType: hard
+
+"@flex-development/vfile-location@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@flex-development/vfile-location@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-location%2F1.0.0%2Fe4bc37418ca970080ece98fa71602f9f2f8bff04"
+  dependencies:
+    "@flex-development/unist-util-types": "npm:1.4.0"
+    "@types/unist": "npm:3.0.2"
+    vfile: "npm:6.0.1"
+  checksum: 10/eb77ba5d5c8b486da1c84b03246afd26aa236ddf76a498c9d9a09419138fd29e988826c0bb0ef90b08ef9760b79d7424f0760266000d79eb107306e1e811ea61
   languageName: node
   linkType: hard
 

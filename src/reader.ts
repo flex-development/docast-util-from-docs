@@ -3,12 +3,11 @@
  * @module docast-util-from-docs/Reader
  */
 
-import type { Point } from '@flex-development/docast'
-import type { Nilable } from '@flex-development/tutils'
+import type { Offset } from '@flex-development/unist-util-types'
+import { Location, type Point } from '@flex-development/vfile-location'
 import { ok } from 'devlop'
-import type { VFile } from 'vfile'
-import Location from './location'
-import type { Character, CharacterMatch, Offset } from './types'
+import type { VFile, Value } from 'vfile'
+import type { Character, CharacterMatch } from './types'
 
 /**
  * Character reader.
@@ -19,6 +18,16 @@ import type { Character, CharacterMatch, Offset } from './types'
  * @extends {Location}
  */
 class Reader extends Location {
+  /**
+   * Source document.
+   *
+   * @protected
+   * @readonly
+   * @instance
+   * @member {string} document
+   */
+  protected readonly document: string
+
   /**
    * Current position in {@linkcode document}.
    *
@@ -33,12 +42,14 @@ class Reader extends Location {
    *
    * @see {@linkcode Point}
    * @see {@linkcode VFile}
+   * @see {@linkcode Value}
    *
-   * @param {VFile | string} source - Source document or file
-   * @param {Nilable<Point>?} [from] - Start point
+   * @param {Value | VFile} source - Source document or file
+   * @param {(Point | null)?} [from] - Point before first character in `source`
    */
-  constructor(source: VFile | string, from?: Nilable<Point>) {
-    super(String(source), from)
+  constructor(source: Value | VFile, from?: Point | null) {
+    super(source, from)
+    this.document = String(source)
     this.position = 0
   }
 

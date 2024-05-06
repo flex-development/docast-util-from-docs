@@ -35,6 +35,7 @@ import {
   visit,
   type VisitedParent
 } from '@flex-development/unist-util-visit'
+import { Location } from '@flex-development/vfile-location'
 import { ok } from 'devlop'
 import type {
   Break,
@@ -70,11 +71,10 @@ import {
 } from 'typescript-parsec'
 import type { Node, Parent } from 'unist'
 import { u } from 'unist-builder'
-import type { VFile } from 'vfile'
+import type { VFile, Value } from 'vfile'
 import { TokenKind as kinds, types } from './enums'
 import type { Options } from './interfaces'
 import Lexer from './lexer'
-import Location from './location'
 
 declare module 'mdast' {
   interface BreakData {
@@ -96,7 +96,7 @@ declare module 'micromark-util-types' {
  */
 class Parser {
   /**
-   * Source document tokenizer.
+   * Docblock tokenizer.
    *
    * @see {@linkcode Lexer}
    *
@@ -124,15 +124,16 @@ class Parser {
    *
    * @see {@linkcode Options}
    * @see {@linkcode VFile}
+   * @see {@linkcode Value}
    *
-   * @param {VFile | string} source - Source document or file
-   * @param {Nilable<Options>?} [options] - Parser options
+   * @param {Value | VFile} value - Source file or document
+   * @param {(Options | null)?} [options] - Parser options
    */
-  constructor(source: VFile | string, options?: Nilable<Options>) {
+  constructor(value: Value | VFile, options?: Options | null) {
     options = fallback(options, {}, isNIL)
     options.transforms = fallback(options.transforms, [], isNIL)
 
-    this.lexer = new Lexer(source, options)
+    this.lexer = new Lexer(value, options)
     this.options = Object.freeze(defaults(options, { codeblocks: '@example' }))
   }
 

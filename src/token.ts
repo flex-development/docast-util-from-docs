@@ -3,8 +3,8 @@
  * @module docast-util-from-docs/token
  */
 
-import type { Point, Position } from '@flex-development/docast'
-import type { Optional } from '@flex-development/tutils'
+import type { Position } from '@flex-development/docast'
+import type { Point } from '@flex-development/vfile-location'
 import { ok } from 'devlop'
 import type * as parsec from 'typescript-parsec'
 import type { TokenKind } from './enums'
@@ -46,9 +46,9 @@ class Token<K extends TokenKind = TokenKind> implements parsec.Token<K> {
    *
    * @public
    * @instance
-   * @member {Optional<Token<K>>} next
+   * @member {Token<K> | undefined} next
    */
-  public next: Optional<Token<K>>
+  public next: Token<K> | undefined
 
   /**
    * Point where token starts.

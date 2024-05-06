@@ -3,26 +3,25 @@
  * @module docast-util-from-docs/interfaces/LexerOptions
  */
 
-import type { Point } from '@flex-development/docast'
-import type { Nilable } from '@flex-development/tutils'
+import type { Point } from '@flex-development/vfile-location'
 
 /**
  * Lexer configuration options.
  */
 interface LexerOptions {
   /**
-   * Start point.
+   * Point before first character in source file.
    *
    * Node positions will be relative to this point.
    *
    * @see {@linkcode Point}
    */
-  from?: Nilable<Point>
+  from?: Point | null | undefined
 
   /**
    * Allow multiline comments.
    */
-  multiline?: Nilable<boolean>
+  multiline?: boolean | null | undefined
 }
 
 export type { LexerOptions as default }

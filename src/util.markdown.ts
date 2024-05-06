@@ -5,7 +5,7 @@
 
 import type { Position } from '@flex-development/docast'
 import type { RootContent } from 'mdast'
-import type { VFile } from 'vfile'
+import type { VFile, Value } from 'vfile'
 import { TokenKind } from './enums'
 import type { ParseMarkdownOptions } from './interfaces'
 import Parser from './parser'
@@ -21,15 +21,16 @@ import Token from './token'
  * @see {@linkcode Position}
  * @see {@linkcode RootContent}
  * @see {@linkcode VFile}
+ * @see {@linkcode Value}
  *
  * @template {RootContent} [T=RootContent] - mdast child node type
  *
- * @param {VFile | string} value - Markdown to parse
+ * @param {Value | VFile} value - Markdown to parse
  * @param {ParseMarkdownOptions} options - Configuration options
  * @return {RootContent[]} `mdast` child node array
  */
 const parseMarkdown = <T extends RootContent = RootContent>(
-  value: VFile | string,
+  value: Value | VFile,
   options: ParseMarkdownOptions
 ): T[] => {
   const { code, position, ...rest } = options
