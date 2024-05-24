@@ -63,8 +63,8 @@ import {
   apply,
   expectEOF as eof,
   kleft,
-  opt,
-  rep,
+  opt_sc,
+  rep_sc,
   expectSingleResult as result,
   seq,
   tok,
@@ -151,8 +151,8 @@ class Parser {
   protected get blockTag(): P<kinds, BlockTag> {
     return apply(seq(
       tok(kinds.tag),
-      opt(this.typeExpression),
-      opt(tok(kinds.markdown))
+      opt_sc(this.typeExpression),
+      opt_sc(tok(kinds.markdown))
     ), ([tag, typeExpression, markdown]) => {
       /**
        * Block tag names, or regular expressions, matching block tags that
@@ -196,8 +196,8 @@ class Parser {
   protected get comment(): P<kinds, Comment> {
     return apply(seq(
       tok(kinds.opener),
-      opt(this.description),
-      rep(this.blockTag),
+      opt_sc(this.description),
+      rep_sc(this.blockTag),
       tok(kinds.closer)
     ), ([opener, description, blockTags, closer]) => {
       return u(types.comment, {
@@ -237,7 +237,7 @@ class Parser {
    * @return {P<kinds, Root>} Root parser
    */
   protected get root(): P<kinds, Root> {
-    return apply(kleft(rep(this.comment), tok(kinds.eof)), children => {
+    return apply(kleft(rep_sc(this.comment), tok(kinds.eof)), children => {
       const { transforms } = this.options
 
       /**

@@ -5,14 +5,13 @@
 
 import type { Optional } from '@flex-development/tutils'
 import type { Point } from '@flex-development/vfile-location'
+import { Reader, type CharacterMatch } from '@flex-development/vfile-reader'
 import debug from 'debug'
 import { ok } from 'devlop'
 import type { VFile, Value } from 'vfile'
 import { TokenKind as kinds } from './enums'
 import type { LexerOptions } from './interfaces'
-import Reader from './reader'
 import Token from './token'
-import type { Character, CharacterMatch } from './types'
 
 /**
  * Docblock tokenizer.
@@ -40,6 +39,16 @@ class Lexer {
    * @member {debug.Debugger} debug
    */
   protected readonly debug: debug.Debugger
+
+  /**
+   * Source file.
+   *
+   * @protected
+   * @readonly
+   * @instance
+   * @member {string} file
+   */
+  protected readonly file: string
 
   /**
    * Head token.
@@ -102,6 +111,7 @@ class Lexer {
   constructor(value: Value | VFile, options?: LexerOptions | null) {
     this.comment = false
     this.debug = debug('docast-util-from-docs:lexer')
+    this.file = String(value)
     this.options = Object.freeze(options ??= {})
     this.reader = new Reader(value, this.options.from)
     this.tokens = []
@@ -215,23 +225,6 @@ class Lexer {
   }
 
   /**
-   * Consume a character.
-   *
-   * @see {@linkcode Character}
-   *
-   * @protected
-   * @instance
-   *
-   * @param {Character} char - Character to consume
-   * @return {void} Nothing
-   */
-  protected consume(char: Character): void {
-    ok(char === this.reader.char, 'expected `char` to equal `reader.char`')
-    this.debug('consume: `%s`\nnow: %o', char, this.now())
-    return void this.reader.read()
-  }
-
-  /**
    * Open a new token.
    *
    * @see {@linkcode Token}
@@ -322,37 +315,60 @@ class Lexer {
    * @return {Token} Head token
    */
   protected tokenize(): Token {
-    while (!this.reader.eof) {
-      ok(this.reader.char, 'expected character')
+    /**
+     * Regular expression used to search for comments.
+     *
+     * @const {RegExp} search
+     */
+    const search: RegExp = new RegExp(
+      `\\/\\*{${this.options.multiline ? 1 : 2},2}.*?\\*\\/`,
+      'gms'
+    )
+
+    // tokenize comments
+    for (const match of this.file.matchAll(search)) {
+      this.reader.read((match.index - this.reader.index) + match.length - 1)
 
       /**
-       * Boolean indicating at least one character was consumed.
+       * Comment reader.
        *
-       * @var {boolean} consumed
+       * @const {Reader} reader
        */
-      let consumed: boolean = false
+      const reader: Reader = new Reader(match[0])
 
-      // tokenize match
-      for (const [keep, rule, kind] of this.rules) {
-        rule.lastIndex = this.reader.index
-
+      // tokenize comment components
+      while (!reader.eof) {
         /**
-         * Character match.
+         * Boolean indicating at least one character was consumed.
          *
-         * @const {CharacterMatch} match
+         * @var {boolean} consumed
          */
-        const match: CharacterMatch = this.reader.peekMatch(rule)
+        let consumed: boolean = false
 
         // tokenize match
-        if (match && (kind === kinds.opener || this.comment)) {
-          consumed = this.tokenizeMatch(kind, match[0], keep)
-        }
-      }
+        for (const [keep, rule, kind] of this.rules) {
+          /**
+           * Character match.
+           *
+           * @const {CharacterMatch} match
+           */
+          const match: CharacterMatch = this.reader.peekMatch(rule)
 
-      // consume character if lexer state was not modified
-      if (!consumed) {
-        this.consume(this.reader.char)
-        continue
+          // tokenize match
+          if (match && (kind === kinds.opener || this.comment)) {
+            const [characters] = match
+
+            keep && this.enter(kind, characters)
+            this.reader.read(characters.length)
+            keep && this.exit(kind)
+
+            consumed = true
+            break
+          }
+        }
+
+        // consume character if comment reader state was not modified
+        !consumed && reader.read()
       }
     }
 
@@ -360,42 +376,6 @@ class Lexer {
     this.exit(kinds.eof)
 
     return this.tokens[0]!
-  }
-
-  /**
-   * Tokenize a character match.
-   *
-   * @see {@linkcode kinds}
-   *
-   * @protected
-   * @instance
-   *
-   * @param {kinds} kind - Token kind
-   * @param {string} chars - Character match string
-   * @param {boolean} keep - If `false`, consume characters without tokenizing
-   * @return {true} `true`
-   */
-  protected tokenizeMatch(kind: kinds, chars: string, keep: boolean): true {
-    ok(typeof kind === 'string', 'expected `kind` to be a string')
-    ok(kind.length > 0, 'expected `kind` to be a non-empty string')
-    ok(chars, 'expected character match')
-
-    /**
-     * Current index in matched character string.
-     *
-     * @var {number} index
-     */
-    let index: number = -1
-
-    // tokenize match
-    while (++index < chars.length) {
-      ok(this.reader.char === chars[index], `expected \`${chars[index]}\``)
-      if (keep && !index) this.enter(kind, chars)
-      this.consume(this.reader.char)
-      if (keep && index === chars.length - 1) this.exit(kind)
-    }
-
-    return true
   }
 }
 

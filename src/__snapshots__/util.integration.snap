@@ -572,6 +572,497 @@ root[14]
          └─4 inlineCode "null" (190:46-190:52, 4744-4750)
 `;
 
+exports[`integration:fromDocs > non-empty document > document sample 5 1`] = `
+root[14]
+├─0  comment[2] (1:1-4:4, 0-56)
+│    ├─0 blockTag<@file>[1] (2:4-2:15, 7-18)
+│    │   └─0 text "visit" (2:10-2:15, 13-18)
+│    └─1 blockTag<@module>[1] (3:4-3:34, 22-52)
+│        └─0 text "unist-util-visit/visit" (3:12-3:34, 30-52)
+├─1  comment[8] (28:1-63:4, 661-2310)
+│    ├─0 description[18] (29:4-49:65, 668-1786)
+│    │   ├─0  paragraph[1] (29:4-29:44, 668-708)
+│    │   │    └─0 text "Visit nodes, with ancestral information." (29:4-29:44, 668-708)
+│    │   ├─1  break (29:44-30:1, 708-709)
+│    │   ├─2  break (30:3-31:1, 711-712)
+│    │   │      data: {"blank":true}
+│    │   ├─3  paragraph[29] (31:4-35:67, 715-1078)
+│    │   │    ├─0  text "This algorithm performs " (31:4-31:28, 715-739)
+│    │   │    ├─1  linkReference[1] (31:28-31:63, 739-774)
+│    │   │    │    │ label: "dft"
+│    │   │    │    │ identifier: "dft"
+│    │   │    │    │ referenceType: "full"
+│    │   │    │    └─0 emphasis[1] (31:29-31:57, 740-768)
+│    │   │    │        └─0 text "depth-first tree traversal" (31:30-31:56, 741-767)
+│    │   │    ├─2  text " in " (31:63-32:1, 774-778)
+│    │   │    ├─3  linkReference[1] (32:4-32:26, 781-803)
+│    │   │    │    │ label: "preorder"
+│    │   │    │    │ identifier: "preorder"
+│    │   │    │    │ referenceType: "full"
+│    │   │    │    └─0 emphasis[1] (32:5-32:15, 782-792)
+│    │   │    │        └─0 text "preorder" (32:6-32:14, 783-791)
+│    │   │    ├─4  text " (" (32:26-32:28, 803-805)
+│    │   │    ├─5  strong[1] (32:28-32:35, 805-812)
+│    │   │    │    └─0 text "NLR" (32:30-32:33, 807-810)
+│    │   │    ├─6  text ") and/or " (32:35-32:44, 812-821)
+│    │   │    ├─7  linkReference[1] (32:44-32:68, 821-845)
+│    │   │    │    │ label: "postorder"
+│    │   │    │    │ identifier: "postorder"
+│    │   │    │    │ referenceType: "full"
+│    │   │    │    └─0 emphasis[1] (32:45-32:56, 822-833)
+│    │   │    │        └─0 text "postorder" (32:46-32:55, 823-832)
+│    │   │    ├─8  text " (" (32:68-32:70, 845-847)
+│    │   │    ├─9  strong[1] (32:70-32:77, 847-854)
+│    │   │    │    └─0 text "LRN" (32:72-32:75, 849-852)
+│    │   │    ├─10 text "), or if " (32:77-33:10, 854-866)
+│    │   │    ├─11 inlineCode "reverse" (33:10-33:19, 866-875)
+│    │   │    ├─12 text " is given, " (33:19-33:30, 875-886)
+│    │   │    ├─13 emphasis[1] (33:30-33:48, 886-904)
+│    │   │    │    └─0 text "reverse preorder" (33:31-33:47, 887-903)
+│    │   │    ├─14 text " (" (33:48-33:50, 904-906)
+│    │   │    ├─15 strong[1] (33:50-33:57, 906-913)
+│    │   │    │    └─0 text "NRL" (33:52-33:55, 908-911)
+│    │   │    ├─16 text ") and/or " (33:57-33:66, 913-922)
+│    │   │    ├─17 emphasis[1] (33:66-34:14, 922-944)
+│    │   │    │    └─0 text "reverse postorder" (33:67-34:13, 923-943)
+│    │   │    ├─18 text " (" (34:14-34:16, 944-946)
+│    │   │    ├─19 strong[1] (34:16-34:23, 946-953)
+│    │   │    │    └─0 text "RLN" (34:18-34:21, 948-951)
+│    │   │    ├─20 text "). Nodes are handled on " (34:23-34:47, 953-977)
+│    │   │    ├─21 linkReference[1] (34:47-34:63, 977-993)
+│    │   │    │    │ label: "enter"
+│    │   │    │    │ identifier: "enter"
+│    │   │    │    │ referenceType: "full"
+│    │   │    │    └─0 emphasis[1] (34:48-34:55, 978-985)
+│    │   │    │        └─0 text "enter" (34:49-34:54, 979-984)
+│    │   │    ├─22 text " during " (34:63-34:71, 993-1001)
+│    │   │    ├─23 emphasis[1] (34:71-34:81, 1001-1011)
+│    │   │    │    └─0 text "preorder" (34:72-34:80, 1002-1010)
+│    │   │    ├─24 text " traversals and on " (34:81-35:22, 1011-1033)
+│    │   │    ├─25 linkReference[1] (35:22-35:36, 1033-1047)
+│    │   │    │    │ label: "exit"
+│    │   │    │    │ identifier: "exit"
+│    │   │    │    │ referenceType: "full"
+│    │   │    │    └─0 emphasis[1] (35:23-35:29, 1034-1040)
+│    │   │    │        └─0 text "exit" (35:24-35:28, 1035-1039)
+│    │   │    ├─26 text " during " (35:36-35:44, 1047-1055)
+│    │   │    ├─27 emphasis[1] (35:44-35:55, 1055-1066)
+│    │   │    │    └─0 text "postorder" (35:45-35:54, 1056-1065)
+│    │   │    └─28 text " traversals." (35:55-35:67, 1066-1078)
+│    │   ├─4  break (35:67-36:1, 1078-1079)
+│    │   ├─5  break (36:3-37:1, 1081-1082)
+│    │   │      data: {"blank":true}
+│    │   ├─6  paragraph[9] (37:4-40:33, 1085-1349)
+│    │   │    ├─0 text "Walking the " (37:4-37:16, 1085-1097)
+│    │   │    ├─1 inlineCode "tree" (37:16-37:22, 1097-1103)
+│    │   │    ├─2 text " is an intensive task. Make use of " (37:22-37:57, 1103-1138)
+│    │   │    ├─3 inlineCode "visitor" (37:57-37:66, 1138-1147)
+│    │   │    ├─4 text " return values whenever possible. Instead of walking " (37:66-38:42, 1147-1203)
+│    │   │    ├─5 inlineCode "tree" (38:42-38:48, 1203-1209)
+│    │   │    ├─6 text " multiple times, walk it once, use " (38:48-39:8, 1209-1247)
+│    │   │    ├─7 linkReference[1] (39:8-39:40, 1247-1279)
+│    │   │    │   │ label: "unist-util-is"
+│    │   │    │   │ identifier: "unist-util-is"
+│    │   │    │   │ referenceType: "full"
+│    │   │    │   └─0 inlineCode "unist-util-is" (39:9-39:24, 1248-1263)
+│    │   │    └─8 text " to check if a node matches, and then perform different operations." (39:40-40:33, 1279-1349)
+│    │   ├─7  break (40:33-41:1, 1349-1350)
+│    │   ├─8  break (41:3-42:1, 1352-1353)
+│    │   │      data: {"blank":true}
+│    │   ├─9  paragraph[5] (42:4-42:65, 1356-1417)
+│    │   │    ├─0 text "You can change " (42:4-42:19, 1356-1371)
+│    │   │    ├─1 inlineCode "tree" (42:19-42:25, 1371-1377)
+│    │   │    ├─2 text ". See " (42:25-42:31, 1377-1383)
+│    │   │    ├─3 inlineTag<@linkcode> "Visitor" (42:31-42:50, 1383-1402)
+│    │   │    └─4 text " for more info." (42:50-42:65, 1402-1417)
+│    │   ├─10 break (42:65-43:1, 1417-1418)
+│    │   ├─11 break (43:3-44:1, 1420-1421)
+│    │   │      data: {"blank":true}
+│    │   ├─12 definition (44:4-44:69, 1424-1489)
+│    │   │      identifier: "dft"
+│    │   │      label: "dft"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#depth-first-traversal"
+│    │   ├─13 definition (45:4-45:55, 1493-1544)
+│    │   │      identifier: "enter"
+│    │   │      label: "enter"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#enter"
+│    │   ├─14 definition (46:4-46:53, 1548-1597)
+│    │   │      identifier: "exit"
+│    │   │      label: "exit"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#exit"
+│    │   ├─15 definition (47:4-47:63, 1601-1660)
+│    │   │      identifier: "postorder"
+│    │   │      label: "postorder"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#postorder"
+│    │   ├─16 definition (48:4-48:61, 1664-1721)
+│    │   │      identifier: "preorder"
+│    │   │      label: "preorder"
+│    │   │      title: null
+│    │   │      url: "https://github.com/syntax-tree/unist#preorder"
+│    │   └─17 definition (49:4-49:65, 1725-1786)
+│    │          identifier: "unist-util-is"
+│    │          label: "unist-util-is"
+│    │          title: null
+│    │          url: "https://github.com/syntax-tree/unist-util-is"
+│    ├─1 blockTag<@see>[1] (51:4-51:25, 1793-1814)
+│    │   └─0 inlineTag<@linkcode> "Node" (51:9-51:25, 1798-1814)
+│    ├─2 blockTag<@see>[1] (52:4-52:29, 1818-1843)
+│    │   └─0 inlineTag<@linkcode> "Visitors" (52:9-52:29, 1823-1843)
+│    ├─3 blockTag<@template>[2] (54:4-54:51, 1850-1897)
+│    │   ├─0 typeExpression "Node" (54:14-54:20, 1860-1866)
+│    │   └─1 text "[Tree=Node] - Tree to traverse" (54:21-54:51, 1867-1897)
+│    ├─4 blockTag<@param>[2] (56:4-56:41, 1904-1941)
+│    │   ├─0 typeExpression "Tree" (56:11-56:17, 1911-1917)
+│    │   └─1 text "tree - Tree to traverse" (56:18-56:41, 1918-1941)
+│    ├─5 blockTag<@param>[8] (57:4-59:40, 1945-2139)
+│    │   ├─0 typeExpression "Visitor<Tree> | Visitors<Tree>" (57:11-57:43, 1952-1984)
+│    │   ├─1 text "visitor - A function to handle nodes when entering (" (57:44-58:19, 1985-2040)
+│    │   ├─2 emphasis[1] (58:19-58:29, 2040-2050)
+│    │   │   └─0 text "preorder" (58:20-58:28, 2041-2049)
+│    │   ├─3 text "), or an object to handle nodes when entering and leaving (" (58:29-59:13, 2050-2112)
+│    │   ├─4 emphasis[1] (59:13-59:23, 2112-2122)
+│    │   │   └─0 text "preorder" (59:14-59:22, 2113-2121)
+│    │   ├─5 text " and " (59:23-59:28, 2122-2127)
+│    │   ├─6 emphasis[1] (59:28-59:39, 2127-2138)
+│    │   │   └─0 text "postorder" (59:29-59:38, 2128-2137)
+│    │   └─7 text ")" (59:39-59:40, 2138-2139)
+│    ├─6 blockTag<@param>[2] (60:4-61:64, 2143-2280)
+│    │   ├─0 typeExpression "(boolean | null)?" (60:11-60:30, 2150-2169)
+│    │   └─1 text "[reverse] - Traverse in reverse preorder (NRL) and/or postorder (RLN) instead of default traversal order(s)" (60:31-61:64, 2170-2280)
+│    └─7 blockTag<@return>[2] (62:4-62:26, 2284-2306)
+│        ├─0 typeExpression "void" (62:12-62:18, 2292-2298)
+│        └─1 text "Nothing" (62:19-62:26, 2299-2306)
+├─2  comment[11] (71:1-114:4, 2472-4594)
+│    ├─0  description[22] (72:4-97:65, 2479-3881)
+│    │    ├─0  paragraph[1] (72:4-72:44, 2479-2519)
+│    │    │    └─0 text "Visit nodes, with ancestral information." (72:4-72:44, 2479-2519)
+│    │    ├─1  break (72:44-73:1, 2519-2520)
+│    │    ├─2  break (73:3-74:1, 2522-2523)
+│    │    │      data: {"blank":true}
+│    │    ├─3  paragraph[29] (74:4-78:67, 2526-2889)
+│    │    │    ├─0  text "This algorithm performs " (74:4-74:28, 2526-2550)
+│    │    │    ├─1  linkReference[1] (74:28-74:63, 2550-2585)
+│    │    │    │    │ label: "dft"
+│    │    │    │    │ identifier: "dft"
+│    │    │    │    │ referenceType: "full"
+│    │    │    │    └─0 emphasis[1] (74:29-74:57, 2551-2579)
+│    │    │    │        └─0 text "depth-first tree traversal" (74:30-74:56, 2552-2578)
+│    │    │    ├─2  text " in " (74:63-75:1, 2585-2589)
+│    │    │    ├─3  linkReference[1] (75:4-75:26, 2592-2614)
+│    │    │    │    │ label: "preorder"
+│    │    │    │    │ identifier: "preorder"
+│    │    │    │    │ referenceType: "full"
+│    │    │    │    └─0 emphasis[1] (75:5-75:15, 2593-2603)
+│    │    │    │        └─0 text "preorder" (75:6-75:14, 2594-2602)
+│    │    │    ├─4  text " (" (75:26-75:28, 2614-2616)
+│    │    │    ├─5  strong[1] (75:28-75:35, 2616-2623)
+│    │    │    │    └─0 text "NLR" (75:30-75:33, 2618-2621)
+│    │    │    ├─6  text ") and/or " (75:35-75:44, 2623-2632)
+│    │    │    ├─7  linkReference[1] (75:44-75:68, 2632-2656)
+│    │    │    │    │ label: "postorder"
+│    │    │    │    │ identifier: "postorder"
+│    │    │    │    │ referenceType: "full"
+│    │    │    │    └─0 emphasis[1] (75:45-75:56, 2633-2644)
+│    │    │    │        └─0 text "postorder" (75:46-75:55, 2634-2643)
+│    │    │    ├─8  text " (" (75:68-75:70, 2656-2658)
+│    │    │    ├─9  strong[1] (75:70-75:77, 2658-2665)
+│    │    │    │    └─0 text "LRN" (75:72-75:75, 2660-2663)
+│    │    │    ├─10 text "), or if " (75:77-76:10, 2665-2677)
+│    │    │    ├─11 inlineCode "reverse" (76:10-76:19, 2677-2686)
+│    │    │    ├─12 text " is given, " (76:19-76:30, 2686-2697)
+│    │    │    ├─13 emphasis[1] (76:30-76:48, 2697-2715)
+│    │    │    │    └─0 text "reverse preorder" (76:31-76:47, 2698-2714)
+│    │    │    ├─14 text " (" (76:48-76:50, 2715-2717)
+│    │    │    ├─15 strong[1] (76:50-76:57, 2717-2724)
+│    │    │    │    └─0 text "NRL" (76:52-76:55, 2719-2722)
+│    │    │    ├─16 text ") and/or " (76:57-76:66, 2724-2733)
+│    │    │    ├─17 emphasis[1] (76:66-77:14, 2733-2755)
+│    │    │    │    └─0 text "reverse postorder" (76:67-77:13, 2734-2754)
+│    │    │    ├─18 text " (" (77:14-77:16, 2755-2757)
+│    │    │    ├─19 strong[1] (77:16-77:23, 2757-2764)
+│    │    │    │    └─0 text "RLN" (77:18-77:21, 2759-2762)
+│    │    │    ├─20 text "). Nodes are handled on " (77:23-77:47, 2764-2788)
+│    │    │    ├─21 linkReference[1] (77:47-77:63, 2788-2804)
+│    │    │    │    │ label: "enter"
+│    │    │    │    │ identifier: "enter"
+│    │    │    │    │ referenceType: "full"
+│    │    │    │    └─0 emphasis[1] (77:48-77:55, 2789-2796)
+│    │    │    │        └─0 text "enter" (77:49-77:54, 2790-2795)
+│    │    │    ├─22 text " during " (77:63-77:71, 2804-2812)
+│    │    │    ├─23 emphasis[1] (77:71-77:81, 2812-2822)
+│    │    │    │    └─0 text "preorder" (77:72-77:80, 2813-2821)
+│    │    │    ├─24 text " traversals and on " (77:81-78:22, 2822-2844)
+│    │    │    ├─25 linkReference[1] (78:22-78:36, 2844-2858)
+│    │    │    │    │ label: "exit"
+│    │    │    │    │ identifier: "exit"
+│    │    │    │    │ referenceType: "full"
+│    │    │    │    └─0 emphasis[1] (78:23-78:29, 2845-2851)
+│    │    │    │        └─0 text "exit" (78:24-78:28, 2846-2850)
+│    │    │    ├─26 text " during " (78:36-78:44, 2858-2866)
+│    │    │    ├─27 emphasis[1] (78:44-78:55, 2866-2877)
+│    │    │    │    └─0 text "postorder" (78:45-78:54, 2867-2876)
+│    │    │    └─28 text " traversals." (78:55-78:67, 2877-2889)
+│    │    ├─4  break (78:67-79:1, 2889-2890)
+│    │    ├─5  break (79:3-80:1, 2892-2893)
+│    │    │      data: {"blank":true}
+│    │    ├─6  paragraph[5] (80:4-82:74, 2896-3110)
+│    │    │    ├─0 text "You can choose which nodes visitor functions handle by passing a " (80:4-81:1, 2896-2961)
+│    │    │    ├─1 linkReference[1] (81:4-81:18, 2964-2978)
+│    │    │    │   │ label: "test"
+│    │    │    │   │ identifier: "test"
+│    │    │    │   │ referenceType: "full"
+│    │    │    │   └─0 inlineCode "test" (81:5-81:11, 2965-2971)
+│    │    │    ├─2 text ". For complex tests, you should test yourself in " (81:18-81:67, 2978-3027)
+│    │    │    ├─3 inlineCode "visitor" (81:67-81:76, 3027-3036)
+│    │    │    └─4 text " instead, as it will be faster and also have improved type information." (81:76-82:74, 3036-3110)
+│    │    ├─7  break (82:74-83:1, 3110-3111)
+│    │    ├─8  break (83:3-84:1, 3113-3114)
+│    │    │      data: {"blank":true}
+│    │    ├─9  paragraph[7] (84:4-87:38, 3117-3383)
+│    │    │    ├─0 text "Walking the " (84:4-84:16, 3117-3129)
+│    │    │    ├─1 inlineCode "tree" (84:16-84:22, 3129-3135)
+│    │    │    ├─2 text " is an intensive task. Make use of visitor return values whenever possible. Instead of walking the " (84:22-85:46, 3135-3237)
+│    │    │    ├─3 inlineCode "tree" (85:46-85:52, 3237-3243)
+│    │    │    ├─4 text " multiple times, walk it once, use " (85:52-86:14, 3243-3281)
+│    │    │    ├─5 linkReference[1] (86:14-86:46, 3281-3313)
+│    │    │    │   │ label: "unist-util-is"
+│    │    │    │   │ identifier: "unist-util-is"
+│    │    │    │   │ referenceType: "full"
+│    │    │    │   └─0 inlineCode "unist-util-is" (86:15-86:30, 3282-3297)
+│    │    │    └─6 text " to check if a node matches, and then perform different operations." (86:46-87:38, 3313-3383)
+│    │    ├─10 break (87:38-88:1, 3383-3384)
+│    │    ├─11 break (88:3-89:1, 3386-3387)
+│    │    │      data: {"blank":true}
+│    │    ├─12 paragraph[5] (89:4-89:65, 3390-3451)
+│    │    │    ├─0 text "You can change " (89:4-89:19, 3390-3405)
+│    │    │    ├─1 inlineCode "tree" (89:19-89:25, 3405-3411)
+│    │    │    ├─2 text ". See " (89:25-89:31, 3411-3417)
+│    │    │    ├─3 inlineTag<@linkcode> "Visitor" (89:31-89:50, 3417-3436)
+│    │    │    └─4 text " for more info." (89:50-89:65, 3436-3451)
+│    │    ├─13 break (89:65-90:1, 3451-3452)
+│    │    ├─14 break (90:3-91:1, 3454-3455)
+│    │    │      data: {"blank":true}
+│    │    ├─15 definition (91:4-91:69, 3458-3523)
+│    │    │      identifier: "dft"
+│    │    │      label: "dft"
+│    │    │      title: null
+│    │    │      url: "https://github.com/syntax-tree/unist#depth-first-traversal"
+│    │    ├─16 definition (92:4-92:55, 3527-3578)
+│    │    │      identifier: "enter"
+│    │    │      label: "enter"
+│    │    │      title: null
+│    │    │      url: "https://github.com/syntax-tree/unist#enter"
+│    │    ├─17 definition (93:4-93:53, 3582-3631)
+│    │    │      identifier: "exit"
+│    │    │      label: "exit"
+│    │    │      title: null
+│    │    │      url: "https://github.com/syntax-tree/unist#exit"
+│    │    ├─18 definition (94:4-94:63, 3635-3694)
+│    │    │      identifier: "postorder"
+│    │    │      label: "postorder"
+│    │    │      title: null
+│    │    │      url: "https://github.com/syntax-tree/unist#postorder"
+│    │    ├─19 definition (95:4-95:61, 3698-3755)
+│    │    │      identifier: "preorder"
+│    │    │      label: "preorder"
+│    │    │      title: null
+│    │    │      url: "https://github.com/syntax-tree/unist#preorder"
+│    │    ├─20 definition (96:4-96:61, 3759-3816)
+│    │    │      identifier: "test"
+│    │    │      label: "test"
+│    │    │      title: null
+│    │    │      url: "https://github.com/syntax-tree/unist-util-is#test"
+│    │    └─21 definition (97:4-97:65, 3820-3881)
+│    │           identifier: "unist-util-is"
+│    │           label: "unist-util-is"
+│    │           title: null
+│    │           url: "https://github.com/syntax-tree/unist-util-is"
+│    ├─1  blockTag<@see>[1] (99:4-99:25, 3888-3909)
+│    │    └─0 inlineTag<@linkcode> "Node" (99:9-99:25, 3893-3909)
+│    ├─2  blockTag<@see>[1] (100:4-100:25, 3913-3934)
+│    │    └─0 inlineTag<@linkcode> "Test" (100:9-100:25, 3918-3934)
+│    ├─3  blockTag<@see>[1] (101:4-101:29, 3938-3963)
+│    │    └─0 inlineTag<@linkcode> "Visitors" (101:9-101:29, 3943-3963)
+│    ├─4  blockTag<@template>[2] (103:4-103:51, 3970-4017)
+│    │    ├─0 typeExpression "Node" (103:14-103:20, 3980-3986)
+│    │    └─1 text "[Tree=Node] - Tree to traverse" (103:21-103:51, 3987-4017)
+│    ├─5  blockTag<@template>[2] (104:4-104:53, 4021-4070)
+│    │    ├─0 typeExpression "Test" (104:14-104:20, 4031-4037)
+│    │    └─1 text "[Check=Test] - Visited node test" (104:21-104:53, 4038-4070)
+│    ├─6  blockTag<@param>[2] (106:4-106:41, 4077-4114)
+│    │    ├─0 typeExpression "Tree" (106:11-106:17, 4084-4090)
+│    │    └─1 text "tree - Tree to traverse" (106:18-106:41, 4091-4114)
+│    ├─7  blockTag<@param>[4] (107:4-107:74, 4118-4188)
+│    │    ├─0 typeExpression "Check" (107:11-107:18, 4125-4132)
+│    │    ├─1 text "test - [" (107:19-107:27, 4133-4141)
+│    │    ├─2 inlineCode "unist-util-is" (107:27-107:42, 4141-4156)
+│    │    └─3 text "][unist-util-is]-compatible test" (107:42-107:74, 4156-4188)
+│    ├─8  blockTag<@param>[10] (108:4-110:79, 4192-4423)
+│    │    ├─0 typeExpression "Visitor<Tree, Check> | Visitors<Tree, Check>" (108:11-108:57, 4199-4245)
+│    │    ├─1 text "visitor - A function to handle nodes passing " (108:58-109:25, 4246-4294)
+│    │    ├─2 inlineCode "test" (109:25-109:31, 4294-4300)
+│    │    ├─3 text " when entering (" (109:31-109:47, 4300-4316)
+│    │    ├─4 emphasis[1] (109:47-109:57, 4316-4326)
+│    │    │   └─0 text "preorder" (109:48-109:56, 4317-4325)
+│    │    ├─5 text "), or an object to handle passing nodes when entering and leaving (" (109:57-110:52, 4326-4396)
+│    │    ├─6 emphasis[1] (110:52-110:62, 4396-4406)
+│    │    │   └─0 text "preorder" (110:53-110:61, 4397-4405)
+│    │    ├─7 text " and " (110:62-110:67, 4406-4411)
+│    │    ├─8 emphasis[1] (110:67-110:78, 4411-4422)
+│    │    │   └─0 text "postorder" (110:68-110:77, 4412-4421)
+│    │    └─9 text ")" (110:78-110:79, 4422-4423)
+│    ├─9  blockTag<@param>[2] (111:4-112:64, 4427-4564)
+│    │    ├─0 typeExpression "(boolean | null)?" (111:11-111:30, 4434-4453)
+│    │    └─1 text "[reverse] - Traverse in reverse preorder (NRL) and/or postorder (RLN) instead of default traversal order(s)" (111:31-112:64, 4454-4564)
+│    └─10 blockTag<@return>[2] (113:4-113:26, 4568-4590)
+│         ├─0 typeExpression "void" (113:12-113:18, 4576-4582)
+│         └─1 text "Nothing" (113:19-113:26, 4583-4590)
+├─3  comment[10] (123:1-138:4, 4800-5363)
+│    ├─0 description[1] (124:4-124:44, 4807-4847)
+│    │   └─0 paragraph[1] (124:4-124:44, 4807-4847)
+│    │       └─0 text "Visit nodes, with ancestral information." (124:4-124:44, 4807-4847)
+│    ├─1 blockTag<@see>[1] (126:4-126:25, 4854-4875)
+│    │   └─0 inlineTag<@linkcode> "Node" (126:9-126:25, 4859-4875)
+│    ├─2 blockTag<@see>[1] (127:4-127:25, 4879-4900)
+│    │   └─0 inlineTag<@linkcode> "Test" (127:9-127:25, 4884-4900)
+│    ├─3 blockTag<@see>[1] (128:4-128:28, 4904-4928)
+│    │   └─0 inlineTag<@linkcode> "Visitor" (128:9-128:28, 4909-4928)
+│    ├─4 blockTag<@see>[1] (129:4-129:29, 4932-4957)
+│    │   └─0 inlineTag<@linkcode> "Visitors" (129:9-129:29, 4937-4957)
+│    ├─5 blockTag<@param>[2] (131:4-131:41, 4964-5001)
+│    │   ├─0 typeExpression "Node" (131:11-131:17, 4971-4977)
+│    │   └─1 text "tree - Tree to traverse" (131:18-131:41, 4978-5001)
+│    ├─6 blockTag<@param>[3] (132:4-132:76, 5005-5077)
+│    │   ├─0 typeExpression "Test | Visitor | Visitors" (132:11-132:38, 5012-5039)
+│    │   ├─1 text "test - Visited node test or " (132:39-132:67, 5040-5068)
+│    │   └─2 inlineCode "visitor" (132:67-132:76, 5068-5077)
+│    ├─7 blockTag<@param>[3] (133:4-135:31, 5081-5265)
+│    │   ├─0 typeExpression "(Visitor | Visitors | boolean | null)?" (133:11-133:51, 5088-5128)
+│    │   ├─1 text "[visitor] - A function to handle entering nodes, an object containing functions to handle entering and leaving nodes, or " (133:52-135:22, 5129-5256)
+│    │   └─2 inlineCode "reverse" (135:22-135:31, 5256-5265)
+│    ├─8 blockTag<@param>[2] (136:4-136:68, 5269-5333)
+│    │   ├─0 typeExpression "(boolean | null)?" (136:11-136:30, 5276-5295)
+│    │   └─1 text "[reverse] - Traverse in reverse order" (136:31-136:68, 5296-5333)
+│    └─9 blockTag<@return>[2] (137:4-137:26, 5337-5359)
+│        ├─0 typeExpression "void" (137:12-137:18, 5345-5351)
+│        └─1 text "Nothing" (137:19-137:26, 5352-5359)
+├─4  comment[2] (155:3-159:6, 5774-5833)
+│    ├─0 description[1] (156:6-156:19, 5783-5796)
+│    │   └─0 paragraph[1] (156:6-156:19, 5783-5796)
+│    │       └─0 text "Node checker." (156:6-156:19, 5783-5796)
+│    └─1 blockTag<@const>[2] (158:6-158:26, 5807-5827)
+│        ├─0 typeExpression "Check" (158:13-158:20, 5814-5821)
+│        └─1 text "check" (158:21-158:26, 5822-5827)
+├─5  comment[2] (162:3-166:6, 5880-5973)
+│    ├─0 description[1] (163:6-163:53, 5889-5936)
+│    │   └─0 paragraph[1] (163:6-163:53, 5889-5936)
+│    │       └─0 text "Default value used to move between child nodes." (163:6-163:53, 5889-5936)
+│    └─1 blockTag<@const>[2] (165:6-165:26, 5947-5967)
+│        ├─0 typeExpression "number" (165:13-165:21, 5954-5962)
+│        └─1 text "step" (165:22-165:26, 5963-5967)
+├─6  comment[4] (169:3-176:6, 6017-6250)
+│    ├─0 description[1] (170:6-170:63, 6026-6083)
+│    │   └─0 paragraph[5] (170:6-170:63, 6026-6083)
+│    │       ├─0 text "Convert a visitor " (170:6-170:24, 6026-6044)
+│    │       ├─1 inlineCode "result" (170:24-170:32, 6044-6052)
+│    │       ├─2 text " to an " (170:32-170:39, 6052-6059)
+│    │       ├─3 inlineTag<@linkcode> "ActionTuple" (170:39-170:62, 6059-6082)
+│    │       └─4 text "." (170:62-170:63, 6082-6083)
+│    ├─1 blockTag<@this>[1] (172:6-172:18, 6094-6106)
+│    │   └─0 typeExpression "void" (172:12-172:18, 6100-6106)
+│    ├─2 blockTag<@param>[2] (174:6-174:75, 6117-6186)
+│    │   ├─0 typeExpression "VisitorResult" (174:13-174:28, 6124-6139)
+│    │   └─1 text "result - Result returned from visitor function" (174:29-174:75, 6140-6186)
+│    └─3 blockTag<@return>[2] (175:6-175:58, 6192-6244)
+│        ├─0 typeExpression "ActionTuple" (175:14-175:27, 6200-6213)
+│        └─1 text "Visitor result as action tuple" (175:28-175:58, 6214-6244)
+├─7  comment[11] (190:3-205:6, 6553-7044)
+│    ├─0  description[1] (191:6-191:39, 6562-6595)
+│    │    └─0 paragraph[1] (191:6-191:39, 6562-6595)
+│    │        └─0 text "Build a function to visit a node." (191:6-191:39, 6562-6595)
+│    ├─1  blockTag<@see>[1] (193:6-193:34, 6606-6634)
+│    │    └─0 inlineTag<@linkcode> "ActionTuple" (193:11-193:34, 6611-6634)
+│    ├─2  blockTag<@see>[1] (194:6-194:28, 6640-6662)
+│    │    └─0 inlineTag<@linkcode> "Index" (194:11-194:28, 6645-6662)
+│    ├─3  blockTag<@see>[1] (195:6-195:27, 6668-6689)
+│    │    └─0 inlineTag<@linkcode> "Node" (195:11-195:27, 6673-6689)
+│    ├─4  blockTag<@see>[1] (196:6-196:29, 6695-6718)
+│    │    └─0 inlineTag<@linkcode> "Parent" (196:11-196:29, 6700-6718)
+│    ├─5  blockTag<@this>[1] (198:6-198:18, 6729-6741)
+│    │    └─0 typeExpression "void" (198:12-198:18, 6735-6741)
+│    ├─6  blockTag<@param>[2] (200:6-200:37, 6752-6783)
+│    │    ├─0 typeExpression "Node" (200:13-200:19, 6759-6765)
+│    │    └─1 text "node - Found node" (200:20-200:37, 6766-6783)
+│    ├─7  blockTag<@param>[5] (201:6-201:75, 6789-6858)
+│    │    ├─0 typeExpression "Optional<Index>" (201:13-201:30, 6796-6813)
+│    │    ├─1 text "index - Index of " (201:31-201:48, 6814-6831)
+│    │    ├─2 inlineCode "node" (201:48-201:54, 6831-6837)
+│    │    ├─3 text " in " (201:54-201:58, 6837-6841)
+│    │    └─4 inlineCode "parent.children" (201:58-201:75, 6841-6858)
+│    ├─8  blockTag<@param>[3] (202:6-202:57, 6864-6915)
+│    │    ├─0 typeExpression "Optional<Parent>" (202:13-202:31, 6871-6889)
+│    │    ├─1 text "parent - Parent of " (202:32-202:51, 6890-6909)
+│    │    └─2 inlineCode "node" (202:51-202:57, 6909-6915)
+│    ├─9  blockTag<@param>[2] (203:6-203:53, 6921-6968)
+│    │    ├─0 typeExpression "Parent[]" (203:13-203:23, 6928-6938)
+│    │    └─1 text "ancestors - Ancestors of node" (203:24-203:53, 6939-6968)
+│    └─10 blockTag<@return>[2] (204:6-204:70, 6974-7038)
+│         ├─0 typeExpression "Fn<EmptyArray, Readonly<ActionTuple>>" (204:14-204:53, 6982-7021)
+│         └─1 text "Visitor function" (204:54-204:70, 7022-7038)
+├─8  comment[2] (214:7-218:10, 7256-7338)
+│    ├─0 description[1] (215:10-215:20, 7269-7279)
+│    │   └─0 paragraph[1] (215:10-215:20, 7269-7279)
+│    │       └─0 text "Node name." (215:10-215:20, 7269-7279)
+│    └─1 blockTag<@const>[2] (217:10-217:40, 7298-7328)
+│        ├─0 typeExpression "Nullable<string>" (217:17-217:35, 7305-7323)
+│        └─1 text "name" (217:36-217:40, 7324-7328)
+├─9  comment[3] (229:5-235:8, 7603-7745)
+│    ├─0 description[1] (230:8-230:21, 7614-7627)
+│    │   └─0 paragraph[3] (230:8-230:21, 7614-7627)
+│    │       ├─0 text "Visit " (230:8-230:14, 7614-7620)
+│    │       ├─1 inlineCode "node" (230:14-230:20, 7620-7626)
+│    │       └─2 text "." (230:20-230:21, 7626-7627)
+│    ├─1 blockTag<@see>[1] (232:8-232:36, 7642-7670)
+│    │   └─0 inlineTag<@linkcode> "ActionTuple" (232:13-232:36, 7647-7670)
+│    └─2 blockTag<@return>[2] (234:8-234:60, 7685-7737)
+│        ├─0 typeExpression "Readonly<ActionTuple>" (234:16-234:39, 7693-7716)
+│        └─1 text "Clean visitor result" (234:40-234:60, 7717-7737)
+├─10 comment[2] (239:7-243:10, 7848-7938)
+│    ├─0 description[1] (240:10-240:38, 7861-7889)
+│    │   └─0 paragraph[1] (240:10-240:38, 7861-7889)
+│    │       └─0 text "Index of current child node." (240:10-240:38, 7861-7889)
+│    └─1 blockTag<@var>[2] (242:10-242:30, 7908-7928)
+│        ├─0 typeExpression "number" (242:15-242:23, 7913-7921)
+│        └─1 text "offset" (242:24-242:30, 7922-7928)
+├─11 comment[2] (246:7-250:10, 7975-8073)
+│    ├─0 description[1] (247:10-247:31, 7988-8009)
+│    │   └─0 paragraph[1] (247:10-247:31, 7988-8009)
+│    │       └─0 text "Clean visitor result." (247:10-247:31, 7988-8009)
+│    └─1 blockTag<@var>[2] (249:10-249:45, 8028-8063)
+│        ├─0 typeExpression "Readonly<ActionTuple>" (249:15-249:38, 8033-8056)
+│        └─1 text "result" (249:39-249:45, 8057-8063)
+├─12 comment[2] (263:11-267:14, 8576-8664)
+│    ├─0 description[1] (264:14-264:25, 8593-8604)
+│    │   └─0 paragraph[1] (264:14-264:25, 8593-8604)
+│    │       └─0 text "Child node." (264:14-264:25, 8593-8604)
+│    └─1 blockTag<@const>[2] (266:14-266:33, 8631-8650)
+│        ├─0 typeExpression "Node" (266:21-266:27, 8638-8644)
+│        └─1 text "child" (266:28-266:33, 8645-8650)
+└─13 comment[2] (270:11-274:14, 8728-8869)
+     ├─0 description[1] (271:14-271:57, 8745-8788)
+     │   └─0 paragraph[3] (271:14-271:57, 8745-8788)
+     │       ├─0 text "Clean visitor result for " (271:14-271:39, 8745-8770)
+     │       ├─1 inlineTag<@linkcode> "child" (271:39-271:56, 8770-8787)
+     │       └─2 text "." (271:56-271:57, 8787-8788)
+     └─1 blockTag<@const>[2] (273:14-273:54, 8815-8855)
+         ├─0 typeExpression "Readonly<ActionTuple>" (273:21-273:44, 8822-8845)
+         └─1 text "subresult" (273:45-273:54, 8846-8855)
+`;
+
 exports[`integration:fromDocs > non-empty snippet > snippet sample 0 1`] = `
 root[1]
 └─0 comment[7] (110:3-138:6, 2388-3460)

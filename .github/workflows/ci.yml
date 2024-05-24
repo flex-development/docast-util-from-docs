@@ -245,7 +245,6 @@ jobs:
       matrix:
         typescript-version:
           - ${{ needs.preflight.outputs.version-typescript }}
-          - 5.3.3
           - latest
     steps:
       - id: checkout

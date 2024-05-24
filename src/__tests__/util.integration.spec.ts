@@ -8,7 +8,7 @@ import type { Point } from '@flex-development/docast'
 import { constant, type Assign } from '@flex-development/tutils'
 import { directiveFromMarkdown } from 'mdast-util-directive'
 import { directive } from 'micromark-extension-directive'
-import { read } from 'to-vfile'
+import { readSync as read } from 'to-vfile'
 import { inspectNoColor } from 'unist-util-inspect'
 import type { VFile } from 'vfile'
 import type { TestContext } from 'vitest'
@@ -28,27 +28,28 @@ describe('integration:fromDocs', () => {
     })
   })
 
-  describe('non-empty document', async () => {
+  describe('non-empty document', () => {
     it.each<[VFile, Options?]>([
-      [await read('__fixtures__/validate-url-string.ts'), { codeblocks: null }],
-      [await read('__fixtures__/detect-syntax.ts'), { codeblocks: /@example/ }],
-      [await read('__fixtures__/to-relative-specifier.ts'), {
+      [read('__fixtures__/validate-url-string.ts'), { codeblocks: null }],
+      [read('__fixtures__/detect-syntax.ts'), { codeblocks: /@example/ }],
+      [read('__fixtures__/to-relative-specifier.ts'), {
         mdastExtensions: [directiveFromMarkdown()],
         micromarkExtensions: [directive()]
       }],
-      [await read('__fixtures__/dbl-linear.ts'), {
+      [read('__fixtures__/dbl-linear.ts'), {
         codeblocks: [/@example/],
         multiline: true
       }],
-      [await read('__fixtures__/reader.ts')]
+      [read('__fixtures__/reader.ts')],
+      [read('__fixtures__/visit.ts.txt'), { multiline: true }]
     ])('document sample %#', (file, options) => {
       expect(testSubject(file, options)).toMatchSnapshot()
     })
   })
 
-  describe('non-empty snippet', async () => {
+  describe('non-empty snippet', () => {
     it.each<[VFile, Assign<Options, { end: number; from: Point }>]>([
-      [await read('__fixtures__/reader.ts'), {
+      [read('__fixtures__/reader.ts'), {
         end: 3461,
         from: { column: 3, line: 110, offset: 2388 }
       }]

@@ -111,7 +111,6 @@
   "emmet.triggerExpansionOnTab": true,
   "eslint.enable": true,
   "eslint.lintTask.enable": true,
-  "eslint.nodePath": "node_modules/.bin/eslint",
   "eslint.options": {
     "extensions": [
       "css",
@@ -137,6 +136,7 @@
     "overrideConfigFile": ".eslintrc.cjs"
   },
   "eslint.runtime": "node",
+  "eslint.trace.server": "messages",
   "eslint.validate": [
     "css",
     "github-actions-workflow",
@@ -154,6 +154,7 @@
   "files.associations": {
     "*.log": "log",
     "*.snap": "jest-snapshot",
+    "*.ts.txt": "assemblyscript",
     ".env.zsh": "shellscript",
     ".markdownlintignore": "ignore",
     ".npmrc": "ini",
@@ -286,6 +287,11 @@
       "extensions": ["spec-d.ts"],
       "format": "svg",
       "icon": "testts"
+    },
+    {
+      "extensions": ["ts.txt"],
+      "format": "svg",
+      "icon": "typescript"
     },
     {
       "extensions": ["yarnrc.yml"],
