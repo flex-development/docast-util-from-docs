@@ -1264,7 +1264,7 @@ __metadata:
     "@flex-development/unist-util-types": "npm:1.4.0"
     "@flex-development/unist-util-visit": "npm:1.1.0"
     "@flex-development/vfile-location": "npm:1.0.1"
-    "@flex-development/vfile-reader": "npm:1.0.0"
+    "@flex-development/vfile-reader": "npm:1.0.1"
     "@html-eslint/eslint-plugin": "npm:0.24.0"
     "@html-eslint/parser": "npm:0.24.0"
     "@types/chai": "npm:4.3.16"
@@ -1738,17 +1738,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/vfile-location@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@flex-development/vfile-location@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-location%2F1.0.0%2Fe4bc37418ca970080ece98fa71602f9f2f8bff04"
-  dependencies:
-    "@flex-development/unist-util-types": "npm:1.4.0"
-    "@types/unist": "npm:3.0.2"
-    vfile: "npm:6.0.1"
-  checksum: 10/eb77ba5d5c8b486da1c84b03246afd26aa236ddf76a498c9d9a09419138fd29e988826c0bb0ef90b08ef9760b79d7424f0760266000d79eb107306e1e811ea61
-  languageName: node
-  linkType: hard
-
 "@flex-development/vfile-location@npm:1.0.1":
   version: 1.0.1
   resolution: "@flex-development/vfile-location@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-location%2F1.0.1%2F79df979602163f1ede1c29e00ad0ebec00c8e658"
@@ -1760,15 +1749,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/vfile-reader@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@flex-development/vfile-reader@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-reader%2F1.0.0%2F8788ce8bdc6a3349dc79dc5275740b3ba13d2529"
+"@flex-development/vfile-reader@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@flex-development/vfile-reader@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-reader%2F1.0.1%2F0d2f386c2fc7e4422f289832dafbd226abfd2168"
   dependencies:
     "@flex-development/unist-util-types": "npm:1.4.0"
-    "@flex-development/vfile-location": "npm:1.0.0"
+    "@flex-development/vfile-location": "npm:1.0.1"
     "@types/unist": "npm:3.0.2"
     vfile: "npm:6.0.1"
-  checksum: 10/6a55aae572944635e48aabeb4ad9e958d1e9b1a78f09df3d7f2218b0e3ac21924b644bba87259e252f820b74749ee4dc0facad2a127f1ef09d2754c74ea066c6
+  checksum: 10/ca8de3d1f4054d3274ca9dce09d61b0b6b2c0e43d1ab82b82e6e8fc738680e5c4d76e8e543d78713e3993e64a3554ff79e0d07f80e23362bd290483c1b67939b
   languageName: node
   linkType: hard
 
