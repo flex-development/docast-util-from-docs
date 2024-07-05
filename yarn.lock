@@ -1445,10 +1445,10 @@ __metadata:
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
     "@flex-development/unist-util-inspect": "npm:1.0.1"
-    "@flex-development/unist-util-types": "npm:1.4.0"
+    "@flex-development/unist-util-types": "npm:1.6.1"
     "@flex-development/unist-util-visit": "npm:1.1.0"
     "@flex-development/vfile-location": "npm:1.0.1"
-    "@flex-development/vfile-reader": "npm:1.0.1"
+    "@flex-development/vfile-reader": "npm:3.1.1"
     "@stylistic/eslint-plugin": "npm:2.3.0"
     "@types/chai": "npm:4.3.16"
     "@types/chai-string": "npm:1.4.5"
@@ -1919,12 +1919,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/unist-util-types@npm:1.4.0":
-  version: 1.4.0
-  resolution: "@flex-development/unist-util-types@npm:1.4.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.4.0%2F7bc3e76774ee0ff16f31bf3ca7caaec923795e07"
-  peerDependencies:
-    "@types/unist": ">=3.0.2"
-  checksum: 10/90f20be4a9617e5483b0ab9e8837022b78c5bd6dc12b65b30c1e7a10798f45fca4367716deeb666a9ec09d9321b8d51393be7f3bf9535ec2794a22dc9c6fd4f8
+"@flex-development/unist-util-types@npm:1.6.1":
+  version: 1.6.1
+  resolution: "@flex-development/unist-util-types@npm:1.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.6.1%2F0deabf0a30d32dc9ae23aea394ef67b8f0b806b9"
+  dependencies:
+    "@types/unist": "npm:3.0.2"
+  checksum: 10/fd308bb9673987b588d54afc56821fefaad9233fecf8d76f352a055c339716979f3c2e1b2d145628ffa0d9ac033fbe28d942294a029d98b52334dd9703471f99
   languageName: node
   linkType: hard
 
@@ -1952,15 +1952,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/vfile-reader@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@flex-development/vfile-reader@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-reader%2F1.0.1%2F0d2f386c2fc7e4422f289832dafbd226abfd2168"
+"@flex-development/vfile-reader@npm:3.1.1":
+  version: 3.1.1
+  resolution: "@flex-development/vfile-reader@npm:3.1.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-reader%2F3.1.1%2F519964c1191c4558eaf8c4a12cf6a0ef9dbfd06c"
   dependencies:
-    "@flex-development/unist-util-types": "npm:1.4.0"
+    "@flex-development/unist-util-types": "npm:1.6.1"
     "@flex-development/vfile-location": "npm:1.0.1"
-    "@types/unist": "npm:3.0.2"
     vfile: "npm:6.0.1"
-  checksum: 10/ca8de3d1f4054d3274ca9dce09d61b0b6b2c0e43d1ab82b82e6e8fc738680e5c4d76e8e543d78713e3993e64a3554ff79e0d07f80e23362bd290483c1b67939b
+  checksum: 10/53ab732e8db1481bfc0d1821e2faaacfc2331a8eb0fc0ce0b93ed779fd21221d93ebd97204a550bc11886cc3dc9a122ff11235a59947ae9092858aea31fbddcd
   languageName: node
   linkType: hard
 
