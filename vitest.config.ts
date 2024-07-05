@@ -41,13 +41,12 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
 
   return {
     define: {},
-    plugins: [tsconfigPaths({ parseNative: true, projects: [tsconfig] })],
+    plugins: [tsconfigPaths({ projects: [tsconfig] })],
     test: {
       allowOnly: !ci,
       benchmark: {
         include: ['**/__tests__/*.bench.spec.ts?(x)'],
-        outputFile: '__tests__/benchmark.json',
-        reporters: ['default', 'json', new Notifier()]
+        reporters: [new Notifier(), 'verbose']
       },
       chaiConfig: {
         includeStack: true,
@@ -65,7 +64,8 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
           '**/interfaces/',
           '**/types/',
           '**/index.ts',
-          '!src/index.ts'
+          '!src/index.ts',
+          'src/color.*.ts'
         ],
         extension: ['.ts'],
         include: ['src'],
@@ -113,6 +113,13 @@ const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
       },
       restoreMocks: true,
       sequence: {
+        /**
+         * Sorting and sharding algorithm provider.
+         *
+         * @see {@linkcode BaseSequencer}
+         *
+         * @extends {BaseSequencer}
+         */
         sequencer: class Sequencer extends BaseSequencer {
           /**
            * Determines test file execution order.
