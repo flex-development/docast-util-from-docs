@@ -44,7 +44,7 @@ updates:
       vitest:
         patterns:
           - '@vitest/*'
-          - vitest*
+          - vitest
     labels:
       - scope:dependencies
       - type:build
