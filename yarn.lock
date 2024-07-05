@@ -1261,6 +1261,7 @@ __metadata:
     "@flex-development/mlly": "npm:1.0.0-alpha.18"
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
+    "@flex-development/unist-util-inspect": "npm:1.0.1"
     "@flex-development/unist-util-types": "npm:1.4.0"
     "@flex-development/unist-util-visit": "npm:1.1.0"
     "@flex-development/vfile-location": "npm:1.0.1"
@@ -1329,7 +1330,6 @@ __metadata:
     typescript: "npm:5.5.3"
     typescript-parsec: "npm:0.3.4"
     unist-builder: "npm:4.0.0"
-    unist-util-inspect: "npm:8.0.0"
     vfile: "npm:6.0.1"
     vite: "npm:5.2.2"
     vite-tsconfig-paths: "npm:4.3.2"
@@ -1713,6 +1713,26 @@ __metadata:
   peerDependencies:
     typescript: ">=4.7"
   checksum: 10/161901c611f0049464cc53e128b8285f12a9dc6ef551a8c8a4bd47d9e2d73afcc53c25fbcd18189dcda28a460ea64e8801398159b6daaaff63d0552d140f1f02
+  languageName: node
+  linkType: hard
+
+"@flex-development/unist-util-inspect@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@flex-development/unist-util-inspect@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-inspect%2F1.0.1%2F62e4316a7ec1359ea377db40bd063dc83808b75e"
+  dependencies:
+    "@flex-development/unist-util-stringify-position": "npm:1.0.1"
+    "@types/unist": "npm:3.0.2"
+  checksum: 10/9d4da80d5be62ead6afff50c07a2587c5bf5f51bb3432b38f74863a6b55d0e4c9e854b4f73f1a98746b2c9409e5cc76f40cfe85ba0c7eb634ba825f39eb536dc
+  languageName: node
+  linkType: hard
+
+"@flex-development/unist-util-stringify-position@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@flex-development/unist-util-stringify-position@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-stringify-position%2F1.0.1%2F573c6a592094d914733e4491a7a68de42c196c8f"
+  dependencies:
+    "@flex-development/unist-util-types": "npm:1.6.1"
+    "@types/unist": "npm:3.0.2"
+  checksum: 10/86410dc2984ecfb60f2db63d114b1929b056acf09e38dc822aea6b6dbcf92ebfd6e52f59d2392e10d9b60579e65fd21c740061943ffbb56e82d896d78c9ed5a1
   languageName: node
   linkType: hard
 
@@ -10049,7 +10069,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-inspect@npm:8.0.0, unist-util-inspect@npm:^8.0.0":
+"unist-util-inspect@npm:^8.0.0":
   version: 8.0.0
   resolution: "unist-util-inspect@npm:8.0.0"
   dependencies:

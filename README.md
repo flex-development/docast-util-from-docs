@@ -184,10 +184,10 @@ export default FibonacciSequence
 
 ```js
 import { fromDocs } from '@flex-development/docast-util-from-docs'
+import { inspect } from '@flex-development/unist-util-inspect'
 import { directiveFromMarkdown } from 'mdast-util-directive'
 import { directive } from 'micromark-extension-directive'
 import { read } from 'to-vfile'
-import { inspect } from 'unist-util-inspect'
 
 const file = await read('fibonacci-sequence.ts')
 

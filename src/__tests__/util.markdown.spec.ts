@@ -5,9 +5,9 @@
 
 import type { ParseMarkdownOptions } from '#src/interfaces'
 import { constant } from '@flex-development/tutils'
+import { inspectNoColor } from '@flex-development/unist-util-inspect'
 import type { RootContent } from 'mdast'
 import { read } from 'to-vfile'
-import { inspectNoColor } from 'unist-util-inspect'
 import type { VFile } from 'vfile'
 import type { TestContext } from 'vitest'
 import testSubject from '../util.markdown'
