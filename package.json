@@ -83,8 +83,8 @@
     "@flex-development/docast": "1.0.0-alpha.17",
     "@flex-development/tutils": "6.0.0-alpha.25",
     "@flex-development/unist-util-visit": "1.1.0",
-    "@flex-development/vfile-location": "1.0.1",
-    "@flex-development/vfile-reader": "1.0.1",
+    "@flex-development/vfile-location": "1.0.2",
+    "@flex-development/vfile-reader": "3.1.2",
     "@types/mdast": "4.0.3",
     "debug": "4.3.4",
     "devlop": "1.1.0",
@@ -109,7 +109,7 @@
     "@flex-development/mlly": "1.0.0-alpha.18",
     "@flex-development/pathe": "2.0.0",
     "@flex-development/unist-util-inspect": "1.0.1",
-    "@flex-development/unist-util-types": "1.4.0",
+    "@flex-development/unist-util-types": "1.6.1",
     "@stylistic/eslint-plugin": "2.3.0",
     "@types/chai": "4.3.16",
     "@types/chai-string": "1.4.5",
@@ -172,7 +172,7 @@
     "yaml-eslint-parser": "1.2.3"
   },
   "resolutions": {
-    "@flex-development/unist-util-types": "1.4.0",
+    "@flex-development/unist-util-types": "1.6.1",
     "@types/mdast": "4.0.3",
     "@types/unist": "3.0.2",
     "chai": "5.1.1",
