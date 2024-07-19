@@ -1437,7 +1437,7 @@ __metadata:
     "@faker-js/faker": "npm:8.4.1"
     "@flex-development/commitlint-config": "npm:1.0.1"
     "@flex-development/decorator-regex": "npm:2.0.0"
-    "@flex-development/docast": "npm:1.0.0-alpha.17"
+    "@flex-development/docast": "npm:1.0.0-alpha.18"
     "@flex-development/esm-types": "npm:2.0.0"
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/mkbuild": "npm:1.0.0-alpha.23"
@@ -1445,10 +1445,10 @@ __metadata:
     "@flex-development/pathe": "npm:2.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
     "@flex-development/unist-util-inspect": "npm:1.0.1"
-    "@flex-development/unist-util-types": "npm:1.4.0"
+    "@flex-development/unist-util-types": "npm:1.6.1"
     "@flex-development/unist-util-visit": "npm:1.1.0"
-    "@flex-development/vfile-location": "npm:1.0.1"
-    "@flex-development/vfile-reader": "npm:1.0.1"
+    "@flex-development/vfile-location": "npm:1.1.0"
+    "@flex-development/vfile-reader": "npm:3.1.2"
     "@stylistic/eslint-plugin": "npm:2.3.0"
     "@types/chai": "npm:4.3.16"
     "@types/chai-string": "npm:1.4.5"
@@ -1521,15 +1521,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flex-development/docast@npm:1.0.0-alpha.17":
-  version: 1.0.0-alpha.17
-  resolution: "@flex-development/docast@npm:1.0.0-alpha.17::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.17%2Fed26e664faee975d0993dca6b8e24ec17b8e7b35"
+"@flex-development/docast@npm:1.0.0-alpha.18":
+  version: 1.0.0-alpha.18
+  resolution: "@flex-development/docast@npm:1.0.0-alpha.18::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.18%2F988bafe7aa53fe2e01e30a73ff25f834d66247ef"
   dependencies:
-    "@flex-development/tutils": "npm:6.0.0-alpha.25"
-    "@flex-development/unist-util-types": "npm:1.3.1"
-    "@types/mdast": "npm:4.0.3"
+    "@flex-development/unist-util-types": "npm:1.6.1"
+    "@types/mdast": "npm:4.0.4"
     "@types/unist": "npm:3.0.2"
-  checksum: 10/c51b15316ea10af54ab2463205d5c5b755761e031bf185cb14a50e38da38882a6b2dd3a1eff05d838a9aa3691982e64fd6cd3cdc431ba30362a16b9e03bc39cc
+  checksum: 10/d6220032308d0143b4e43b50ee66a48c7f193561dfdf28eabae78d51413fddbb4ff21e9c9762f1372c78d8fb2ebbed049b1479a559b1479ca01dbcac8f08966c
   languageName: node
   linkType: hard
 
@@ -1919,12 +1918,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/unist-util-types@npm:1.4.0":
-  version: 1.4.0
-  resolution: "@flex-development/unist-util-types@npm:1.4.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.4.0%2F7bc3e76774ee0ff16f31bf3ca7caaec923795e07"
-  peerDependencies:
-    "@types/unist": ">=3.0.2"
-  checksum: 10/90f20be4a9617e5483b0ab9e8837022b78c5bd6dc12b65b30c1e7a10798f45fca4367716deeb666a9ec09d9321b8d51393be7f3bf9535ec2794a22dc9c6fd4f8
+"@flex-development/unist-util-types@npm:1.6.1":
+  version: 1.6.1
+  resolution: "@flex-development/unist-util-types@npm:1.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Funist-util-types%2F1.6.1%2F0deabf0a30d32dc9ae23aea394ef67b8f0b806b9"
+  dependencies:
+    "@types/unist": "npm:3.0.2"
+  checksum: 10/fd308bb9673987b588d54afc56821fefaad9233fecf8d76f352a055c339716979f3c2e1b2d145628ffa0d9ac033fbe28d942294a029d98b52334dd9703471f99
   languageName: node
   linkType: hard
 
@@ -1941,26 +1940,36 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/vfile-location@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@flex-development/vfile-location@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-location%2F1.0.1%2F79df979602163f1ede1c29e00ad0ebec00c8e658"
+"@flex-development/vfile-location@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@flex-development/vfile-location@npm:1.0.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-location%2F1.0.2%2Fb341b4a1817c124f2e2592815d00f6cbe408413c"
   dependencies:
-    "@flex-development/unist-util-types": "npm:1.4.0"
+    "@flex-development/unist-util-types": "npm:1.6.1"
     "@types/unist": "npm:3.0.2"
     vfile: "npm:6.0.1"
-  checksum: 10/2deaf57809d7fb58e4432bc1cb576ef651596e42eb99bbd41de7312ec7b453d678d91d6b3cc5cca6111d0dbb690aa0950a5e2d09a83511a8e33579c2a6d43465
+  checksum: 10/9dd588ee62c045f9d170afdcf6a9e62bb05511fcdbe51bf820d76b4f756086c4f1fe1b754b8b453874aadbbfa85672ee008bb7d7974b3e49c6bf57210cdd1a79
   languageName: node
   linkType: hard
 
-"@flex-development/vfile-reader@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@flex-development/vfile-reader@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-reader%2F1.0.1%2F0d2f386c2fc7e4422f289832dafbd226abfd2168"
+"@flex-development/vfile-location@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@flex-development/vfile-location@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-location%2F1.1.0%2F3cb3d9ff81e6a56c0e5e50048701f90db0eb80e0"
   dependencies:
-    "@flex-development/unist-util-types": "npm:1.4.0"
-    "@flex-development/vfile-location": "npm:1.0.1"
+    "@flex-development/unist-util-types": "npm:1.6.1"
     "@types/unist": "npm:3.0.2"
+    vfile: "npm:6.0.2"
+  checksum: 10/3f217ede58e7f8855b412e7f25f78983a4c5e4256c1c3ab330efc7f8dbe0e30ca6983944950c1ac3b74081afba2d23688efef264c9e11bae796593ec85921c52
+  languageName: node
+  linkType: hard
+
+"@flex-development/vfile-reader@npm:3.1.2":
+  version: 3.1.2
+  resolution: "@flex-development/vfile-reader@npm:3.1.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fvfile-reader%2F3.1.2%2Fda7a996737f030cf015064ad94c17dd875b2465e"
+  dependencies:
+    "@flex-development/unist-util-types": "npm:1.6.1"
+    "@flex-development/vfile-location": "npm:1.0.2"
     vfile: "npm:6.0.1"
-  checksum: 10/ca8de3d1f4054d3274ca9dce09d61b0b6b2c0e43d1ab82b82e6e8fc738680e5c4d76e8e543d78713e3993e64a3554ff79e0d07f80e23362bd290483c1b67939b
+  checksum: 10/9480de3863a4b088a4de34fc804078aae2d00692a352e588dd2a412380202f47290f46ba61ee14a47009e005680deddf2a3b1c5ab071341b0a8ec06d133cc4ba
   languageName: node
   linkType: hard
 
@@ -10706,7 +10715,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile@npm:6.0.1, vfile@npm:^6.0.0, vfile@npm:^6.0.1":
+"vfile@npm:6.0.1":
   version: 6.0.1
   resolution: "vfile@npm:6.0.1"
   dependencies:
@@ -10714,6 +10723,17 @@ __metadata:
     unist-util-stringify-position: "npm:^4.0.0"
     vfile-message: "npm:^4.0.0"
   checksum: 10/7f8412f9ce7709d3be4041fd68a159e2cf96f9c9a4f095bcb18d1561009757b8efb37b71d0ae087e5202fe0e3b3162aae0adf92e30e2448a45645912c23c4ab2
+  languageName: node
+  linkType: hard
+
+"vfile@npm:6.0.2, vfile@npm:^6.0.0, vfile@npm:^6.0.1":
+  version: 6.0.2
+  resolution: "vfile@npm:6.0.2"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+    unist-util-stringify-position: "npm:^4.0.0"
+    vfile-message: "npm:^4.0.0"
+  checksum: 10/8c36b4887b071aa9215a16c96916e96e75f3f3516cb87fa7ba1ec79fda3a1d87b66068e56b73f01c249b8fefa897dc52e3a6c736fd1053133ad3920f33482756
   languageName: node
   linkType: hard
 
